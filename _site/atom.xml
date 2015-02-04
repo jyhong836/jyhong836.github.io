@@ -4,13 +4,64 @@
  <title>Hong Blog</title>
  <link href="http://jyhong836.github.io/" rel="self"/>
  <link href="http://jyhong836.github.io"/>
- <updated>2015-02-03T14:23:01+08:00</updated>
+ <updated>2015-02-04T12:13:10+08:00</updated>
  <id>http://jyhong836.github.io</id>
  <author>
    <name>Junyuan Hong</name>
    <email>jyhong836@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>resetTransform of SCNPhysicsBody</title>
+   <link href="http://jyhong836.github.io/2015/02/04/resettransform-at-scnphysics"/>
+   <updated>2015-02-04T00:00:00+08:00</updated>
+   <id>http://jyhong836.github.io/2015/02/04/resettransform-at-scnphysics</id>
+   <content type="html">
+&lt;p&gt;According to the SceneKit document, the function of &lt;code&gt;resetTransform&lt;/code&gt; is: &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Updates the position and orientation of a body in the physics simulation to match that of the node to which the body is attached.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Through experiment, I found this is little special.&lt;/p&gt;
+
+&lt;p&gt;If you do this: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var node = SCNNode(geomentry: SCNBox())
+node.position = SCNVector3(0, 1, 0)
+node.rotation = SCNVector4(1, 0, 0, CGFloat(M_PI)/2)
+node.physicsBody = SCNPhysicsBody(type: .Dynamic, nil)
+scene.rootNode.addChildNode(node)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you get the &lt;code&gt;position&lt;/code&gt; and &lt;code&gt;rotation&lt;/code&gt; of &lt;code&gt;node.presentationNode()&lt;/code&gt; in the render delegate, where I mean you need to get the latest and real data, you will found the effect of the setup of node’s position and rotation is not work at the begining.&lt;/p&gt;
+
+&lt;p&gt;At the begining, the &lt;code&gt;position&lt;/code&gt; will be &lt;code&gt;(0, 0, 0)&lt;/code&gt;, but not what you have set, &lt;code&gt;(0, 1, 0)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you have read the document about &lt;code&gt;SCNNode.position&lt;/code&gt; and &lt;code&gt;SCNNode.rotation&lt;/code&gt;, you will found:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;position&lt;/p&gt;
+
+  &lt;p&gt;The translation applied to the node. &lt;strong&gt;Animatable&lt;/strong&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The &lt;strong&gt;Animatable&lt;/strong&gt; means it will take several frames to get the effect.&lt;/p&gt;
+
+&lt;p&gt;However, it’s different when you use resetTransform of SCNPhysicsBody:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var node = SCNNode(geomentry: SCNBox())
+node.position = SCNVector3(0, 1, 0)
+node.rotation = SCNVector4(1, 0, 0, CGFloat(M_PI)/2)
+node.physicsBody = SCNPhysicsBody(type: .Dynamic, nil)
+scene.rootNode.addChildNode(node)
+node.physicsBody.resetTransform()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The effect will work at the begining.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Start my blog with Jekyll and disqus</title>
