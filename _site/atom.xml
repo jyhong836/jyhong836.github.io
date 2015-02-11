@@ -4,7 +4,7 @@
  <title>Hong Blog</title>
  <link href="http://jyhong836.github.io/" rel="self"/>
  <link href="http://jyhong836.github.io"/>
- <updated>2015-02-04T12:13:10+08:00</updated>
+ <updated>2015-02-11T18:25:29+08:00</updated>
  <id>http://jyhong836.github.io</id>
  <author>
    <name>Junyuan Hong</name>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>resetTransform of SCNPhysicsBody</title>
-   <link href="http://jyhong836.github.io/2015/02/04/resettransform-at-scnphysics"/>
+   <link href="http://jyhong836.github.io/2015/02/04/resettransform-at-scnphysicsbody"/>
    <updated>2015-02-04T00:00:00+08:00</updated>
-   <id>http://jyhong836.github.io/2015/02/04/resettransform-at-scnphysics</id>
+   <id>http://jyhong836.github.io/2015/02/04/resettransform-at-scnphysicsbody</id>
    <content type="html">
 &lt;p&gt;According to the SceneKit document, the function of &lt;code&gt;resetTransform&lt;/code&gt; is: &lt;/p&gt;
 
@@ -98,7 +98,16 @@ git push origin master
 
 &lt;p&gt;Another web about the Jekyll and GitHub: &lt;a href=&quot;http://www.developmentseed.org/blog/2011/09/09/jekyll-github-pages/&quot;&gt;Using Jekyll and GitHub Pages for Our Site&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Jekyll is easy to add Disqus for comments. You can refer to &lt;a href=&quot;https://disqus.com/websites/?utm_source=hongblog&amp;amp;utm_medium=Disqus-Footer&quot;&gt;DISQUS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In the &lt;code&gt;_config.yml&lt;/code&gt;, you can add some tools:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Jekyll is easy to add Disqus for comments. You can visit &lt;a href=&quot;https://disqus.com/websites/?utm_source=hongblog&amp;amp;utm_medium=Disqus-Footer&quot;&gt;DISQUS&lt;/a&gt; for more details.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;You can also use Google Analytics to track your website.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 </content>
  </entry>
  

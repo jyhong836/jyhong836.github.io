@@ -5,7 +5,9 @@ tagline: Less is more
 ---
 {% include JB/setup %}
 
-The site is based on Jekyll.
+## About Me
+
+You can find me at [GitHub](https://github.com/jyhong836), [Google+](https://plus.google.com/113310389738293078885/about), [HONG@USTC](https://jyhong.blog.ustc.edu.cn).
 
 ## Recent Posts
 

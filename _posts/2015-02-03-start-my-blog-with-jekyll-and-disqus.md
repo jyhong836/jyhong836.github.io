@@ -34,4 +34,8 @@ It also works honestly.
 
 Another web about the Jekyll and GitHub: [Using Jekyll and GitHub Pages for Our Site](http://www.developmentseed.org/blog/2011/09/09/jekyll-github-pages/)
 
-Jekyll is easy to add Disqus for comments. You can refer to [DISQUS](https://disqus.com/websites/?utm_source=hongblog&utm_medium=Disqus-Footer)
+In the `_config.yml`, you can add some tools:
+
+- Jekyll is easy to add Disqus for comments. You can visit [DISQUS](https://disqus.com/websites/?utm_source=hongblog&utm_medium=Disqus-Footer) for more details.
+
+- You can also use Google Analytics to track your website.

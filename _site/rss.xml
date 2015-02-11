@@ -5,8 +5,8 @@
         <description>Hong Blog - Junyuan Hong</description>
         <link>http://jyhong836.github.io</link>
         <link>http://jyhong836.github.io</link>
-        <lastBuildDate>2015-02-04T12:13:10+08:00</lastBuildDate>
-        <pubDate>2015-02-04T12:13:10+08:00</pubDate>
+        <lastBuildDate>2015-02-11T18:25:29+08:00</lastBuildDate>
+        <pubDate>2015-02-11T18:25:29+08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -56,8 +56,8 @@ node.physicsBody.resetTransform()
 
 &lt;p&gt;The effect will work at the begining.&lt;/p&gt;
 </description>
-                <link>http://jyhong836.github.io/2015/02/04/resettransform-at-scnphysics</link>
-                <guid>http://jyhong836.github.io/2015/02/04/resettransform-at-scnphysics</guid>
+                <link>http://jyhong836.github.io/2015/02/04/resettransform-at-scnphysicsbody</link>
+                <guid>http://jyhong836.github.io/2015/02/04/resettransform-at-scnphysicsbody</guid>
                 <pubDate>2015-02-04T00:00:00+08:00</pubDate>
         </item>
 
@@ -93,7 +93,16 @@ git push origin master
 
 &lt;p&gt;Another web about the Jekyll and GitHub: &lt;a href=&quot;http://www.developmentseed.org/blog/2011/09/09/jekyll-github-pages/&quot;&gt;Using Jekyll and GitHub Pages for Our Site&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Jekyll is easy to add Disqus for comments. You can refer to &lt;a href=&quot;https://disqus.com/websites/?utm_source=hongblog&amp;amp;utm_medium=Disqus-Footer&quot;&gt;DISQUS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In the &lt;code&gt;_config.yml&lt;/code&gt;, you can add some tools:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Jekyll is easy to add Disqus for comments. You can visit &lt;a href=&quot;https://disqus.com/websites/?utm_source=hongblog&amp;amp;utm_medium=Disqus-Footer&quot;&gt;DISQUS&lt;/a&gt; for more details.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;You can also use Google Analytics to track your website.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 </description>
                 <link>http://jyhong836.github.io/2015/02/03/start-my-blog-with-jekyll-and-disqus</link>
                 <guid>http://jyhong836.github.io/2015/02/03/start-my-blog-with-jekyll-and-disqus</guid>
