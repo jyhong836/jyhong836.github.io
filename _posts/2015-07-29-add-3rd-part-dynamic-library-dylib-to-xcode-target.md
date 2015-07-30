@@ -60,6 +60,8 @@ Well, there is so many stuffs. Hey, I found there is my frameworks,  ViviSwiften
 
 #### What's @excutable_path, @loader_path and @rpath?
 
+Reference: [OS X Man Page: dyld(1)](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/dyld.1.html)(this also can be found by running `man dyld` at OS X), [Run-Path Dependent Libraries](https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/RunpathDependentLibraries.html).
+
 The three variable is defined at runtime:
 
 + **@executable_path**, this always point to the product executable binary file path,  `AppName.app/Contents/MacOS/AppName`.
@@ -141,5 +143,7 @@ That's all.
 
 ### Reference
 
-[Build Settings中的变量@rpath,@loader_path,@executable_path.](http://www.tanhao.me/pieces/1361.html/)
+1. [Build Settings中的变量@rpath,@loader_path,@executable_path.](http://www.tanhao.me/pieces/1361.html/)
+2. [OS X Man Page: dyld(1)](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/dyld.1.html) – Apple Developer
+3. [Run-Path Dependent Libraries](https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/RunpathDependentLibraries.html) – Apple Developer
 

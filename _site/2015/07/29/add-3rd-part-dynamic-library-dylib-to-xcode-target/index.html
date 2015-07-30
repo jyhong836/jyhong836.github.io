@@ -179,6 +179,8 @@ Vivi.app/Contents/MacOS/Vivi:
 
 <h4 id="whats-excutablepath-loaderpath-and-rpath">What’s @excutable_path, @loader_path and @rpath?</h4>
 
+<p>Reference: <a href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/dyld.1.html">OS X Man Page: dyld(1)</a>(this also can be found by running <code>man dyld</code> at OS X), <a href="https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/RunpathDependentLibraries.html">Run-Path Dependent Libraries</a>.</p>
+
 <p>The three variable is defined at runtime:</p>
 
 <ul>
@@ -274,7 +276,11 @@ $ install_name_tool -id new_install_name bin_file
 
 <h3 id="reference">Reference</h3>
 
-<p><a href="http://www.tanhao.me/pieces/1361.html/">Build Settings中的变量@rpath,@loader_path,@executable_path.</a></p>
+<ol>
+  <li><a href="http://www.tanhao.me/pieces/1361.html/">Build Settings中的变量@rpath,@loader_path,@executable_path.</a></li>
+  <li><a href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/dyld.1.html">OS X Man Page: dyld(1)</a> – Apple Developer</li>
+  <li><a href="https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/RunpathDependentLibraries.html">Run-Path Dependent Libraries</a> – Apple Developer</li>
+</ol>
 
 
     </div>
