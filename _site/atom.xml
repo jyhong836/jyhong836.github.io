@@ -4,13 +4,64 @@
  <title>Hong Blog</title>
  <link href="http://jyhong836.github.io/" rel="self"/>
  <link href="http://jyhong836.github.io"/>
- <updated>2015-07-30T22:48:45+08:00</updated>
+ <updated>2015-08-04T19:36:09+08:00</updated>
  <id>http://jyhong836.github.io</id>
  <author>
    <name>Junyuan Hong</name>
    <email>jyhong836@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>NSTableView automatically adjust height to fit cell view</title>
+   <link href="http://jyhong836.github.io/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view"/>
+   <updated>2015-08-04T00:00:00+08:00</updated>
+   <id>http://jyhong836.github.io/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view</id>
+   <content type="html">
+&lt;p&gt;Reference: &lt;a href=&quot;http://blog.amyworrall.com/post/66085151655/using-auto-layout-to-calculate-table-cell-height&quot;&gt;Using auto-layout to calculate table cell height&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In ‘&lt;a href=&quot;http://blog.amyworrall.com/post/66085151655/using-auto-layout-to-calculate-table-cell-height&quot;&gt;Using auto-layout to calculate table cell height&lt;/a&gt;’, it’s introduced how to use auto-layout to update table view’s (UITableView) cell height with Objective-C language. However there is different at NSTableView.&lt;/p&gt;
+
+&lt;p&gt;Here I will introduce to do similar thing at NSTableView with Swift language. Remember one thing post ‘Using auto-layout to calculate table cell height’ has warned that this method is not that efficient, figure out the way make it more efficient yourself.&lt;/p&gt;
+
+&lt;p&gt;Assuming you have been familiar with the mechanism of NSTableView, including NSTableViewDelegate and NSTableViewDataSource, I will not introduce these knowledge in detail below.&lt;/p&gt;
+
+&lt;p&gt;When configure table cell view, it’s helpful later if you seperate some configure functions.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -&amp;gt; NSView? {
+    var cell = tableView.makeViewWithIdentifier(&quot;InMessageCellView&quot;, owner: self)
+    if let cl = cell {
+        // Do data configures in &#39;configureCell&#39; function.
+        cell = configureCell(cl, row: row)
+    }
+    return cell
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then tell NSTableView the height of row:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;let defaultRowHeight = CGFloat(36)
+func tableView(tableView: NSTableView, heightOfRow row: Int) -&amp;gt; CGFloat {
+    var cell = tableView.makeViewWithIdentifier(&quot;InMessageCellView&quot;, owner: self)
+    if let cl = cell {
+        cell = configureCell(cl, row: row)
+        // Let NSView to update its layout automatically.
+        cell!.layoutSubtreeIfNeeded()
+        // Return the updated frame height.
+        return cell!.frame.height
+    }
+    return defaultRowHeight
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Finally, refer one centence from Apple’s documentation:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Although table views may cache the returned values, you should ensure that this method is efficient.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Add 3rd part dynamic library (.dylib) to Xcode target</title>
