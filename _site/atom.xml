@@ -4,7 +4,7 @@
  <title>Hong Blog</title>
  <link href="http://jyhong836.github.io/" rel="self"/>
  <link href="http://jyhong836.github.io"/>
- <updated>2015-08-04T19:36:09+08:00</updated>
+ <updated>2015-08-04T20:56:44+08:00</updated>
  <id>http://jyhong836.github.io</id>
  <author>
    <name>Junyuan Hong</name>
@@ -48,17 +48,69 @@ func tableView(tableView: NSTableView, heightOfRow row: Int) -&amp;gt; CGFloat {
         // Let NSView to update its layout automatically.
         cell!.layoutSubtreeIfNeeded()
         // Return the updated frame height.
+        // Remember to setup constraints in Xcode&#39;s stroyboard, which should limit 
+        // the cell&#39;s height corespond to subview(like text view).
         return cell!.frame.height
     }
     return defaultRowHeight
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Finally, refer one centence from Apple’s documentation:&lt;/p&gt;
+&lt;p&gt;Refer one centence from Apple’s documentation:&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Although table views may cache the returned values, you should ensure that this method is efficient.&lt;/p&gt;
 &lt;/blockquote&gt;
+
+&lt;p&gt;So be careful about performance, read more about it to visit reference [1].&lt;/p&gt;
+
+&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/questions/18746929/using-auto-layout-in-uitableview-for-dynamic-cell-layouts-variable-row-heights&quot;&gt;Using Auto Layout in UITableView for dynamic cell layouts &amp;amp; variable row heights&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Make text table view(NSTableView) auto resize</title>
+   <link href="http://jyhong836.github.io/2015/08/04/make-text-table-viewnstableview-auto-resize"/>
+   <updated>2015-08-04T00:00:00+08:00</updated>
+   <id>http://jyhong836.github.io/2015/08/04/make-text-table-viewnstableview-auto-resize</id>
+   <content type="html">
+&lt;p&gt;To make a iMessage-like chat table view, there is several steps to follow:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Text field should be able to adjust its size automatically.&lt;/li&gt;
+  &lt;li&gt;Image view of bubble should adjust automatically relative to text field.&lt;/li&gt;
+  &lt;li&gt;Table view’s row should be fitted into the row cell’s subview, which include text field and image view.&lt;/li&gt;
+  &lt;li&gt;Let scroller auto scroll to bottum.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Here I use View-based NSTableView to make these:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/table_view_settings.png&quot; alt=&quot;Table view settings&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;There is some import constraints to make the three components, NSImageView, NSTextField, NSTableViewCell, keep corresponded size, which is showed below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/cell_constraint.png&quot; alt=&quot;Cell contraint settings&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You should set NSTextField like below, which will make it auto adjust size to text:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/text_field_settings.png&quot; alt=&quot;Text field settings&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Then use NSTableViewDelegate to adjust height. Read this post: &lt;a href=&quot;http://jyhong836.github.io/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view/&quot;&gt;NSTableView automatically adjust height to fit cell view&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Finally, when you add a new row at bottum, you will hope the scroller to scroll to bottum.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;dispatch_async(dispatch_get_main_queue(), { () -&amp;gt; Void in
+    // tableView is IBOutlet refer to table view.
+    self.tableView.insertRowsAtIndexes(NSIndexSet(index: self.tableView.numberOfRows), withAnimation: NSTableViewAnimationOptions.EffectNone)
+    self.tableView.noteHeightOfRowsWithIndexesChanged(NSIndexSet(index: self.tableView.numberOfRows - 1))
+    // scroll
+    self.tableView.scrollRowToVisible(self.tableView.numberOfRows - 1)
+})
+&lt;/code&gt;&lt;/pre&gt;
 
 </content>
  </entry>

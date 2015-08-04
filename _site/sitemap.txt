@@ -10,6 +10,7 @@ http://jyhong836.github.io/sitemap.txt
 http://jyhong836.github.io/tags.html
 
 http://jyhong836.github.io/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view
+http://jyhong836.github.io/2015/08/04/make-text-table-viewnstableview-auto-resize
 http://jyhong836.github.io/2015/07/29/add-3rd-part-dynamic-library-dylib-to-xcode-target
 http://jyhong836.github.io/2015/02/04/resettransform-at-scnphysicsbody
 http://jyhong836.github.io/2015/02/03/start-my-blog-with-jekyll-and-disqus

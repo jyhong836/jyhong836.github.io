@@ -3,7 +3,7 @@ layout: post
 title: "NSTableView automatically adjust height to fit cell view"
 description: ""
 category: 
-tags: []
+tags: [OS X, Xcode, Cocoa]
 ---
 {% include JB/setup %}
 
@@ -37,13 +37,19 @@ Then tell NSTableView the height of row:
             // Let NSView to update its layout automatically.
             cell!.layoutSubtreeIfNeeded()
             // Return the updated frame height.
+            // Remember to setup constraints in Xcode's stroyboard, which should limit 
+            // the cell's height corespond to subview(like text view).
             return cell!.frame.height
         }
         return defaultRowHeight
     }
 
-Finally, refer one centence from Apple's documentation:
+Refer one centence from Apple's documentation:
 
 > Although table views may cache the returned values, you should ensure that this method is efficient.
 
+So be careful about performance, read more about it to visit reference [1].
 
+### Reference
+
+1. [Using Auto Layout in UITableView for dynamic cell layouts & variable row heights](http://stackoverflow.com/questions/18746929/using-auto-layout-in-uitableview-for-dynamic-cell-layouts-variable-row-heights)
