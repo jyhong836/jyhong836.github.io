@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Blog and website of Junyuan Hong, blogging mainly for tech. Opinions expressed are mine." />
+    <meta name="author" content="" />
+    <meta name="keywords" content="jyhong, junyuan, hong, junyuan hong, technology, computer science" />
+    <link rel="canonical" href="http://jyhong836.github.io/2015/02/03/start-my-blog-with-jekyll-and-disqus.html">
+    
+    <title>{ Junyuan Hong }  | Start my blog with Jekyll and disqus</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/css/grayscale.css" rel="stylesheet">
+    <link href="/css/timeline.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+</head>
+
+
+  <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+  <!-- Navigation -->
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                <i class="fa fa-bars"></i>
+            </button>
+            
+              <a class="navbar-brand page-scroll" href="/index.html#page-top">
+            
+            <div><img src="/img/black-lab-glass.ico" alt="">  { Junyuan Hong }</div>
+          </a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+            <ul class="nav navbar-nav">
+                <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+                
+                  <!-- Blog, Post, Tag pages-->
+                  
+                    
+                      <li>
+                        <a class="page-scroll" href="/index.html#about"> About </a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a class="page-scroll" href="/blog/index.html"> Blog </a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a class="page-scroll" href="/index.html#career"> Career </a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a class="page-scroll" href="/index.html#contact"> Contact </a>
+                      </li>
+                    
+                  
+
+                
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+  <section id="Start my blog with Jekyll and disqus" class="container content-section text-center">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+
+        <h1><strong>Start my blog with Jekyll and disqus</strong></h1>
+      	<h4><strong>03 Feb 2015</strong>
+          <small> .  . <a href="/2015/02/03/start-my-blog-with-jekyll-and-disqus.html#disqus_thread">Comments</a><p/>
+          
+            <a href="/tags/jekyll.html">#jekyll</a>
+          
+          </small>
+        </h4>
+
+      	<p>{% include JB/setup %}</p>
+
+<p>Jekyll is a powerful static website framework, which indead works for GitHub Pages. At the time I found it, I decided to apply it for my github.io as you can see.</p>
+
+<p>Some useful webpages for install Jekyll at github.io:</p>
+
+<p><a href="http://jekyllbootstrap.com/usage/jekyll-quick-start.html">Host on GitHub in 3 Minutes</a></p>
+
+<p>Actually you need only to clone the Jekyll in your gihub.io, or just copy all file from Jekyll.</p>
+
+<p>Jekyll advise you to clone the jekyll to local with your name and push it to your github.</p>
+
+<pre><code>git clone https://github.com/plusjade/jekyll-bootstrap.git USERNAME.github.io
+cd USERNAME.github.com 
+git remote set-url origin git@github.com:USERNAME/USERNAME.github.io
+git push origin master
+</code></pre>
+
+<p>But if you have already create a repository at GitHub, you can also copy the files from jekyll to your repository.</p>
+
+<pre><code>git clone https://github.com/plusjade/jekyll-bootstrap.git jekyll-bootstrap
+cd jekyll-bootstrap
+cp -r ./* router/to/USERNAME.github.io
+cd router/to/USERNAME.github.io
+git push origin master
+</code></pre>
+
+<p>It also works honestly.</p>
+
+<p>Another web about the Jekyll and GitHub: <a href="http://www.developmentseed.org/blog/2011/09/09/jekyll-github-pages/">Using Jekyll and GitHub Pages for Our Site</a></p>
+
+<p>In the <code>_config.yml</code>, you can add some tools:</p>
+
+<ul>
+  <li>
+    <p>Jekyll is easy to add Disqus for comments. You can visit <a href="https://disqus.com/websites/?utm_source=hongblog&amp;utm_medium=Disqus-Footer">DISQUS</a> for more details.</p>
+  </li>
+  <li>
+    <p>You can also use Google Analytics to track your website.</p>
+  </li>
+</ul>
+
+
+      	<div>
+
+  <div style="float:left; padding: 0 5px; vertical-align:top">
+    <div class="fb-share-button" data-href="http://jyhong836.github.io/2015/02/03/start-my-blog-with-jekyll-and-disqus.html" data-layout="button_count"></div>
+  </div>
+
+
+
+  <div style="float:left; padding: 0 5px; vertical-align:top">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://jyhong836.github.io/2015/02/03/start-my-blog-with-jekyll-and-disqus.html" data-text="Start my blog with Jekyll and disqus #jekyll "></a>
+</div>
+
+
+
+  <div style="float:left; padding: 0 5px; vertical-align:top">
+    <script type="text/javascript">reddit_newwindow='1'</script>
+    <script type="text/javascript">reddit_title='Start my blog with Jekyll and disqus'</script>
+    <script type="text/javascript">reddit_url='http://jyhong836.github.io//2015/02/03/start-my-blog-with-jekyll-and-disqus.html'</script>
+    <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
+  </div>
+
+</div>
+
+
+        
+<div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+
+      </div>
+    </div>
+  </section>
+
+  <section id="Start my blog with Jekyll and disqus" class="container content-section text-center">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+	<ul class="list-inline social-buttons">
+  
+    <li><a href="/feed.xml" target="_blank"><i class="fa fa-rss fa-fw"></i></a></li>
+  
+    <li><a href="https://github.com/jyhong836" target="_blank"><i class="fa fa-github fa-fw"></i></a></li>
+  
+    <li><a href="http://cn.linkedin.com/in/jyhong836" target="_blank"><i class="fa fa-linkedin fa-fw"></i></a></li>
+  
+    <li><a href="https://www.youtube.com/channel/UCod6Ld7_Rby80QN-5w1FhQA" target="_blank"><i class="fa fa-youtube fa-fw"></i></a></li>
+  
+</ul>
+
+      </div>
+    </div>
+  </section>
+
+     <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>Copyright &copy;  2015</p>
+        </div>
+    </footer>
+
+    <p><br /><br /><br /><br /><br /><br /></p>
+
+
+
+  <!-- jQuery -->
+<script src="/js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="/js/jquery.easing.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/grayscale.js"></script>
+
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-59631745-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+
+
+
+
+
+  </body>
+</html>
