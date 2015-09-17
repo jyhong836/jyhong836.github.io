@@ -2,7 +2,7 @@
 layout: post
 title: "Make text table view(NSTableView) auto resize"
 description: "It's about how to make a iMessage-like chat table view."
-category: 
+category: tech
 tags: [OS X, Xcode, Cocoa]
 ---
 {% include JB/setup %}

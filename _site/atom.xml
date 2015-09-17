@@ -4,7 +4,7 @@
  <title>{ Junyuan Hong }</title>
  <link href="/" rel="self"/>
  <link href=""/>
- <updated>2015-09-17T23:48:27+08:00</updated>
+ <updated>2015-09-18T00:03:18+08:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>NSTableView automatically adjust height to fit cell view</title>
-   <link href="/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view.html"/>
+   <link href="/tech/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view.html"/>
    <updated>2015-08-04T00:00:00+08:00</updated>
-   <id>/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view</id>
+   <id>/tech/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view</id>
    <content type="html">
 &lt;p&gt;Reference: &lt;a href=&quot;http://blog.amyworrall.com/post/66085151655/using-auto-layout-to-calculate-table-cell-height&quot;&gt;Using auto-layout to calculate table cell height&lt;/a&gt;&lt;/p&gt;
 
@@ -74,9 +74,9 @@ func tableView(tableView: NSTableView, heightOfRow row: Int) -&amp;gt; CGFloat {
  
  <entry>
    <title>Make text table view(NSTableView) auto resize</title>
-   <link href="/2015/08/04/make-text-table-viewnstableview-auto-resize.html"/>
+   <link href="/tech/2015/08/04/make-text-table-viewnstableview-auto-resize.html"/>
    <updated>2015-08-04T00:00:00+08:00</updated>
-   <id>/2015/08/04/make-text-table-viewnstableview-auto-resize</id>
+   <id>/tech/2015/08/04/make-text-table-viewnstableview-auto-resize</id>
    <content type="html">
 &lt;p&gt;To make a iMessage-like chat table view, there is several steps to follow:&lt;/p&gt;
 
@@ -117,9 +117,9 @@ func tableView(tableView: NSTableView, heightOfRow row: Int) -&amp;gt; CGFloat {
  
  <entry>
    <title>Add 3rd part dynamic library (.dylib) to Xcode target</title>
-   <link href="/2015/07/29/add-3rd-part-dynamic-library-dylib-to-xcode-target.html"/>
+   <link href="/tech/2015/07/29/add-3rd-part-dynamic-library-dylib-to-xcode-target.html"/>
    <updated>2015-07-29T00:00:00+08:00</updated>
-   <id>/2015/07/29/add-3rd-part-dynamic-library-dylib-to-xcode-target</id>
+   <id>/tech/2015/07/29/add-3rd-part-dynamic-library-dylib-to-xcode-target</id>
    <content type="html">
 &lt;p&gt;Dynamic library (with .dylib suffix at UNIX-like OS) is a kind of library discriminated from static library (with .a suffix). Static library will be linked at linking stage instantly after codes are compiled, before binary product output. And instead library is loaded at runtime, I mean load but not link. Load means the executable file will search for binary library when they need it. That’s why some app will announce you that it lack a lib when you double click them for running happily. In contrast, static library will compile these needed part into you app, so the user will not be bothered.&lt;/p&gt;
 
@@ -285,11 +285,12 @@ $ install_name_tool -id new_install_name bin_file
  </entry>
  
  <entry>
-   <title>resetTransform of SCNPhysicsBody</title>
-   <link href="/2015/02/04/resettransform-at-scnphysicsbody.html"/>
+   <title>The method resetTransform of SCNPhysicsBody</title>
+   <link href="/tech/2015/02/04/resettransform-at-scnphysicsbody.html"/>
    <updated>2015-02-04T00:00:00+08:00</updated>
-   <id>/2015/02/04/resettransform-at-scnphysicsbody</id>
-   <content type="html">
+   <id>/tech/2015/02/04/resettransform-at-scnphysicsbody</id>
+   <content type="html">&lt;!--  --&gt;
+
 &lt;p&gt;According to the SceneKit document, the function of &lt;code&gt;resetTransform&lt;/code&gt; is: &lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -337,10 +338,11 @@ node.physicsBody.resetTransform()
  
  <entry>
    <title>Start my blog with Jekyll and disqus</title>
-   <link href="/2015/02/03/start-my-blog-with-jekyll-and-disqus.html"/>
+   <link href="/website/2015/02/03/start-my-blog-with-jekyll-and-disqus.html"/>
    <updated>2015-02-03T00:00:00+08:00</updated>
-   <id>/2015/02/03/start-my-blog-with-jekyll-and-disqus</id>
-   <content type="html">
+   <id>/website/2015/02/03/start-my-blog-with-jekyll-and-disqus</id>
+   <content type="html">&lt;!--  --&gt;
+
 &lt;p&gt;Jekyll is a powerful static website framework, which indead works for GitHub Pages. At the time I found it, I decided to apply it for my github.io as you can see.&lt;/p&gt;
 
 &lt;p&gt;Some useful webpages for install Jekyll at github.io:&lt;/p&gt;

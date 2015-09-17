@@ -2,7 +2,7 @@
 layout: post
 title: "NSTableView automatically adjust height to fit cell view"
 description: ""
-category: 
+category: tech
 tags: [OS X, Xcode, Cocoa]
 ---
 {% include JB/setup %}

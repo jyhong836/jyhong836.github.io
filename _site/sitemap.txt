@@ -19,9 +19,9 @@
 /tags/software.html
 /tags.html
 
-/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view.html
-/2015/08/04/make-text-table-viewnstableview-auto-resize.html
-/2015/07/29/add-3rd-part-dynamic-library-dylib-to-xcode-target.html
-/2015/02/04/resettransform-at-scnphysicsbody.html
-/2015/02/03/start-my-blog-with-jekyll-and-disqus.html
+/tech/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view.html
+/tech/2015/08/04/make-text-table-viewnstableview-auto-resize.html
+/tech/2015/07/29/add-3rd-part-dynamic-library-dylib-to-xcode-target.html
+/tech/2015/02/04/resettransform-at-scnphysicsbody.html
+/website/2015/02/03/start-my-blog-with-jekyll-and-disqus.html
 /lessons/2011/12/29/jekyll-introduction.html

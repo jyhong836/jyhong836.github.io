@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "resetTransform of SCNPhysicsBody"
+title: "The method resetTransform of SCNPhysicsBody"
 description: "some feature of resetTransform"
-category: 
+category: tech
 tags: [SceneKit]
 ---
-{% include JB/setup %}
+<!-- {% include JB/setup %} -->
 
 According to the SceneKit document, the function of `resetTransform` is: 
 

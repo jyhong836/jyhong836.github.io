@@ -2,7 +2,7 @@
 layout: post
 title: "Add 3rd part dynamic library (.dylib) to Xcode target"
 description: ""
-category: 
+category: tech
 tags: [library, OS X, Xcode]
 ---
 {% include JB/setup %}

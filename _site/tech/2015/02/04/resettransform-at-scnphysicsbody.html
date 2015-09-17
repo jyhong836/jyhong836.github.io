@@ -8,9 +8,9 @@
     <meta name="description" content="Blog and website of Junyuan Hong, blogging mainly for tech. Opinions expressed are mine." />
     <meta name="author" content="" />
     <meta name="keywords" content="jyhong, junyuan, hong, junyuan hong, technology, computer science" />
-    <link rel="canonical" href="http://jyhong836.github.io/2015/02/03/start-my-blog-with-jekyll-and-disqus.html">
+    <link rel="canonical" href="http://jyhong836.github.io/tech/2015/02/04/resettransform-at-scnphysicsbody.html">
     
-    <title>{ Junyuan Hong }  | Start my blog with Jekyll and disqus</title>
+    <title>{ Junyuan Hong }  | The method resetTransform of SCNPhysicsBody</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -92,80 +92,83 @@
 </nav>
 
 
-  <section id="Start my blog with Jekyll and disqus" class="container content-section text-center">
+  <section id="The method resetTransform of SCNPhysicsBody" class="container content-section text-center">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2">
 
-        <h1><strong>Start my blog with Jekyll and disqus</strong></h1>
-      	<h4><strong>03 Feb 2015</strong>
-          <small> .  . <a href="/2015/02/03/start-my-blog-with-jekyll-and-disqus.html#disqus_thread">Comments</a><p/>
+        <h1><strong>The method resetTransform of SCNPhysicsBody</strong></h1>
+      	<h4><strong>04 Feb 2015</strong>
+          <small> . tech . <a href="/tech/2015/02/04/resettransform-at-scnphysicsbody.html#disqus_thread">Comments</a><p/>
           
-            <a href="/tags/jekyll.html">#jekyll</a>
+            <a href="/tags/SceneKit.html">#SceneKit</a>
           
           </small>
         </h4>
 
-      	<p>{% include JB/setup %}</p>
+      	<!-- {% include JB/setup %} -->
 
-<p>Jekyll is a powerful static website framework, which indead works for GitHub Pages. At the time I found it, I decided to apply it for my github.io as you can see.</p>
+<p>According to the SceneKit document, the function of <code>resetTransform</code> is: </p>
 
-<p>Some useful webpages for install Jekyll at github.io:</p>
+<blockquote>
+  <p>Updates the position and orientation of a body in the physics simulation to match that of the node to which the body is attached.</p>
+</blockquote>
 
-<p><a href="http://jekyllbootstrap.com/usage/jekyll-quick-start.html">Host on GitHub in 3 Minutes</a></p>
+<p>Through experiment, I found this is little special.</p>
 
-<p>Actually you need only to clone the Jekyll in your gihub.io, or just copy all file from Jekyll.</p>
+<p>If you do this: </p>
 
-<p>Jekyll advise you to clone the jekyll to local with your name and push it to your github.</p>
-
-<pre><code>git clone https://github.com/plusjade/jekyll-bootstrap.git USERNAME.github.io
-cd USERNAME.github.com 
-git remote set-url origin git@github.com:USERNAME/USERNAME.github.io
-git push origin master
+<pre><code>var node = SCNNode(geomentry: SCNBox())
+node.position = SCNVector3(0, 1, 0)
+node.rotation = SCNVector4(1, 0, 0, CGFloat(M_PI)/2)
+node.physicsBody = SCNPhysicsBody(type: .Dynamic, nil)
+scene.rootNode.addChildNode(node)
 </code></pre>
 
-<p>But if you have already create a repository at GitHub, you can also copy the files from jekyll to your repository.</p>
+<p>If you get the <code>position</code> and <code>rotation</code> of <code>node.presentationNode()</code> in the render delegate, where I mean you need to get the latest and real data, you will found the effect of the setup of node’s position and rotation is not work at the begining.</p>
 
-<pre><code>git clone https://github.com/plusjade/jekyll-bootstrap.git jekyll-bootstrap
-cd jekyll-bootstrap
-cp -r ./* router/to/USERNAME.github.io
-cd router/to/USERNAME.github.io
-git push origin master
+<p>At the begining, the <code>position</code> will be <code>(0, 0, 0)</code>, but not what you have set, <code>(0, 1, 0)</code>.</p>
+
+<p>If you have read the document about <code>SCNNode.position</code> and <code>SCNNode.rotation</code>, you will found:</p>
+
+<blockquote>
+  <p>position</p>
+
+  <p>The translation applied to the node. <strong>Animatable</strong>.</p>
+</blockquote>
+
+<p>The <strong>Animatable</strong> means it will take several frames to get the effect.</p>
+
+<p>However, it’s different when you use resetTransform of SCNPhysicsBody:</p>
+
+<pre><code>var node = SCNNode(geomentry: SCNBox())
+node.position = SCNVector3(0, 1, 0)
+node.rotation = SCNVector4(1, 0, 0, CGFloat(M_PI)/2)
+node.physicsBody = SCNPhysicsBody(type: .Dynamic, nil)
+scene.rootNode.addChildNode(node)
+node.physicsBody.resetTransform()
 </code></pre>
 
-<p>It also works honestly.</p>
-
-<p>Another web about the Jekyll and GitHub: <a href="http://www.developmentseed.org/blog/2011/09/09/jekyll-github-pages/">Using Jekyll and GitHub Pages for Our Site</a></p>
-
-<p>In the <code>_config.yml</code>, you can add some tools:</p>
-
-<ul>
-  <li>
-    <p>Jekyll is easy to add Disqus for comments. You can visit <a href="https://disqus.com/websites/?utm_source=hongblog&amp;utm_medium=Disqus-Footer">DISQUS</a> for more details.</p>
-  </li>
-  <li>
-    <p>You can also use Google Analytics to track your website.</p>
-  </li>
-</ul>
+<p>The effect will work at the begining.</p>
 
 
       	<div>
 
   <div style="float:left; padding: 0 5px; vertical-align:top">
-    <div class="fb-share-button" data-href="http://jyhong836.github.io/2015/02/03/start-my-blog-with-jekyll-and-disqus.html" data-layout="button_count"></div>
+    <div class="fb-share-button" data-href="http://jyhong836.github.io/tech/2015/02/04/resettransform-at-scnphysicsbody.html" data-layout="button_count"></div>
   </div>
 
 
 
   <div style="float:left; padding: 0 5px; vertical-align:top">
-    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://jyhong836.github.io/2015/02/03/start-my-blog-with-jekyll-and-disqus.html" data-text="Start my blog with Jekyll and disqus #jekyll "></a>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://jyhong836.github.io/tech/2015/02/04/resettransform-at-scnphysicsbody.html" data-text="The method resetTransform of SCNPhysicsBody #SceneKit "></a>
 </div>
 
 
 
   <div style="float:left; padding: 0 5px; vertical-align:top">
     <script type="text/javascript">reddit_newwindow='1'</script>
-    <script type="text/javascript">reddit_title='Start my blog with Jekyll and disqus'</script>
-    <script type="text/javascript">reddit_url='http://jyhong836.github.io//2015/02/03/start-my-blog-with-jekyll-and-disqus.html'</script>
+    <script type="text/javascript">reddit_title='The method resetTransform of SCNPhysicsBody'</script>
+    <script type="text/javascript">reddit_url='http://jyhong836.github.io//tech/2015/02/04/resettransform-at-scnphysicsbody.html'</script>
     <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
   </div>
 
@@ -182,7 +185,7 @@ git push origin master
     </div>
   </section>
 
-  <section id="Start my blog with Jekyll and disqus" class="container content-section text-center">
+  <section id="The method resetTransform of SCNPhysicsBody" class="container content-section text-center">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2">
 	<ul class="list-inline social-buttons">

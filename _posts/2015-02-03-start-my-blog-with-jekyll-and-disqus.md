@@ -1,11 +1,12 @@
 ---
 layout: post
+section-type: post
 title: "Start my blog with Jekyll and disqus"
 description: ""
-category: 
+category: website
 tags: [jekyll]
 ---
-{% include JB/setup %}
+<!-- {% include JB/setup %} -->
 
 Jekyll is a powerful static website framework, which indead works for GitHub Pages. At the time I found it, I decided to apply it for my github.io as you can see.
 

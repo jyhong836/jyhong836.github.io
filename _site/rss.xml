@@ -5,8 +5,8 @@
         <description>{ Junyuan Hong } - </description>
         <link></link>
         <link></link>
-        <lastBuildDate>2015-09-17T23:48:27+08:00</lastBuildDate>
-        <pubDate>2015-09-17T23:48:27+08:00</pubDate>
+        <lastBuildDate>2015-09-18T00:03:18+08:00</lastBuildDate>
+        <pubDate>2015-09-18T00:03:18+08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -65,8 +65,8 @@ func tableView(tableView: NSTableView, heightOfRow row: Int) -&amp;gt; CGFloat {
   &lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/questions/18746929/using-auto-layout-in-uitableview-for-dynamic-cell-layouts-variable-row-heights&quot;&gt;Using Auto Layout in UITableView for dynamic cell layouts &amp;amp; variable row heights&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
-                <link>/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view.html</link>
-                <guid>/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view</guid>
+                <link>/tech/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view.html</link>
+                <guid>/tech/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view</guid>
                 <pubDate>2015-08-04T00:00:00+08:00</pubDate>
         </item>
 
@@ -108,8 +108,8 @@ func tableView(tableView: NSTableView, heightOfRow row: Int) -&amp;gt; CGFloat {
 &lt;/code&gt;&lt;/pre&gt;
 
 </description>
-                <link>/2015/08/04/make-text-table-viewnstableview-auto-resize.html</link>
-                <guid>/2015/08/04/make-text-table-viewnstableview-auto-resize</guid>
+                <link>/tech/2015/08/04/make-text-table-viewnstableview-auto-resize.html</link>
+                <guid>/tech/2015/08/04/make-text-table-viewnstableview-auto-resize</guid>
                 <pubDate>2015-08-04T00:00:00+08:00</pubDate>
         </item>
 
@@ -277,14 +277,15 @@ $ install_name_tool -id new_install_name bin_file
 &lt;/ol&gt;
 
 </description>
-                <link>/2015/07/29/add-3rd-part-dynamic-library-dylib-to-xcode-target.html</link>
-                <guid>/2015/07/29/add-3rd-part-dynamic-library-dylib-to-xcode-target</guid>
+                <link>/tech/2015/07/29/add-3rd-part-dynamic-library-dylib-to-xcode-target.html</link>
+                <guid>/tech/2015/07/29/add-3rd-part-dynamic-library-dylib-to-xcode-target</guid>
                 <pubDate>2015-07-29T00:00:00+08:00</pubDate>
         </item>
 
         <item>
-                <title>resetTransform of SCNPhysicsBody</title>
-                <description>
+                <title>The method resetTransform of SCNPhysicsBody</title>
+                <description>&lt;!--  --&gt;
+
 &lt;p&gt;According to the SceneKit document, the function of &lt;code&gt;resetTransform&lt;/code&gt; is: &lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -328,14 +329,15 @@ node.physicsBody.resetTransform()
 
 &lt;p&gt;The effect will work at the begining.&lt;/p&gt;
 </description>
-                <link>/2015/02/04/resettransform-at-scnphysicsbody.html</link>
-                <guid>/2015/02/04/resettransform-at-scnphysicsbody</guid>
+                <link>/tech/2015/02/04/resettransform-at-scnphysicsbody.html</link>
+                <guid>/tech/2015/02/04/resettransform-at-scnphysicsbody</guid>
                 <pubDate>2015-02-04T00:00:00+08:00</pubDate>
         </item>
 
         <item>
                 <title>Start my blog with Jekyll and disqus</title>
-                <description>
+                <description>&lt;!--  --&gt;
+
 &lt;p&gt;Jekyll is a powerful static website framework, which indead works for GitHub Pages. At the time I found it, I decided to apply it for my github.io as you can see.&lt;/p&gt;
 
 &lt;p&gt;Some useful webpages for install Jekyll at github.io:&lt;/p&gt;
@@ -376,8 +378,8 @@ git push origin master
   &lt;/li&gt;
 &lt;/ul&gt;
 </description>
-                <link>/2015/02/03/start-my-blog-with-jekyll-and-disqus.html</link>
-                <guid>/2015/02/03/start-my-blog-with-jekyll-and-disqus</guid>
+                <link>/website/2015/02/03/start-my-blog-with-jekyll-and-disqus.html</link>
+                <guid>/website/2015/02/03/start-my-blog-with-jekyll-and-disqus</guid>
                 <pubDate>2015-02-03T00:00:00+08:00</pubDate>
         </item>
 
