@@ -17,39 +17,42 @@ Assuming you have been familiar with the mechanism of NSTableView, including NST
 
 When configure table cell view, it's helpful later if you seperate some configure functions.
 
-    func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        var cell = tableView.makeViewWithIdentifier("InMessageCellView", owner: self)
-        if let cl = cell {
-            // Do data configures in 'configureCell' function.
-            cell = configureCell(cl, row: row)
-        }
-        return cell
+```swift
+func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    var cell = tableView.makeViewWithIdentifier("InMessageCellView", owner: self)
+    if let cl = cell {
+        // Do data configures in 'configureCell' function.
+        cell = configureCell(cl, row: row)
     }
-
+    return cell
+}
+```
 
 Then tell NSTableView the height of row:
 
-    let defaultRowHeight = CGFloat(36)
-    func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        var cell = tableView.makeViewWithIdentifier("InMessageCellView", owner: self)
-        if let cl = cell {
-            cell = configureCell(cl, row: row)
-            // Let NSView to update its layout automatically.
-            cell!.layoutSubtreeIfNeeded()
-            // Return the updated frame height.
-            // Remember to setup constraints in Xcode's stroyboard, which should limit 
-            // the cell's height corespond to subview(like text view).
-            return cell!.frame.height
-        }
-        return defaultRowHeight
+```swift
+let defaultRowHeight = CGFloat(36)
+func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+    var cell = tableView.makeViewWithIdentifier("InMessageCellView", owner: self)
+    if let cl = cell {
+        cell = configureCell(cl, row: row)
+        // Let NSView to update its layout automatically.
+        cell!.layoutSubtreeIfNeeded()
+        // Return the updated frame height.
+        // Remember to setup constraints in Xcode's stroyboard, which should limit 
+        // the cell's height corespond to subview(like text view).
+        return cell!.frame.height
     }
+    return defaultRowHeight
+}
+```
 
 Refer one centence from Apple's documentation:
 
 > Although table views may cache the returned values, you should ensure that this method is efficient.
 
-So be careful about performance, read more about it to visit reference [1].
+So be careful about performance, read more about it to visit reference[^1] .
 
 ### Reference
 
-1. [Using Auto Layout in UITableView for dynamic cell layouts & variable row heights](http://stackoverflow.com/questions/18746929/using-auto-layout-in-uitableview-for-dynamic-cell-layouts-variable-row-heights)
+[^1]: [Using Auto Layout in UITableView for dynamic cell layouts & variable row heights](http://stackoverflow.com/questions/18746929/using-auto-layout-in-uitableview-for-dynamic-cell-layouts-variable-row-heights)

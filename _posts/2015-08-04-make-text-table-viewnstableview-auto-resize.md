@@ -30,12 +30,13 @@ Then use NSTableViewDelegate to adjust height. Read this post: [NSTableView auto
 
 Finally, when you add a new row at bottum, you will hope the scroller to scroll to bottum.
 
-    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-        // tableView is IBOutlet refer to table view.
-        self.tableView.insertRowsAtIndexes(NSIndexSet(index: self.tableView.numberOfRows), withAnimation: NSTableViewAnimationOptions.EffectNone)
-        self.tableView.noteHeightOfRowsWithIndexesChanged(NSIndexSet(index: self.tableView.numberOfRows - 1))
-        // scroll
-        self.tableView.scrollRowToVisible(self.tableView.numberOfRows - 1)
-    })
-
+```swift
+dispatch_async(dispatch_get_main_queue(), { () -> Void in
+    // tableView is IBOutlet refer to table view.
+    self.tableView.insertRowsAtIndexes(NSIndexSet(index: self.tableView.numberOfRows), withAnimation: NSTableViewAnimationOptions.EffectNone)
+    self.tableView.noteHeightOfRowsWithIndexesChanged(NSIndexSet(index: self.tableView.numberOfRows - 1))
+    // scroll
+    self.tableView.scrollRowToVisible(self.tableView.numberOfRows - 1)
+})
+```
 

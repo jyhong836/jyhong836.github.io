@@ -18,18 +18,22 @@ Actually you need only to clone the Jekyll in your gihub.io, or just copy all fi
 
 Jekyll advise you to clone the jekyll to local with your name and push it to your github.
 
-    git clone https://github.com/plusjade/jekyll-bootstrap.git USERNAME.github.io
-    cd USERNAME.github.com 
-    git remote set-url origin git@github.com:USERNAME/USERNAME.github.io
-    git push origin master
+```bash
+git clone https://github.com/plusjade/jekyll-bootstrap.git USERNAME.github.io
+cd USERNAME.github.com 
+git remote set-url origin git@github.com:USERNAME/USERNAME.github.io
+git push origin master
+```
 
 But if you have already create a repository at GitHub, you can also copy the files from jekyll to your repository.
 
-	git clone https://github.com/plusjade/jekyll-bootstrap.git jekyll-bootstrap
-	cd jekyll-bootstrap
-	cp -r ./* router/to/USERNAME.github.io
-	cd router/to/USERNAME.github.io
-	git push origin master
+```bash
+git clone https://github.com/plusjade/jekyll-bootstrap.git jekyll-bootstrap
+cd jekyll-bootstrap
+cp -r ./* router/to/USERNAME.github.io
+cd router/to/USERNAME.github.io
+git push origin master
+```
 
 It also works honestly.
 

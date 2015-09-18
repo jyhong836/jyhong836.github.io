@@ -18,6 +18,7 @@
     <!-- Custom CSS -->
     <link href="/css/grayscale.css" rel="stylesheet">
     <link href="/css/timeline.css" rel="stylesheet">
+    <link href="/css/pygments/default.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -114,38 +115,35 @@
 <p>To make a iMessage-like chat table view, there is several steps to follow:</p>
 
 <ol>
-  <li>Text field should be able to adjust its size automatically.</li>
-  <li>Image view of bubble should adjust automatically relative to text field.</li>
-  <li>Table view’s row should be fitted into the row cell’s subview, which include text field and image view.</li>
-  <li>Let scroller auto scroll to bottum.</li>
+<li>Text field should be able to adjust its size automatically.</li>
+<li>Image view of bubble should adjust automatically relative to text field.</li>
+<li>Table view&#39;s row should be fitted into the row cell&#39;s subview, which include text field and image view.</li>
+<li>Let scroller auto scroll to bottum.</li>
 </ol>
 
 <p>Here I use View-based NSTableView to make these:</p>
 
-<p><img src="/assets/img/table_view_settings.png" alt="Table view settings" /></p>
+<p><img src="/assets/img/table_view_settings.png" alt="Table view settings"></p>
 
 <p>There is some import constraints to make the three components, NSImageView, NSTextField, NSTableViewCell, keep corresponded size, which is showed below:</p>
 
-<p><img src="/assets/img/cell_constraint.png" alt="Cell contraint settings" /></p>
+<p><img src="/assets/img/cell_constraint.png" alt="Cell contraint settings"></p>
 
 <p>You should set NSTextField like below, which will make it auto adjust size to text:</p>
 
-<p><img src="/assets/img/text_field_settings.png" alt="Text field settings" /></p>
+<p><img src="/assets/img/text_field_settings.png" alt="Text field settings"></p>
 
 <p>Then use NSTableViewDelegate to adjust height. Read this post: <a href="http://jyhong836.github.io/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view/">NSTableView automatically adjust height to fit cell view</a>.</p>
 
 <p>Finally, when you add a new row at bottum, you will hope the scroller to scroll to bottum.</p>
-
-<pre><code>dispatch_async(dispatch_get_main_queue(), { () -&gt; Void in
-    // tableView is IBOutlet refer to table view.
-    self.tableView.insertRowsAtIndexes(NSIndexSet(index: self.tableView.numberOfRows), withAnimation: NSTableViewAnimationOptions.EffectNone)
-    self.tableView.noteHeightOfRowsWithIndexesChanged(NSIndexSet(index: self.tableView.numberOfRows - 1))
-    // scroll
-    self.tableView.scrollRowToVisible(self.tableView.numberOfRows - 1)
-})
-</code></pre>
-
-
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">dispatch_async</span><span class="p">(</span><span class="n">dispatch_get_main_queue</span><span class="p">(),</span> <span class="p">{</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Void</span> <span class="k">in</span>
+    <span class="c1">// tableView is IBOutlet refer to table view.</span>
+    <span class="nb">self</span><span class="p">.</span><span class="n">tableView</span><span class="p">.</span><span class="n">insertRowsAtIndexes</span><span class="p">(</span><span class="bp">NSIndexSet</span><span class="p">(</span><span class="nl">index</span><span class="p">:</span> <span class="nb">self</span><span class="p">.</span><span class="n">tableView</span><span class="p">.</span><span class="n">numberOfRows</span><span class="p">),</span> <span class="nl">withAnimation</span><span class="p">:</span> <span class="n">NSTableViewAnimationOptions</span><span class="p">.</span><span class="n">EffectNone</span><span class="p">)</span>
+    <span class="nb">self</span><span class="p">.</span><span class="n">tableView</span><span class="p">.</span><span class="n">noteHeightOfRowsWithIndexesChanged</span><span class="p">(</span><span class="bp">NSIndexSet</span><span class="p">(</span><span class="nl">index</span><span class="p">:</span> <span class="nb">self</span><span class="p">.</span><span class="n">tableView</span><span class="p">.</span><span class="n">numberOfRows</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="c1">// scroll</span>
+    <span class="nb">self</span><span class="p">.</span><span class="n">tableView</span><span class="p">.</span><span class="n">scrollRowToVisible</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">tableView</span><span class="p">.</span><span class="n">numberOfRows</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div>
 
       	<div>
 

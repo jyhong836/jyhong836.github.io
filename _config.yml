@@ -8,6 +8,10 @@ favicon: "/img/desk-favicon.ico"
 black-favicon: "/img/black-desk-favicon.ico"
 google-tracking-id: "UA-59631745-2"
 disqus-shortname: "hongblog"
+markdown: redcarpet
+highlighter: pygments
+redcarpet:
+  extensions: ["tables", "no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript", "highlight", "footnotes"]
 
 # Navigation bar links
 # Blog link in the blog and post pages will point to the blog.html#blog

@@ -13,9 +13,11 @@ Dynamic library (with .dylib suffix at UNIX-like OS) is a kind of library discri
 
 That's file size! A static library is several times bigger than a same function dynamic library. For example the SDL lib at OS X, which is located at /usr/local/Cellar/sdl2/2.0.3/lib/  if you install it through Homebrew.
 
-    $ ls /usr/local/Cellar/sdl2/2.0.3/lib/ -lh
-    -r--r--r-- 1 user admin 850K Jul 20 22:18 libSDL2-2.0.0.dylib
-    -r--r--r-- 1 user admin 1.5M Oct 22  2014 libSDL2.a
+```bash
+$ ls /usr/local/Cellar/sdl2/2.0.3/lib/ -lh
+-r--r--r-- 1 user admin 850K Jul 20 22:18 libSDL2-2.0.0.dylib
+-r--r--r-- 1 user admin 1.5M Oct 22  2014 libSDL2.a
+```
 
 There are two method to add 3rd-part dynamic library to a Xcode target:
 
@@ -40,27 +42,29 @@ Assume I have a project named Vivi, output file Vivi.app . Vivi used two of my f
 
 Ask Vivi binary file:
 
-    $ otool -L Vivi.app/Contents/MacOS/Vivi 
-    Vivi.app/Contents/MacOS/Vivi:
-        @rpath/ViviInterface.framework/Versions/A/ViviInterface (compatibility version 1.0.0, current version 1.0.0)
-        @rpath/ViviSwiften.framework/Versions/A/ViviSwiften (compatibility version 1.0.0, current version 1.0.0)
-        /usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1223.0.0)
-        /System/Library/Frameworks/AppKit.framework/Versions/C/AppKit (compatibility version 45.0.0, current version 1387.1.0)
-        /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 1225.0.0)
-        /usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 228.0.0)
-        @rpath/libswiftAppKit.dylib (compatibility version 0.0.0, current version 0.0.0)
-        @rpath/libswiftCore.dylib (compatibility version 0.0.0, current version 0.0.0)
-        @rpath/libswiftCoreData.dylib (compatibility version 0.0.0, current version 0.0.0)
-        @rpath/libswiftCoreGraphics.dylib (compatibility version 0.0.0, current version 0.0.0)
-            ...
+```bash
+$ otool -L Vivi.app/Contents/MacOS/Vivi 
+Vivi.app/Contents/MacOS/Vivi:
+    @rpath/ViviInterface.framework/Versions/A/ViviInterface (compatibility version 1.0.0, current version 1.0.0)
+    @rpath/ViviSwiften.framework/Versions/A/ViviSwiften (compatibility version 1.0.0, current version 1.0.0)
+    /usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1223.0.0)
+    /System/Library/Frameworks/AppKit.framework/Versions/C/AppKit (compatibility version 45.0.0, current version 1387.1.0)
+    /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 1225.0.0)
+    /usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 228.0.0)
+    @rpath/libswiftAppKit.dylib (compatibility version 0.0.0, current version 0.0.0)
+    @rpath/libswiftCore.dylib (compatibility version 0.0.0, current version 0.0.0)
+    @rpath/libswiftCoreData.dylib (compatibility version 0.0.0, current version 0.0.0)
+    @rpath/libswiftCoreGraphics.dylib (compatibility version 0.0.0, current version 0.0.0)
+        ...
+```
 
 It seems that otool  print the list of path of all linked libraries and their version messages.
 
 Well, there is so many stuffs. Hey, I found there is my frameworks,  ViviSwiften.framework and ViviInterface.framework. Okay, I know `ViviInterface.framework/Versions/A/ViviInterface` is the path point to the binary file of the framework (Different from .app file, framework's binary file is located at FrameworkName.framework/Versions/A/FrameworkName commonly), but what the @rpath means.
 
-#### What's @excutable_path, @loader_path and @rpath?
+#### What's @excutable_path, @loader_path and @rpath?[^1] [^2] [^3]
 
-Reference: [OS X Man Page: dyld(1)](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/dyld.1.html)(this also can be found by running `man dyld` at OS X), [Run-Path Dependent Libraries](https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/RunpathDependentLibraries.html).
+<!-- Reference: [OS X Man Page: dyld(1)](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/dyld.1.html)(this also can be found by running `man dyld` at OS X), [Run-Path Dependent Libraries](https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/RunpathDependentLibraries.html). -->
 
 The three variable is defined at runtime:
 
@@ -70,12 +74,14 @@ The three variable is defined at runtime:
 
 Now we know Vivi.app used ViviSwiften.framework and ViviInterface.framework created by myself, and other system frameworks or libraries. But there is no 3rd part dynamic libraries added by myself (the dylib linked in Vivi.app is auto added by Xcode). The libraries is libSwiften.3.0.dylib which is linked in ViviSwiften.framework. Let's ask ViviSwiften if that is true.
 
-    $ otool -L ViviSwiften.framework/Versions/A/ViviSwiften
-    ViviSwiften.framework/Versions/A/ViviSwiften:
-        @rpath/ViviSwiften.framework/Versions/A/ViviSwiften (compatibility version 1.0.0, current version 1.0.0)
-        @loader_path/Frameworks/libSwiften.3.0.dylib (compatibility version 3.0.0, current version 3.0.0)
-        /System/Library/Frameworks/Security.framework/Versions/A/Security (compatibility version 1.0.0, current version 57301.0.0)
-        ...
+```bash
+$ otool -L ViviSwiften.framework/Versions/A/ViviSwiften
+ViviSwiften.framework/Versions/A/ViviSwiften:
+    @rpath/ViviSwiften.framework/Versions/A/ViviSwiften (compatibility version 1.0.0, current version 1.0.0)
+    @loader_path/Frameworks/libSwiften.3.0.dylib (compatibility version 3.0.0, current version 3.0.0)
+    /System/Library/Frameworks/Security.framework/Versions/A/Security (compatibility version 1.0.0, current version 57301.0.0)
+    ...
+```
 
 You can see that ViviSwiften.framework used a 3rd part dynamic library libSwiften.dylib  with path `@loader_path/Frameworks/libSwiften.3.0.dylib`.
 
@@ -98,11 +104,13 @@ Unfortunately the path is not provided by developer of the App but the 3rd part 
 
 Let's review ViviSwiften.framework's answer to otool:
 
-    $ otool -L ViviSwiften.framework/Versions/A/ViviSwiften
-    ViviSwiften.framework/Versions/A/ViviSwiften:
-        @rpath/ViviSwiften.framework/Versions/A/ViviSwiften (compatibility version 1.0.0, current version 1.0.0)
-        @loader_path/Frameworks/libSwiften.3.0.dylib (compatibility version 3.0.0, current version 3.0.0)
-            ...
+```bash
+$ otool -L ViviSwiften.framework/Versions/A/ViviSwiften
+ViviSwiften.framework/Versions/A/ViviSwiften:
+    @rpath/ViviSwiften.framework/Versions/A/ViviSwiften (compatibility version 1.0.0, current version 1.0.0)
+    @loader_path/Frameworks/libSwiften.3.0.dylib (compatibility version 3.0.0, current version 3.0.0)
+        ...
+```
 
 We found the first line is the path to ViviSwiften itself. So...that's it.
 
@@ -123,10 +131,12 @@ Both situation is not expected.
 
 OS X provide another tool named install_name_tool  for change install_name and linked lib install_name.
 
-    # change linked lib path
-    $ install_name_tool -change old new bin_file
-    # change the library install_name
-    $ install_name_tool -id new_install_name bin_file
+```bash
+# change linked lib path
+$ install_name_tool -change old new bin_file
+# change the library install_name
+$ install_name_tool -id new_install_name bin_file
+```
 
 ### The whole strategy
 
@@ -143,7 +153,7 @@ That's all.
 
 ### Reference
 
-1. [Build Settings中的变量@rpath,@loader_path,@executable_path.](http://www.tanhao.me/pieces/1361.html/)
-2. [OS X Man Page: dyld(1)](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/dyld.1.html) – Apple Developer
-3. [Run-Path Dependent Libraries](https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/RunpathDependentLibraries.html) – Apple Developer
+[^1]: [Build Settings中的变量@rpath,@loader_path,@executable_path.](http://www.tanhao.me/pieces/1361.html/)
+[^2]: [OS X Man Page: dyld(1)](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/dyld.1.html) – Apple Developer
+[^3]: [Run-Path Dependent Libraries](https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/RunpathDependentLibraries.html) – Apple Developer
 

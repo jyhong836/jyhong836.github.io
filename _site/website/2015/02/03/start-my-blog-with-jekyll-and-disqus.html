@@ -18,6 +18,7 @@
     <!-- Custom CSS -->
     <link href="/css/grayscale.css" rel="stylesheet">
     <link href="/css/timeline.css" rel="stylesheet">
+    <link href="/css/pygments/default.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -116,22 +117,18 @@
 <p>Actually you need only to clone the Jekyll in your gihub.io, or just copy all file from Jekyll.</p>
 
 <p>Jekyll advise you to clone the jekyll to local with your name and push it to your github.</p>
-
-<pre><code>git clone https://github.com/plusjade/jekyll-bootstrap.git USERNAME.github.io
-cd USERNAME.github.com 
-git remote set-url origin git@github.com:USERNAME/USERNAME.github.io
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git clone https://github.com/plusjade/jekyll-bootstrap.git USERNAME.github.io
+<span class="nb">cd </span>USERNAME.github.com 
+git remote <span class="nb">set</span>-url origin git@github.com:USERNAME/USERNAME.github.io
 git push origin master
-</code></pre>
-
+</code></pre></div>
 <p>But if you have already create a repository at GitHub, you can also copy the files from jekyll to your repository.</p>
-
-<pre><code>git clone https://github.com/plusjade/jekyll-bootstrap.git jekyll-bootstrap
-cd jekyll-bootstrap
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git clone https://github.com/plusjade/jekyll-bootstrap.git jekyll-bootstrap
+<span class="nb">cd </span>jekyll-bootstrap
 cp -r ./* router/to/USERNAME.github.io
-cd router/to/USERNAME.github.io
+<span class="nb">cd </span>router/to/USERNAME.github.io
 git push origin master
-</code></pre>
-
+</code></pre></div>
 <p>It also works honestly.</p>
 
 <p>Another web about the Jekyll and GitHub: <a href="http://www.developmentseed.org/blog/2011/09/09/jekyll-github-pages/">Using Jekyll and GitHub Pages for Our Site</a></p>
@@ -139,12 +136,8 @@ git push origin master
 <p>In the <code>_config.yml</code>, you can add some tools:</p>
 
 <ul>
-  <li>
-    <p>Jekyll is easy to add Disqus for comments. You can visit <a href="https://disqus.com/websites/?utm_source=hongblog&amp;utm_medium=Disqus-Footer">DISQUS</a> for more details.</p>
-  </li>
-  <li>
-    <p>You can also use Google Analytics to track your website.</p>
-  </li>
+<li><p>Jekyll is easy to add Disqus for comments. You can visit <a href="https://disqus.com/websites/?utm_source=hongblog&amp;utm_medium=Disqus-Footer">DISQUS</a> for more details.</p></li>
+<li><p>You can also use Google Analytics to track your website.</p></li>
 </ul>
 
 

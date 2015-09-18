@@ -5,8 +5,8 @@
         <description>{ Junyuan Hong } - </description>
         <link></link>
         <link></link>
-        <lastBuildDate>2015-09-18T17:03:43+08:00</lastBuildDate>
-        <pubDate>2015-09-18T17:03:43+08:00</pubDate>
+        <lastBuildDate>2015-09-18T19:02:38+08:00</lastBuildDate>
+        <pubDate>2015-09-18T19:02:38+08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -16,55 +16,58 @@
 
 &lt;p&gt;Reference: &lt;a href=&quot;http://blog.amyworrall.com/post/66085151655/using-auto-layout-to-calculate-table-cell-height&quot;&gt;Using auto-layout to calculate table cell height&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;In ‘&lt;a href=&quot;http://blog.amyworrall.com/post/66085151655/using-auto-layout-to-calculate-table-cell-height&quot;&gt;Using auto-layout to calculate table cell height&lt;/a&gt;’, it’s introduced how to use auto-layout to update table view’s (UITableView) cell height with Objective-C language. However there is different at NSTableView.&lt;/p&gt;
+&lt;p&gt;In &amp;#39;&lt;a href=&quot;http://blog.amyworrall.com/post/66085151655/using-auto-layout-to-calculate-table-cell-height&quot;&gt;Using auto-layout to calculate table cell height&lt;/a&gt;&amp;#39;, it&amp;#39;s introduced how to use auto-layout to update table view&amp;#39;s (UITableView) cell height with Objective-C language. However there is different at NSTableView.&lt;/p&gt;
 
-&lt;p&gt;Here I will introduce to do similar thing at NSTableView with Swift language. Remember one thing post ‘Using auto-layout to calculate table cell height’ has warned that this method is not that efficient, figure out the way make it more efficient yourself.&lt;/p&gt;
+&lt;p&gt;Here I will introduce to do similar thing at NSTableView with Swift language. Remember one thing post &amp;#39;Using auto-layout to calculate table cell height&amp;#39; has warned that this method is not that efficient, figure out the way make it more efficient yourself.&lt;/p&gt;
 
 &lt;p&gt;Assuming you have been familiar with the mechanism of NSTableView, including NSTableViewDelegate and NSTableViewDataSource, I will not introduce these knowledge in detail below.&lt;/p&gt;
 
-&lt;p&gt;When configure table cell view, it’s helpful later if you seperate some configure functions.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -&amp;gt; NSView? {
-    var cell = tableView.makeViewWithIdentifier(&quot;InMessageCellView&quot;, owner: self)
-    if let cl = cell {
-        // Do data configures in &#39;configureCell&#39; function.
-        cell = configureCell(cl, row: row)
-    }
-    return cell
-}
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;p&gt;When configure table cell view, it&amp;#39;s helpful later if you seperate some configure functions.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSTableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;viewForTableColumn&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;tableColumn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSTableColumn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;makeViewWithIdentifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;InMessageCellView&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;owner&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Do data configures in &amp;#39;configureCell&amp;#39; function.&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;configureCell&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Then tell NSTableView the height of row:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;let defaultRowHeight = CGFloat(36)
-func tableView(tableView: NSTableView, heightOfRow row: Int) -&amp;gt; CGFloat {
-    var cell = tableView.makeViewWithIdentifier(&quot;InMessageCellView&quot;, owner: self)
-    if let cl = cell {
-        cell = configureCell(cl, row: row)
-        // Let NSView to update its layout automatically.
-        cell!.layoutSubtreeIfNeeded()
-        // Return the updated frame height.
-        // Remember to setup constraints in Xcode&#39;s stroyboard, which should limit 
-        // the cell&#39;s height corespond to subview(like text view).
-        return cell!.frame.height
-    }
-    return defaultRowHeight
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Refer one centence from Apple’s documentation:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;defaultRowHeight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CGFloat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;36&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSTableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;heightOfRow&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CGFloat&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;makeViewWithIdentifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;InMessageCellView&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;owner&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;configureCell&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Let NSView to update its layout automatically.&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layoutSubtreeIfNeeded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Return the updated frame height.&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Remember to setup constraints in Xcode&amp;#39;s stroyboard, which should limit &lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// the cell&amp;#39;s height corespond to subview(like text view).&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;frame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;height&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;defaultRowHeight&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Refer one centence from Apple&amp;#39;s documentation:&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Although table views may cache the returned values, you should ensure that this method is efficient.&lt;/p&gt;
+&lt;p&gt;Although table views may cache the returned values, you should ensure that this method is efficient.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;So be careful about performance, read more about it to visit reference [1].&lt;/p&gt;
+&lt;p&gt;So be careful about performance, read more about it to visit reference&lt;sup id=&quot;fnref1&quot;&gt;&lt;a href=&quot;#fn1&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; .&lt;/p&gt;
 
-&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+&lt;h3&gt;Reference&lt;/h3&gt;
 
+&lt;div class=&quot;footnotes&quot;&gt;
+&lt;hr&gt;
 &lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/questions/18746929/using-auto-layout-in-uitableview-for-dynamic-cell-layouts-variable-row-heights&quot;&gt;Using Auto Layout in UITableView for dynamic cell layouts &amp;amp; variable row heights&lt;/a&gt;&lt;/li&gt;
+
+&lt;li id=&quot;fn1&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/18746929/using-auto-layout-in-uitableview-for-dynamic-cell-layouts-variable-row-heights&quot;&gt;Using Auto Layout in UITableView for dynamic cell layouts &amp;amp; variable row heights&lt;/a&gt;&amp;nbsp;&lt;a href=&quot;#fnref1&quot; rev=&quot;footnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+
 &lt;/ol&gt;
+&lt;/div&gt;
 </description>
                 <link>/tech/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view.html</link>
                 <guid>/tech/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view</guid>
@@ -78,38 +81,35 @@ func tableView(tableView: NSTableView, heightOfRow row: Int) -&amp;gt; CGFloat {
 &lt;p&gt;To make a iMessage-like chat table view, there is several steps to follow:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Text field should be able to adjust its size automatically.&lt;/li&gt;
-  &lt;li&gt;Image view of bubble should adjust automatically relative to text field.&lt;/li&gt;
-  &lt;li&gt;Table view’s row should be fitted into the row cell’s subview, which include text field and image view.&lt;/li&gt;
-  &lt;li&gt;Let scroller auto scroll to bottum.&lt;/li&gt;
+&lt;li&gt;Text field should be able to adjust its size automatically.&lt;/li&gt;
+&lt;li&gt;Image view of bubble should adjust automatically relative to text field.&lt;/li&gt;
+&lt;li&gt;Table view&amp;#39;s row should be fitted into the row cell&amp;#39;s subview, which include text field and image view.&lt;/li&gt;
+&lt;li&gt;Let scroller auto scroll to bottum.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;Here I use View-based NSTableView to make these:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/img/table_view_settings.png&quot; alt=&quot;Table view settings&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/table_view_settings.png&quot; alt=&quot;Table view settings&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;There is some import constraints to make the three components, NSImageView, NSTextField, NSTableViewCell, keep corresponded size, which is showed below:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/img/cell_constraint.png&quot; alt=&quot;Cell contraint settings&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/cell_constraint.png&quot; alt=&quot;Cell contraint settings&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;You should set NSTextField like below, which will make it auto adjust size to text:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/img/text_field_settings.png&quot; alt=&quot;Text field settings&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/text_field_settings.png&quot; alt=&quot;Text field settings&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;Then use NSTableViewDelegate to adjust height. Read this post: &lt;a href=&quot;http://jyhong836.github.io/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view/&quot;&gt;NSTableView automatically adjust height to fit cell view&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Finally, when you add a new row at bottum, you will hope the scroller to scroll to bottum.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;dispatch_async(dispatch_get_main_queue(), { () -&amp;gt; Void in
-    // tableView is IBOutlet refer to table view.
-    self.tableView.insertRowsAtIndexes(NSIndexSet(index: self.tableView.numberOfRows), withAnimation: NSTableViewAnimationOptions.EffectNone)
-    self.tableView.noteHeightOfRowsWithIndexesChanged(NSIndexSet(index: self.tableView.numberOfRows - 1))
-    // scroll
-    self.tableView.scrollRowToVisible(self.tableView.numberOfRows - 1)
-})
-&lt;/code&gt;&lt;/pre&gt;
-
-</description>
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;n&quot;&gt;dispatch_async&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dispatch_get_main_queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Void&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// tableView is IBOutlet refer to table view.&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;insertRowsAtIndexes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;NSIndexSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numberOfRows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;withAnimation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSTableViewAnimationOptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EffectNone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;noteHeightOfRowsWithIndexesChanged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;NSIndexSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numberOfRows&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// scroll&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrollRowToVisible&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numberOfRows&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
                 <link>/tech/2015/08/04/make-text-table-viewnstableview-auto-resize.html</link>
                 <guid>/tech/2015/08/04/make-text-table-viewnstableview-auto-resize</guid>
                 <pubDate>2015-08-04T00:00:00+08:00</pubDate>
@@ -119,166 +119,165 @@ func tableView(tableView: NSTableView, heightOfRow row: Int) -&amp;gt; CGFloat {
                 <title>Add 3rd part dynamic library (.dylib) to Xcode target</title>
                 <description>&lt;!--  --&gt;
 
-&lt;p&gt;Dynamic library (with .dylib suffix at UNIX-like OS) is a kind of library discriminated from static library (with .a suffix). Static library will be linked at linking stage instantly after codes are compiled, before binary product output. And instead library is loaded at runtime, I mean load but not link. Load means the executable file will search for binary library when they need it. That’s why some app will announce you that it lack a lib when you double click them for running happily. In contrast, static library will compile these needed part into you app, so the user will not be bothered.&lt;/p&gt;
+&lt;p&gt;Dynamic library (with .dylib suffix at UNIX-like OS) is a kind of library discriminated from static library (with .a suffix). Static library will be linked at linking stage instantly after codes are compiled, before binary product output. And instead library is loaded at runtime, I mean load but not link. Load means the executable file will search for binary library when they need it. That&amp;#39;s why some app will announce you that it lack a lib when you double click them for running happily. In contrast, static library will compile these needed part into you app, so the user will not be bothered.&lt;/p&gt;
 
-&lt;h4 id=&quot;then-why-we-use-dynamic-library&quot;&gt;Then why we use dynamic library?&lt;/h4&gt;
+&lt;h4&gt;Then why we use dynamic library?&lt;/h4&gt;
 
-&lt;p&gt;That’s file size! A static library is several times bigger than a same function dynamic library. For example the SDL lib at OS X, which is located at /usr/local/Cellar/sdl2/2.0.3/lib/  if you install it through Homebrew.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ls /usr/local/Cellar/sdl2/2.0.3/lib/ -lh
--r--r--r-- 1 user admin 850K Jul 20 22:18 libSDL2-2.0.0.dylib
--r--r--r-- 1 user admin 1.5M Oct 22  2014 libSDL2.a
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;p&gt;That&amp;#39;s file size! A static library is several times bigger than a same function dynamic library. For example the SDL lib at OS X, which is located at /usr/local/Cellar/sdl2/2.0.3/lib/  if you install it through Homebrew.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ls /usr/local/Cellar/sdl2/2.0.3/lib/ -lh
+-r--r--r-- &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; user admin 850K Jul &lt;span class=&quot;m&quot;&gt;20&lt;/span&gt; 22:18 libSDL2-2.0.0.dylib
+-r--r--r-- &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; user admin 1.5M Oct &lt;span class=&quot;m&quot;&gt;22&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;2014&lt;/span&gt; libSDL2.a
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;There are two method to add 3rd-part dynamic library to a Xcode target:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Install the library into your system&lt;/li&gt;
-  &lt;li&gt;Copy your library into your product.&lt;/li&gt;
+&lt;li&gt;Install the library into your system&lt;/li&gt;
+&lt;li&gt;Copy your library into your product.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;method-1-install-the-library&quot;&gt;Method 1: Install the library&lt;/h3&gt;
+&lt;h3&gt;Method 1: Install the library&lt;/h3&gt;
 
 &lt;p&gt;For most library, 3rd part library can be installed into system, at &lt;code&gt;/usr/local/lib or /usr/lib&lt;/code&gt;. Then just add header path to &lt;code&gt;Xcode target &amp;gt; Build Setting&lt;/code&gt;, if the header file is not be found by Xcode. Finally, link your library at &lt;code&gt;Xcode target &amp;gt; Build Phase &amp;gt; Linked Libraries and Frameworks&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;However, this method doesn’t allow your app user to use app freely, since it require the user to install the library too. That’s terrible for an app.&lt;/p&gt;
+&lt;p&gt;However, this method doesn&amp;#39;t allow your app user to use app freely, since it require the user to install the library too. That&amp;#39;s terrible for an app.&lt;/p&gt;
 
-&lt;h3 id=&quot;method-2-copy-dylib-file-into-your-product&quot;&gt;Method 2: Copy .dylib file into your product&lt;/h3&gt;
+&lt;h3&gt;Method 2: Copy .dylib file into your product&lt;/h3&gt;
 
-&lt;p&gt;So it’s obvious that a better way to use dynamic library is bundle the .dylib with .app file. Path relative  yourself is better than relative to system.&lt;/p&gt;
+&lt;p&gt;So it&amp;#39;s obvious that a better way to use dynamic library is bundle the .dylib with .app file. Path relative  yourself is better than relative to system.&lt;/p&gt;
 
 &lt;p&gt;How the executable binary file inform system which and where library is needed?&lt;/p&gt;
 
-&lt;p&gt;Since a program starts from its binary file, file is the only one from who system can get information about linked library. Or we can say the binary file is the bridge between developer and user’s system, compiler and linker are the builders. So, we should ask the binary file for the answer directly with  otool provided by OS X.&lt;/p&gt;
+&lt;p&gt;Since a program starts from its binary file, file is the only one from who system can get information about linked library. Or we can say the binary file is the bridge between developer and user&amp;#39;s system, compiler and linker are the builders. So, we should ask the binary file for the answer directly with  otool provided by OS X.&lt;/p&gt;
 
-&lt;p&gt;Assume I have a project named Vivi, output file Vivi.app . Vivi used two of my framework named ViviSwiften.framework and ViviInterface.framework , they are in the same project as Vivi. Although you run an App by double click it, but it’s not a binary file indeed. The executable binary file is located at AppName.app/Contents/MacOS/AppName instead.&lt;/p&gt;
+&lt;p&gt;Assume I have a project named Vivi, output file Vivi.app . Vivi used two of my framework named ViviSwiften.framework and ViviInterface.framework , they are in the same project as Vivi. Although you run an App by double click it, but it&amp;#39;s not a binary file indeed. The executable binary file is located at AppName.app/Contents/MacOS/AppName instead.&lt;/p&gt;
 
 &lt;p&gt;Ask Vivi binary file:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ otool -L Vivi.app/Contents/MacOS/Vivi 
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;otool -L Vivi.app/Contents/MacOS/Vivi 
 Vivi.app/Contents/MacOS/Vivi:
-    @rpath/ViviInterface.framework/Versions/A/ViviInterface (compatibility version 1.0.0, current version 1.0.0)
-    @rpath/ViviSwiften.framework/Versions/A/ViviSwiften (compatibility version 1.0.0, current version 1.0.0)
-    /usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1223.0.0)
-    /System/Library/Frameworks/AppKit.framework/Versions/C/AppKit (compatibility version 45.0.0, current version 1387.1.0)
-    /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 1225.0.0)
-    /usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 228.0.0)
-    @rpath/libswiftAppKit.dylib (compatibility version 0.0.0, current version 0.0.0)
-    @rpath/libswiftCore.dylib (compatibility version 0.0.0, current version 0.0.0)
-    @rpath/libswiftCoreData.dylib (compatibility version 0.0.0, current version 0.0.0)
-    @rpath/libswiftCoreGraphics.dylib (compatibility version 0.0.0, current version 0.0.0)
+    @rpath/ViviInterface.framework/Versions/A/ViviInterface &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;compatibility version 1.0.0, current version 1.0.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    @rpath/ViviSwiften.framework/Versions/A/ViviSwiften &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;compatibility version 1.0.0, current version 1.0.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    /usr/lib/libSystem.B.dylib &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;compatibility version 1.0.0, current version 1223.0.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    /System/Library/Frameworks/AppKit.framework/Versions/C/AppKit &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;compatibility version 45.0.0, current version 1387.1.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;compatibility version 150.0.0, current version 1225.0.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    /usr/lib/libobjc.A.dylib &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;compatibility version 1.0.0, current version 228.0.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    @rpath/libswiftAppKit.dylib &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;compatibility version 0.0.0, current version 0.0.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    @rpath/libswiftCore.dylib &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;compatibility version 0.0.0, current version 0.0.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    @rpath/libswiftCoreData.dylib &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;compatibility version 0.0.0, current version 0.0.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    @rpath/libswiftCoreGraphics.dylib &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;compatibility version 0.0.0, current version 0.0.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
         ...
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;It seems that otool  print the list of path of all linked libraries and their version messages.&lt;/p&gt;
 
-&lt;p&gt;Well, there is so many stuffs. Hey, I found there is my frameworks,  ViviSwiften.framework and ViviInterface.framework. Okay, I know &lt;code&gt;ViviInterface.framework/Versions/A/ViviInterface&lt;/code&gt; is the path point to the binary file of the framework (Different from .app file, framework’s binary file is located at FrameworkName.framework/Versions/A/FrameworkName commonly), but what the @rpath means.&lt;/p&gt;
+&lt;p&gt;Well, there is so many stuffs. Hey, I found there is my frameworks,  ViviSwiften.framework and ViviInterface.framework. Okay, I know &lt;code&gt;ViviInterface.framework/Versions/A/ViviInterface&lt;/code&gt; is the path point to the binary file of the framework (Different from .app file, framework&amp;#39;s binary file is located at FrameworkName.framework/Versions/A/FrameworkName commonly), but what the @rpath means.&lt;/p&gt;
 
-&lt;h4 id=&quot;whats-excutablepath-loaderpath-and-rpath&quot;&gt;What’s @excutable_path, @loader_path and @rpath?&lt;/h4&gt;
+&lt;h4&gt;What&amp;#39;s @excutable_path, @loader_path and @rpath?&lt;sup id=&quot;fnref1&quot;&gt;&lt;a href=&quot;#fn1&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;sup id=&quot;fnref2&quot;&gt;&lt;a href=&quot;#fn2&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; &lt;sup id=&quot;fnref3&quot;&gt;&lt;a href=&quot;#fn3&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/h4&gt;
 
-&lt;p&gt;Reference: &lt;a href=&quot;https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/dyld.1.html&quot;&gt;OS X Man Page: dyld(1)&lt;/a&gt;(this also can be found by running &lt;code&gt;man dyld&lt;/code&gt; at OS X), &lt;a href=&quot;https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/RunpathDependentLibraries.html&quot;&gt;Run-Path Dependent Libraries&lt;/a&gt;.&lt;/p&gt;
+&lt;!-- Reference: [OS X Man Page: dyld(1)](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/dyld.1.html)(this also can be found by running `man dyld` at OS X), [Run-Path Dependent Libraries](https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/RunpathDependentLibraries.html). --&gt;
 
 &lt;p&gt;The three variable is defined at runtime:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;@executable_path&lt;/strong&gt;, this always point to the product executable binary file path,  &lt;code&gt;AppName.app/Contents/MacOS/AppName&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;@loader_path&lt;/strong&gt;, this is dependent on which is the loader. For example, my Vivi.app load the &lt;code&gt;ViviSwiften.framework&lt;/code&gt;, then a dylib linked by ViviSwiften.framework could get two variable &lt;code&gt;@loader_path=/path/to/ViviSwiften.framework/Versions/A/&lt;/code&gt;, and &lt;code&gt;@executable_path=/path/to/Vivi.app/Contents/MacOS/&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;@rpath&lt;/strong&gt;, this is just a path stored some predefined path. You can set it at &lt;code&gt;Xcode target &amp;gt; Build Setting &amp;gt; Runpath Search Path&lt;/code&gt;. Often there will include &lt;code&gt;@executable_path/../Frameworks&lt;/code&gt; for an App target, &lt;code&gt;@executable_path/../Frameworks and @loader_path/Frameworks&lt;/code&gt; for a Framework target, &lt;code&gt;@executable_path/../Frameworks&lt;/code&gt; and &lt;code&gt;@loader_path/../Frameworks&lt;/code&gt; for a Unit Test target.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;@executable_path&lt;/strong&gt;, this always point to the product executable binary file path,  &lt;code&gt;AppName.app/Contents/MacOS/AppName&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;@loader_path&lt;/strong&gt;, this is dependent on which is the loader. For example, my Vivi.app load the &lt;code&gt;ViviSwiften.framework&lt;/code&gt;, then a dylib linked by ViviSwiften.framework could get two variable &lt;code&gt;@loader_path=/path/to/ViviSwiften.framework/Versions/A/&lt;/code&gt;, and &lt;code&gt;@executable_path=/path/to/Vivi.app/Contents/MacOS/&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;@rpath&lt;/strong&gt;, this is just a path stored some predefined path. You can set it at &lt;code&gt;Xcode target &amp;gt; Build Setting &amp;gt; Runpath Search Path&lt;/code&gt;. Often there will include &lt;code&gt;@executable_path/../Frameworks&lt;/code&gt; for an App target, &lt;code&gt;@executable_path/../Frameworks and @loader_path/Frameworks&lt;/code&gt; for a Framework target, &lt;code&gt;@executable_path/../Frameworks&lt;/code&gt; and &lt;code&gt;@loader_path/../Frameworks&lt;/code&gt; for a Unit Test target.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Now we know Vivi.app used ViviSwiften.framework and ViviInterface.framework created by myself, and other system frameworks or libraries. But there is no 3rd part dynamic libraries added by myself (the dylib linked in Vivi.app is auto added by Xcode). The libraries is libSwiften.3.0.dylib which is linked in ViviSwiften.framework. Let’s ask ViviSwiften if that is true.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ otool -L ViviSwiften.framework/Versions/A/ViviSwiften
+&lt;p&gt;Now we know Vivi.app used ViviSwiften.framework and ViviInterface.framework created by myself, and other system frameworks or libraries. But there is no 3rd part dynamic libraries added by myself (the dylib linked in Vivi.app is auto added by Xcode). The libraries is libSwiften.3.0.dylib which is linked in ViviSwiften.framework. Let&amp;#39;s ask ViviSwiften if that is true.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;otool -L ViviSwiften.framework/Versions/A/ViviSwiften
 ViviSwiften.framework/Versions/A/ViviSwiften:
-    @rpath/ViviSwiften.framework/Versions/A/ViviSwiften (compatibility version 1.0.0, current version 1.0.0)
-    @loader_path/Frameworks/libSwiften.3.0.dylib (compatibility version 3.0.0, current version 3.0.0)
-    /System/Library/Frameworks/Security.framework/Versions/A/Security (compatibility version 1.0.0, current version 57301.0.0)
+    @rpath/ViviSwiften.framework/Versions/A/ViviSwiften &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;compatibility version 1.0.0, current version 1.0.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    @loader_path/Frameworks/libSwiften.3.0.dylib &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;compatibility version 3.0.0, current version 3.0.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    /System/Library/Frameworks/Security.framework/Versions/A/Security &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;compatibility version 1.0.0, current version 57301.0.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
     ...
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You can see that ViviSwiften.framework used a 3rd part dynamic library libSwiften.dylib  with path &lt;code&gt;@loader_path/Frameworks/libSwiften.3.0.dylib&lt;/code&gt;.&lt;/p&gt;
 
-&lt;h4 id=&quot;how-system-find-these-libraries-or-frameworks-vivi-example&quot;&gt;How system find these libraries or frameworks? (Vivi example)&lt;/h4&gt;
+&lt;h4&gt;How system find these libraries or frameworks? (Vivi example)&lt;/h4&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;User double clicks to run Vivi.app.&lt;/li&gt;
-  &lt;li&gt;Vivi.app executes &lt;code&gt;Vivi.app/Contents/MacOS/Vivi&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;Search for dynamic libraries and frameworks needed by Vivi.app.&lt;/li&gt;
-  &lt;li&gt;Found &lt;code&gt;@rpath/ViviSwiften.framework/Versions/A/ViviSwiften&lt;/code&gt;, which is transferred to  &lt;code&gt;@executable_path/../Frameworks/ViviSwiften/&lt;/code&gt;  then transferred to &lt;code&gt;Vivi.app/Contents/MacOS/Vivi/../Frameworks/ViviSwiften&lt;/code&gt;.framework .&lt;/li&gt;
-  &lt;li&gt;Search for dynamic libraries and frameworks needed by &lt;code&gt;ViviSwiften.framework&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;Found &lt;code&gt;@loader_path/Frameworks/libSwiften.3.0.dylib&lt;/code&gt; which has been transferred to &lt;code&gt;ViviSwiften.framework/Version/A/Frameworks/libSwiften.3.0.dylib&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;User double clicks to run Vivi.app.&lt;/li&gt;
+&lt;li&gt;Vivi.app executes &lt;code&gt;Vivi.app/Contents/MacOS/Vivi&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Search for dynamic libraries and frameworks needed by Vivi.app.&lt;/li&gt;
+&lt;li&gt;Found &lt;code&gt;@rpath/ViviSwiften.framework/Versions/A/ViviSwiften&lt;/code&gt;, which is transferred to  &lt;code&gt;@executable_path/../Frameworks/ViviSwiften/&lt;/code&gt;  then transferred to &lt;code&gt;Vivi.app/Contents/MacOS/Vivi/../Frameworks/ViviSwiften&lt;/code&gt;.framework .&lt;/li&gt;
+&lt;li&gt;Search for dynamic libraries and frameworks needed by &lt;code&gt;ViviSwiften.framework&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Found &lt;code&gt;@loader_path/Frameworks/libSwiften.3.0.dylib&lt;/code&gt; which has been transferred to &lt;code&gt;ViviSwiften.framework/Version/A/Frameworks/libSwiften.3.0.dylib&lt;/code&gt;.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h4 id=&quot;how-these-messages-are-written-into-binary-file&quot;&gt;How these messages are written into binary file?&lt;/h4&gt;
+&lt;h4&gt;How these messages are written into binary file?&lt;/h4&gt;
 
 &lt;p&gt;Well, we know the messages are inside the binary file, but how they get into there? There are two hard woking builder: compiler and linker. Compiler will mark the needed symbols and pass to linker, Linker will find symbols in libraries you told it. Finally linker will write the needed libraries into executable binary file. If you provide a static library, linker will write the whole file into binary file. Or if you provide a dynamic library, only library path will be written into binary file.&lt;/p&gt;
 
-&lt;h4 id=&quot;where-does-linker-get-the-path-from&quot;&gt;Where does linker get the path from?&lt;/h4&gt;
+&lt;h4&gt;Where does linker get the path from?&lt;/h4&gt;
 
 &lt;p&gt;Unfortunately the path is not provided by developer of the App but the 3rd part library developer. So you can not let Xcode use the path relative your product or use path provided by yourself.&lt;/p&gt;
 
-&lt;p&gt;Let’s review ViviSwiften.framework’s answer to otool:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ otool -L ViviSwiften.framework/Versions/A/ViviSwiften
+&lt;p&gt;Let&amp;#39;s review ViviSwiften.framework&amp;#39;s answer to otool:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;otool -L ViviSwiften.framework/Versions/A/ViviSwiften
 ViviSwiften.framework/Versions/A/ViviSwiften:
-    @rpath/ViviSwiften.framework/Versions/A/ViviSwiften (compatibility version 1.0.0, current version 1.0.0)
-    @loader_path/Frameworks/libSwiften.3.0.dylib (compatibility version 3.0.0, current version 3.0.0)
+    @rpath/ViviSwiften.framework/Versions/A/ViviSwiften &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;compatibility version 1.0.0, current version 1.0.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    @loader_path/Frameworks/libSwiften.3.0.dylib &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;compatibility version 3.0.0, current version 3.0.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
         ...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We found the first line is the path to ViviSwiften itself. So…that’s it.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We found the first line is the path to ViviSwiften itself. So...that&amp;#39;s it.&lt;/p&gt;
 
 &lt;p&gt;The path describing the self path is called install_name.&lt;/p&gt;
 
 &lt;p&gt;The path provided by ViviSwiften.framework is the correct path as described above. But will the 3rd part library always provide correct path as we expected? No!&lt;/p&gt;
 
-&lt;h4 id=&quot;what-path-will-compiled-3rd-part-library-provide&quot;&gt;What path will compiled 3rd part library provide?&lt;/h4&gt;
+&lt;h4&gt;What path will compiled 3rd part library provide?&lt;/h4&gt;
 
 &lt;p&gt;There is two situations:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;You have installed the library with Homebrew or from source (like make install ). The library will provide path like: &lt;code&gt;/usr/lib/libxxx.dylib&lt;/code&gt;, &lt;code&gt;/usr/local/lib/libxx.dylib&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;You just compiled source with &lt;code&gt;./configure&lt;/code&gt; &amp;amp;&amp;amp; make , then the library may provide path like: &lt;code&gt;libxx.dylib&lt;/code&gt; without prefix.&lt;/li&gt;
+&lt;li&gt;You have installed the library with Homebrew or from source (like make install ). The library will provide path like: &lt;code&gt;/usr/lib/libxxx.dylib&lt;/code&gt;, &lt;code&gt;/usr/local/lib/libxx.dylib&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;You just compiled source with &lt;code&gt;./configure&lt;/code&gt; &amp;amp;&amp;amp; make , then the library may provide path like: &lt;code&gt;libxx.dylib&lt;/code&gt; without prefix.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;Both situation is not expected.&lt;/p&gt;
 
-&lt;h3 id=&quot;change-the-installname-to-expected&quot;&gt;Change the install_name to expected&lt;/h3&gt;
+&lt;h3&gt;Change the install_name to expected&lt;/h3&gt;
 
 &lt;p&gt;OS X provide another tool named install_name_tool  for change install_name and linked lib install_name.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# change linked lib path
-$ install_name_tool -change old new bin_file
-# change the library install_name
-$ install_name_tool -id new_install_name bin_file
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;the-whole-strategy&quot;&gt;The whole strategy&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# change linked lib path&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;install_name_tool -change old new bin_file
+&lt;span class=&quot;c&quot;&gt;# change the library install_name&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;install_name_tool -id new_install_name bin_file
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;The whole strategy&lt;/h3&gt;
 
 &lt;p&gt;As a conclusion, the strategy for adding 3rd part dynamic library into Xcode target is:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Add library to Build Phase, and add header to search path. This guarantee no compile and link error will occur.&lt;/li&gt;
-  &lt;li&gt;Let Xcode copy .dylib file into product after compiled. Add “New Copy Files Phase”, name it “Copy Libraries”&lt;img src=&quot;/assets/img/new_copy_phase.jpg&quot; alt=&quot;new copy phase&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;Set the “Destination” to “Frameworks”. Add your dylib here.link_dynamic_lib &lt;img src=&quot;/assets/img/link_dynamic_lib.jpg&quot; alt=&quot;link dynamic lib&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Change install_name of library:&lt;/p&gt;
-
-    &lt;pre&gt;&lt;code&gt; $ install_name_tool -id @loader_path/Frameworks/libSwiften.3.0.dylib libSwiften.3.0.dylib
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
+&lt;li&gt;Add library to Build Phase, and add header to search path. This guarantee no compile and link error will occur.&lt;/li&gt;
+&lt;li&gt;Let Xcode copy .dylib file into product after compiled. Add &amp;quot;New Copy Files Phase&amp;quot;, name it &amp;quot;Copy Libraries&amp;quot;&lt;img src=&quot;/assets/img/new_copy_phase.jpg&quot; alt=&quot;new copy phase&quot;&gt;&lt;/li&gt;
+&lt;li&gt;Set the &amp;quot;Destination&amp;quot; to &amp;quot;Frameworks&amp;quot;. Add your dylib here.link_dynamic_lib &lt;img src=&quot;/assets/img/link_dynamic_lib.jpg&quot; alt=&quot;link dynamic lib&quot;&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Change install_name of library:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ install_name_tool -id @loader_path/Frameworks/libSwiften.3.0.dylib libSwiften.3.0.dylib
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;That’s all.&lt;/p&gt;
+&lt;p&gt;That&amp;#39;s all.&lt;/p&gt;
 
-&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+&lt;h3&gt;Reference&lt;/h3&gt;
 
+&lt;div class=&quot;footnotes&quot;&gt;
+&lt;hr&gt;
 &lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.tanhao.me/pieces/1361.html/&quot;&gt;Build Settings中的变量@rpath,@loader_path,@executable_path.&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/dyld.1.html&quot;&gt;OS X Man Page: dyld(1)&lt;/a&gt; – Apple Developer&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/RunpathDependentLibraries.html&quot;&gt;Run-Path Dependent Libraries&lt;/a&gt; – Apple Developer&lt;/li&gt;
-&lt;/ol&gt;
 
+&lt;li id=&quot;fn1&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.tanhao.me/pieces/1361.html/&quot;&gt;Build Settings中的变量@rpath,@loader_path,@executable_path.&lt;/a&gt;&amp;nbsp;&lt;a href=&quot;#fnref1&quot; rev=&quot;footnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li id=&quot;fn2&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/dyld.1.html&quot;&gt;OS X Man Page: dyld(1)&lt;/a&gt; – Apple Developer&amp;nbsp;&lt;a href=&quot;#fnref2&quot; rev=&quot;footnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li id=&quot;fn3&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/RunpathDependentLibraries.html&quot;&gt;Run-Path Dependent Libraries&lt;/a&gt; – Apple Developer&amp;nbsp;&lt;a href=&quot;#fnref3&quot; rev=&quot;footnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;/ol&gt;
+&lt;/div&gt;
 </description>
                 <link>/tech/2015/07/29/add-3rd-part-dynamic-library-dylib-to-xcode-target.html</link>
                 <guid>/tech/2015/07/29/add-3rd-part-dynamic-library-dylib-to-xcode-target</guid>
@@ -292,44 +291,40 @@ $ install_name_tool -id new_install_name bin_file
 &lt;p&gt;According to the SceneKit document, the function of &lt;code&gt;resetTransform&lt;/code&gt; is: &lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Updates the position and orientation of a body in the physics simulation to match that of the node to which the body is attached.&lt;/p&gt;
+&lt;p&gt;Updates the position and orientation of a body in the physics simulation to match that of the node to which the body is attached.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;Through experiment, I found this is little special.&lt;/p&gt;
 
 &lt;p&gt;If you do this: &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var node = SCNNode(geomentry: SCNBox())
-node.position = SCNVector3(0, 1, 0)
-node.rotation = SCNVector4(1, 0, 0, CGFloat(M_PI)/2)
-node.physicsBody = SCNPhysicsBody(type: .Dynamic, nil)
-scene.rootNode.addChildNode(node)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If you get the &lt;code&gt;position&lt;/code&gt; and &lt;code&gt;rotation&lt;/code&gt; of &lt;code&gt;node.presentationNode()&lt;/code&gt; in the render delegate, where I mean you need to get the latest and real data, you will found the effect of the setup of node’s position and rotation is not work at the begining.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SCNNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;geomentry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SCNBox&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;position&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SCNVector3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rotation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SCNVector4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CGFloat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;M_PI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;physicsBody&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SCNPhysicsBody&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dynamic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;scene&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rootNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;addChildNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you get the &lt;code&gt;position&lt;/code&gt; and &lt;code&gt;rotation&lt;/code&gt; of &lt;code&gt;node.presentationNode()&lt;/code&gt; in the render delegate, where I mean you need to get the latest and real data, you will found the effect of the setup of node&amp;#39;s position and rotation is not work at the begining.&lt;/p&gt;
 
 &lt;p&gt;At the begining, the &lt;code&gt;position&lt;/code&gt; will be &lt;code&gt;(0, 0, 0)&lt;/code&gt;, but not what you have set, &lt;code&gt;(0, 1, 0)&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;If you have read the document about &lt;code&gt;SCNNode.position&lt;/code&gt; and &lt;code&gt;SCNNode.rotation&lt;/code&gt;, you will found:&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;position&lt;/p&gt;
+&lt;p&gt;position&lt;/p&gt;
 
-  &lt;p&gt;The translation applied to the node. &lt;strong&gt;Animatable&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;The translation applied to the node. &lt;strong&gt;Animatable&lt;/strong&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;The &lt;strong&gt;Animatable&lt;/strong&gt; means it will take several frames to get the effect.&lt;/p&gt;
 
-&lt;p&gt;However, it’s different when you use resetTransform of SCNPhysicsBody:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var node = SCNNode(geomentry: SCNBox())
-node.position = SCNVector3(0, 1, 0)
-node.rotation = SCNVector4(1, 0, 0, CGFloat(M_PI)/2)
-node.physicsBody = SCNPhysicsBody(type: .Dynamic, nil)
-scene.rootNode.addChildNode(node)
-node.physicsBody.resetTransform()
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;p&gt;However, it&amp;#39;s different when you use resetTransform of SCNPhysicsBody:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SCNNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;geomentry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SCNBox&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;position&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SCNVector3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rotation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SCNVector4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CGFloat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;M_PI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;physicsBody&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SCNPhysicsBody&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dynamic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;scene&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rootNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;addChildNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;physicsBody&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;resetTransform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The effect will work at the begining.&lt;/p&gt;
 </description>
                 <link>/tech/2015/02/04/resettransform-at-scnphysicsbody.html</link>
@@ -350,22 +345,18 @@ node.physicsBody.resetTransform()
 &lt;p&gt;Actually you need only to clone the Jekyll in your gihub.io, or just copy all file from Jekyll.&lt;/p&gt;
 
 &lt;p&gt;Jekyll advise you to clone the jekyll to local with your name and push it to your github.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git clone https://github.com/plusjade/jekyll-bootstrap.git USERNAME.github.io
-cd USERNAME.github.com 
-git remote set-url origin git@github.com:USERNAME/USERNAME.github.io
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git clone https://github.com/plusjade/jekyll-bootstrap.git USERNAME.github.io
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;USERNAME.github.com 
+git remote &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;-url origin git@github.com:USERNAME/USERNAME.github.io
 git push origin master
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;But if you have already create a repository at GitHub, you can also copy the files from jekyll to your repository.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git clone https://github.com/plusjade/jekyll-bootstrap.git jekyll-bootstrap
-cd jekyll-bootstrap
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git clone https://github.com/plusjade/jekyll-bootstrap.git jekyll-bootstrap
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;jekyll-bootstrap
 cp -r ./* router/to/USERNAME.github.io
-cd router/to/USERNAME.github.io
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;router/to/USERNAME.github.io
 git push origin master
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;It also works honestly.&lt;/p&gt;
 
 &lt;p&gt;Another web about the Jekyll and GitHub: &lt;a href=&quot;http://www.developmentseed.org/blog/2011/09/09/jekyll-github-pages/&quot;&gt;Using Jekyll and GitHub Pages for Our Site&lt;/a&gt;&lt;/p&gt;
@@ -373,12 +364,8 @@ git push origin master
 &lt;p&gt;In the &lt;code&gt;_config.yml&lt;/code&gt;, you can add some tools:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Jekyll is easy to add Disqus for comments. You can visit &lt;a href=&quot;https://disqus.com/websites/?utm_source=hongblog&amp;amp;utm_medium=Disqus-Footer&quot;&gt;DISQUS&lt;/a&gt; for more details.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;You can also use Google Analytics to track your website.&lt;/p&gt;
-  &lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Jekyll is easy to add Disqus for comments. You can visit &lt;a href=&quot;https://disqus.com/websites/?utm_source=hongblog&amp;amp;utm_medium=Disqus-Footer&quot;&gt;DISQUS&lt;/a&gt; for more details.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;You can also use Google Analytics to track your website.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
                 <link>/website/2015/02/03/start-my-blog-with-jekyll-and-disqus.html</link>
@@ -388,22 +375,21 @@ git push origin master
 
         <item>
                 <title>Jekyll Introduction</title>
-                <description>
-&lt;p&gt;This Jekyll introduction will outline specifically  what Jekyll is and why you would want to use it.
-Directly following the intro we’ll learn exactly &lt;em&gt;how&lt;/em&gt; Jekyll does what it does.&lt;/p&gt;
+                <description>&lt;p&gt;This Jekyll introduction will outline specifically  what Jekyll is and why you would want to use it.
+Directly following the intro we&amp;#39;ll learn exactly &lt;em&gt;how&lt;/em&gt; Jekyll does what it does.&lt;/p&gt;
 
-&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+&lt;h2&gt;Overview&lt;/h2&gt;
 
-&lt;h3 id=&quot;what-is-jekyll&quot;&gt;What is Jekyll?&lt;/h3&gt;
+&lt;h3&gt;What is Jekyll?&lt;/h3&gt;
 
 &lt;p&gt;Jekyll is a parsing engine bundled as a ruby gem used to build static websites from
-dynamic components such as templates, partials, liquid code, markdown, etc. Jekyll is known as “a simple, blog aware, static site generator”.&lt;/p&gt;
+dynamic components such as templates, partials, liquid code, markdown, etc. Jekyll is known as &amp;quot;a simple, blog aware, static site generator&amp;quot;.&lt;/p&gt;
 
-&lt;h3 id=&quot;examples&quot;&gt;Examples&lt;/h3&gt;
+&lt;h3&gt;Examples&lt;/h3&gt;
 
 &lt;p&gt;This website is created with Jekyll. &lt;a href=&quot;https://github.com/mojombo/jekyll/wiki/Sites&quot;&gt;Other Jekyll websites&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h3 id=&quot;what-does-jekyll-do&quot;&gt;What does Jekyll Do?&lt;/h3&gt;
+&lt;h3&gt;What does Jekyll Do?&lt;/h3&gt;
 
 &lt;p&gt;Jekyll is a ruby gem you install on your local system.
 Once there you can call &lt;code&gt;jekyll --server&lt;/code&gt; on a directory and provided that directory
@@ -416,7 +402,7 @@ The intention here is that you can serve all contents in this folder statically 
 &lt;p&gt;You can think of Jekyll as a normalish dynamic blog but rather than parsing content, templates, and tags
 on each request, Jekyll does this once &lt;em&gt;beforehand&lt;/em&gt; and caches the &lt;em&gt;entire website&lt;/em&gt; in a folder for serving statically.&lt;/p&gt;
 
-&lt;h3 id=&quot;jekyll-is-not-blogging-software&quot;&gt;Jekyll is Not Blogging Software&lt;/h3&gt;
+&lt;h3&gt;Jekyll is Not Blogging Software&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;Jekyll is a parsing engine.&lt;/strong&gt;&lt;/p&gt;
 
@@ -424,7 +410,7 @@ on each request, Jekyll does this once &lt;em&gt;beforehand&lt;/em&gt; and cache
 This is a common source of confusion when getting started.
 Jekyll does not come with anything you actually use or see on your website - you have to make it.&lt;/p&gt;
 
-&lt;h3 id=&quot;why-should-i-care&quot;&gt;Why Should I Care?&lt;/h3&gt;
+&lt;h3&gt;Why Should I Care?&lt;/h3&gt;
 
 &lt;p&gt;Jekyll is very minimalistic and very efficient.
 The most important thing to realize about Jekyll is that it creates a static representation of your website requiring only a static web-server.
@@ -436,16 +422,16 @@ Heavily trafficked dynamic blogs must employ a caching layer that ultimately per
 &lt;p&gt;&lt;strong&gt;Developers like Jekyll because we can write content like we write code:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Ability to write content in markdown or textile in your favorite text-editor.&lt;/li&gt;
-  &lt;li&gt;Ability to write and preview your content via localhost.&lt;/li&gt;
-  &lt;li&gt;No internet connection required.&lt;/li&gt;
-  &lt;li&gt;Ability to publish via git.&lt;/li&gt;
-  &lt;li&gt;Ability to host your blog on a static web-server.&lt;/li&gt;
-  &lt;li&gt;Ability to host freely on GitHub Pages.&lt;/li&gt;
-  &lt;li&gt;No database required.&lt;/li&gt;
+&lt;li&gt;Ability to write content in markdown or textile in your favorite text-editor.&lt;/li&gt;
+&lt;li&gt;Ability to write and preview your content via localhost.&lt;/li&gt;
+&lt;li&gt;No internet connection required.&lt;/li&gt;
+&lt;li&gt;Ability to publish via git.&lt;/li&gt;
+&lt;li&gt;Ability to host your blog on a static web-server.&lt;/li&gt;
+&lt;li&gt;Ability to host freely on GitHub Pages.&lt;/li&gt;
+&lt;li&gt;No database required.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;how-jekyll-works&quot;&gt;How Jekyll Works&lt;/h1&gt;
+&lt;h1&gt;How Jekyll Works&lt;/h1&gt;
 
 &lt;p&gt;The following is a complete but concise outline of exactly how Jekyll works.&lt;/p&gt;
 
@@ -456,16 +442,15 @@ is intended to give you the &lt;em&gt;full picture&lt;/em&gt; relative to what i
 &lt;p&gt;Learning these core concepts should help you avoid common frustrations and ultimately
 help you better understand the code examples contained throughout Jekyll-Bootstrap.&lt;/p&gt;
 
-&lt;h2 id=&quot;initial-setup&quot;&gt;Initial Setup&lt;/h2&gt;
+&lt;h2&gt;Initial Setup&lt;/h2&gt;
 
-&lt;p&gt;After &lt;a href=&quot;/index.html#start-now&quot;&gt;installing jekyll&lt;/a&gt; you’ll need to format your website directory in a way jekyll expects.
+&lt;p&gt;After &lt;a href=&quot;/index.html#start-now&quot;&gt;installing jekyll&lt;/a&gt; you&amp;#39;ll need to format your website directory in a way jekyll expects.
 Jekyll-bootstrap conveniently provides the base directory format.&lt;/p&gt;
 
-&lt;h3 id=&quot;the-jekyll-application-base-format&quot;&gt;The Jekyll Application Base Format&lt;/h3&gt;
+&lt;h3&gt;The Jekyll Application Base Format&lt;/h3&gt;
 
 &lt;p&gt;Jekyll expects your website directory to be laid out like so:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;.
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;.
 |-- _config.yml
 |-- _includes
 |-- _layouts
@@ -480,57 +465,44 @@ Jekyll-bootstrap conveniently provides the base directory format.&lt;/p&gt;
     |-- css
         |-- style.css
     |-- javascripts
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;_config.yml&lt;/strong&gt;
-  Stores configuration data.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;_includes&lt;/strong&gt;
-  This folder is for partial views.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;_layouts&lt;/strong&gt;
-  This folder is for the main templates your content will be inserted into.
-  You can have different layouts for different pages or page sections.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;_posts&lt;/strong&gt;
-  This folder contains your dynamic content/posts.
-  the naming format is required to be &lt;code&gt;@YEAR-MONTH-DATE-title.MARKUP@&lt;/code&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;_site&lt;/strong&gt;
-  This is where the generated site will be placed once Jekyll is done transforming it.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;assets&lt;/strong&gt;
-  This folder is not part of the standard jekyll structure.
-  The assets folder represents &lt;em&gt;any generic&lt;/em&gt; folder you happen to create in your root directory.
-  Directories and files not properly formatted for jekyll will be left untouched for you to serve normally.&lt;/p&gt;
-  &lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;_config.yml&lt;/strong&gt;
+Stores configuration data.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;_includes&lt;/strong&gt;
+This folder is for partial views.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;_layouts&lt;/strong&gt;
+This folder is for the main templates your content will be inserted into.
+You can have different layouts for different pages or page sections.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;_posts&lt;/strong&gt;
+This folder contains your dynamic content/posts.
+the naming format is required to be &lt;code&gt;@YEAR-MONTH-DATE-title.MARKUP@&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;_site&lt;/strong&gt;
+This is where the generated site will be placed once Jekyll is done transforming it.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;assets&lt;/strong&gt;
+This folder is not part of the standard jekyll structure.
+The assets folder represents &lt;em&gt;any generic&lt;/em&gt; folder you happen to create in your root directory.
+Directories and files not properly formatted for jekyll will be left untouched for you to serve normally.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;(read more: &lt;a href=&quot;https://github.com/mojombo/jekyll/wiki/Usage&quot;&gt;https://github.com/mojombo/jekyll/wiki/Usage&lt;/a&gt;)&lt;/p&gt;
 
-&lt;h3 id=&quot;jekyll-configuration&quot;&gt;Jekyll Configuration&lt;/h3&gt;
+&lt;h3&gt;Jekyll Configuration&lt;/h3&gt;
 
 &lt;p&gt;Jekyll supports various configuration options that are fully outlined here:
 (&lt;a href=&quot;https://github.com/mojombo/jekyll/wiki/Configuration&quot;&gt;https://github.com/mojombo/jekyll/wiki/Configuration&lt;/a&gt;)&lt;/p&gt;
 
-&lt;h2 id=&quot;content-in-jekyll&quot;&gt;Content in Jekyll&lt;/h2&gt;
+&lt;h2&gt;Content in Jekyll&lt;/h2&gt;
 
 &lt;p&gt;Content in Jekyll is either a post or a page.
-These content “objects” get inserted into one or more templates to build the final output for its respective static-page.&lt;/p&gt;
+These content &amp;quot;objects&amp;quot; get inserted into one or more templates to build the final output for its respective static-page.&lt;/p&gt;
 
-&lt;h3 id=&quot;posts-and-pages&quot;&gt;Posts and Pages&lt;/h3&gt;
+&lt;h3&gt;Posts and Pages&lt;/h3&gt;
 
 &lt;p&gt;Both posts and pages should be written in markdown, textile, or HTML and may also contain Liquid templating syntax.
 Both posts and pages can have meta-data assigned on a per-page basis such as title, url path, as well as arbitrary custom meta-data.&lt;/p&gt;
 
-&lt;h3 id=&quot;working-with-posts&quot;&gt;Working With Posts&lt;/h3&gt;
+&lt;h3&gt;Working With Posts&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;Creating a Post&lt;/strong&gt;
 Posts are created by properly formatting a file and placing it the &lt;code&gt;_posts&lt;/code&gt; folder.&lt;/p&gt;
@@ -549,26 +521,24 @@ Only reverse chronological and chronological ordering is supported in Jekyll.&lt
 
 &lt;p&gt;&lt;strong&gt;Tags&lt;/strong&gt;
 Posts can have tags associated with them as part of their meta-data.
-Tags may be placed on posts by providing them in the post’s YAML front matter.
+Tags may be placed on posts by providing them in the post&amp;#39;s YAML front matter.
 You have access to the post-specific tags in the templates. These tags also get added to the sitewide collection.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Categories&lt;/strong&gt;
 Posts may be categorized by providing one or more categories in the YAML front matter.
 Categories offer more significance over tags in that they can be reflected in the URL path to the given post.
 Note categories in Jekyll work in a specific way.
-If you define more than one category you are defining a category hierarchy “set”.
+If you define more than one category you are defining a category hierarchy &amp;quot;set&amp;quot;.
 Example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;---
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;---
 title :  Hello World
 categories : [lessons, beginner]
 ---
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This defines the category hierarchy &amp;quot;lessons/beginner&amp;quot;. Note this is &lt;em&gt;one category&lt;/em&gt; node in Jekyll.
+You won&amp;#39;t find &amp;quot;lessons&amp;quot; and &amp;quot;beginner&amp;quot; as two separate categories unless you define them elsewhere as singular categories.&lt;/p&gt;
 
-&lt;p&gt;This defines the category hierarchy “lessons/beginner”. Note this is &lt;em&gt;one category&lt;/em&gt; node in Jekyll.
-You won’t find “lessons” and “beginner” as two separate categories unless you define them elsewhere as singular categories.&lt;/p&gt;
-
-&lt;h3 id=&quot;working-with-pages&quot;&gt;Working With Pages&lt;/h3&gt;
+&lt;h3&gt;Working With Pages&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;Creating a Page&lt;/strong&gt;
 Pages are created by properly formatting a file and placing it anywhere in the root directory or subdirectories that do &lt;em&gt;not&lt;/em&gt; start with an underscore.&lt;/p&gt;
@@ -583,31 +553,29 @@ Pages do not compute categories nor tags so defining them will have no effect.&l
 &lt;p&gt;&lt;strong&gt;Sub-Directories&lt;/strong&gt;
 If pages are defined in sub-directories, the path to the page will be reflected in the url.
 Example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;.
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;.
 |-- people
     |-- bob
         |-- essay.html
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This page will be available at &lt;code&gt;http://yourdomain.com/people/bob/essay.html&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Recommended Pages&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;index.html&lt;/strong&gt;
+&lt;li&gt;&lt;strong&gt;index.html&lt;/strong&gt;
 You will always want to define the root index.html page as this will display on your root URL.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;404.html&lt;/strong&gt;
+&lt;li&gt;&lt;strong&gt;404.html&lt;/strong&gt;
 Create a root 404.html page and GitHub Pages will serve it as your 404 response.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;sitemap.html&lt;/strong&gt;
+&lt;li&gt;&lt;strong&gt;sitemap.html&lt;/strong&gt;
 Generating a sitemap is good practice for SEO.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;about.html&lt;/strong&gt;
+&lt;li&gt;&lt;strong&gt;about.html&lt;/strong&gt;
 A nice about page is easy to do and gives the human perspective to your website.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;templates-in-jekyll&quot;&gt;Templates in Jekyll&lt;/h2&gt;
+&lt;h2&gt;Templates in Jekyll&lt;/h2&gt;
 
-&lt;p&gt;Templates are used to contain a page’s or post’s content.
+&lt;p&gt;Templates are used to contain a page&amp;#39;s or post&amp;#39;s content.
 All templates have access to a global site object variable: &lt;code&gt;site&lt;/code&gt; as well as a page object variable: &lt;code&gt;page&lt;/code&gt;.
 The site variable holds all accessible content and metadata relative to the site.
 The page variable holds accessible data for the given page or post being rendered at that point.&lt;/p&gt;
@@ -617,41 +585,42 @@ Templates are created by properly formatting a file and placing it in the &lt;co
 
 &lt;p&gt;&lt;strong&gt;Formatting&lt;/strong&gt;
 Templates should be coded in HTML and contain YAML Front Matter.
-All templates can contain Liquid code to work with your site’s data.&lt;/p&gt;
+All templates can contain Liquid code to work with your site&amp;#39;s data.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Rending Page/Post Content in a Template&lt;/strong&gt;
 There is a special variable in all templates named : &lt;code&gt;content&lt;/code&gt;.
 The &lt;code&gt;content&lt;/code&gt; variable holds the page/post content including any sub-template content previously defined.
 Render the content variable wherever you want your main content to be injected into your template:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;...
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;...
 &amp;lt;body&amp;gt;
-  &amp;lt;div id=&quot;sidebar&quot;&amp;gt; ... &amp;lt;/div&amp;gt;
-  &amp;lt;div id=&quot;main&quot;&amp;gt;
+  &amp;lt;div id=&amp;quot;sidebar&amp;quot;&amp;gt; ... &amp;lt;/div&amp;gt;
+  &amp;lt;div id=&amp;quot;main&amp;quot;&amp;gt;
     &amp;#123;{content}&amp;#125;
   &amp;lt;/div&amp;gt;
 &amp;lt;/body&amp;gt;
-...&lt;/code&gt;&lt;/pre&gt;
+...&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;sub-templates&quot;&gt;Sub-Templates&lt;/h3&gt;
+&lt;h3&gt;Sub-Templates&lt;/h3&gt;
 
 &lt;p&gt;Sub-templates are exactly templates with the only difference being they
-define another “root” layout/template within their YAML Front Matter.
+define another &amp;quot;root&amp;quot; layout/template within their YAML Front Matter.
 This essentially means a template will render inside of another template.&lt;/p&gt;
 
-&lt;h3 id=&quot;includes&quot;&gt;Includes&lt;/h3&gt;
+&lt;h3&gt;Includes&lt;/h3&gt;
+
 &lt;p&gt;In Jekyll you can define include files by placing them in the &lt;code&gt;_includes&lt;/code&gt; folder.
 Includes are NOT templates, rather they are just code snippets that get included into templates.
 In this way, you can treat the code inside includes as if it was native to the parent template.&lt;/p&gt;
 
 &lt;p&gt;Any valid template code may be used in includes.&lt;/p&gt;
 
-&lt;h2 id=&quot;using-liquid-for-templating&quot;&gt;Using Liquid for Templating&lt;/h2&gt;
+&lt;h2&gt;Using Liquid for Templating&lt;/h2&gt;
 
 &lt;p&gt;Templating is perhaps the most confusing and frustrating part of Jekyll.
 This is mainly due to the fact that Jekyll templates must use the Liquid Templating Language.&lt;/p&gt;
 
-&lt;h3 id=&quot;what-is-liquid&quot;&gt;What is Liquid?&lt;/h3&gt;
+&lt;h3&gt;What is Liquid?&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://github.com/Shopify/liquid&quot;&gt;Liquid&lt;/a&gt; is a secure templating language developed by &lt;a href=&quot;http://shopify.com&quot;&gt;Shopify&lt;/a&gt;.
 Liquid is designed for end-users to be able to execute logic within template files
@@ -660,18 +629,18 @@ without imposing any security risk on the hosting server.&lt;/p&gt;
 &lt;p&gt;Jekyll uses Liquid to generate the post content within the final page layout structure and as the primary interface for working with
 your site and post/page data.&lt;/p&gt;
 
-&lt;h3 id=&quot;why-do-we-have-to-use-liquid&quot;&gt;Why Do We Have to Use Liquid?&lt;/h3&gt;
+&lt;h3&gt;Why Do We Have to Use Liquid?&lt;/h3&gt;
 
 &lt;p&gt;GitHub uses Jekyll to power &lt;a href=&quot;http://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt;.
 GitHub cannot afford to run arbitrary code on their servers so they lock developers down via Liquid.&lt;/p&gt;
 
-&lt;h3 id=&quot;liquid-is-not-programmer-friendly&quot;&gt;Liquid is Not Programmer-Friendly.&lt;/h3&gt;
+&lt;h3&gt;Liquid is Not Programmer-Friendly.&lt;/h3&gt;
 
 &lt;p&gt;The short story is liquid is not real code and its not intended to execute real code.
-The point being you can’t do jackshit in liquid that hasn’t been allowed explicitly by the implementation.
-What’s more you can only access data-structures that have been explicitly passed to the template.&lt;/p&gt;
+The point being you can&amp;#39;t do jackshit in liquid that hasn&amp;#39;t been allowed explicitly by the implementation.
+What&amp;#39;s more you can only access data-structures that have been explicitly passed to the template.&lt;/p&gt;
 
-&lt;p&gt;In Jekyll’s case it is not possible to alter what is passed to Liquid without hacking the gem or running custom plugins.
+&lt;p&gt;In Jekyll&amp;#39;s case it is not possible to alter what is passed to Liquid without hacking the gem or running custom plugins.
 Both of which cannot be supported by GitHub Pages.&lt;/p&gt;
 
 &lt;p&gt;As a programmer - this is very frustrating.&lt;/p&gt;
@@ -680,117 +649,107 @@ Both of which cannot be supported by GitHub Pages.&lt;/p&gt;
 suck it up and view it as an opportunity to work around limitations and adopt client-side solutions when possible.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Aside&lt;/strong&gt;
-My personal stance is to not invest time trying to hack liquid. It’s really unnecessary
-&lt;em&gt;from a programmer’s&lt;/em&gt; perspective. That is to say if you have the ability to run custom plugins (i.e. run arbitrary ruby code)
-you are better off sticking with ruby. Toward that end I’ve built &lt;a href=&quot;http://github.com/plusjade/mustache-with-jekyll&quot;&gt;Mustache-with-Jekyll&lt;/a&gt;&lt;/p&gt;
+My personal stance is to not invest time trying to hack liquid. It&amp;#39;s really unnecessary
+&lt;em&gt;from a programmer&amp;#39;s&lt;/em&gt; perspective. That is to say if you have the ability to run custom plugins (i.e. run arbitrary ruby code)
+you are better off sticking with ruby. Toward that end I&amp;#39;ve built &lt;a href=&quot;http://github.com/plusjade/mustache-with-jekyll&quot;&gt;Mustache-with-Jekyll&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;static-assets&quot;&gt;Static Assets&lt;/h2&gt;
+&lt;h2&gt;Static Assets&lt;/h2&gt;
 
 &lt;p&gt;Static assets are any file in the root or non-underscored subfolders that are not pages.
 That is they have no valid YAML Front Matter and are thus not treated as Jekyll Pages.&lt;/p&gt;
 
 &lt;p&gt;Static assets should be used for images, css, and javascript files.&lt;/p&gt;
 
-&lt;h2 id=&quot;how-jekyll-parses-files&quot;&gt;How Jekyll Parses Files&lt;/h2&gt;
+&lt;h2&gt;How Jekyll Parses Files&lt;/h2&gt;
 
 &lt;p&gt;Remember Jekyll is a processing engine. There are two main types of parsing in Jekyll.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Content parsing.&lt;/strong&gt;
-  This is done with textile or markdown.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Template parsing.&lt;/strong&gt;
+&lt;li&gt;&lt;strong&gt;Content parsing.&lt;/strong&gt;
+This is done with textile or markdown.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Template parsing.&lt;/strong&gt;
 This is done with the liquid templating language.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;And thus there are two main types of file formats needed for this parsing.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Post and Page files.&lt;/strong&gt;
+&lt;li&gt;&lt;strong&gt;Post and Page files.&lt;/strong&gt;
 All content in Jekyll is either a post or a page so valid posts and pages are parsed with markdown or textile.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Template files.&lt;/strong&gt;
-  These files go in &lt;code&gt;_layouts&lt;/code&gt; folder and contain your blogs &lt;strong&gt;templates&lt;/strong&gt;. They should be made in HTML with the help of Liquid syntax.
-  Since include files are simply injected into templates they are essentially parsed as if they were native to the template.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Template files.&lt;/strong&gt;
+These files go in &lt;code&gt;_layouts&lt;/code&gt; folder and contain your blogs &lt;strong&gt;templates&lt;/strong&gt;. They should be made in HTML with the help of Liquid syntax.
+Since include files are simply injected into templates they are essentially parsed as if they were native to the template.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;strong&gt;Arbitrary files and folders.&lt;/strong&gt;
 Files that &lt;em&gt;are not&lt;/em&gt; valid pages are treated as static content and pass through
 Jekyll untouched and reside on your blog in the exact structure and format they originally existed in.&lt;/p&gt;
 
-&lt;h3 id=&quot;formatting-files-for-parsing&quot;&gt;Formatting Files for Parsing.&lt;/h3&gt;
+&lt;h3&gt;Formatting Files for Parsing.&lt;/h3&gt;
 
-&lt;p&gt;We’ve outlined the need for valid formatting using &lt;strong&gt;YAML Front Matter&lt;/strong&gt;.
+&lt;p&gt;We&amp;#39;ve outlined the need for valid formatting using &lt;strong&gt;YAML Front Matter&lt;/strong&gt;.
 Templates, posts, and pages all need to provide valid YAML Front Matter even if the Matter is empty.
 This is the only way Jekyll knows you want the file processed.&lt;/p&gt;
 
 &lt;p&gt;YAML Front Matter must be prepended to the top of template/post/page files:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;---
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;---
 layout: post
 category : pages
 tags : [how-to, jekyll]
 ---
 
 ... contents ...
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Three hyphens on a new line start the Front-Matter block and three hyphens on a new line end the block.
 The data inside the block must be valid YAML.&lt;/p&gt;
 
 &lt;p&gt;Configuration parameters for YAML Front-Matter is outlined here:
 &lt;a href=&quot;https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter&quot;&gt;A comprehensive explanation of YAML Front Matter&lt;/a&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;defining-layouts-for-posts-and-templates-parsing&quot;&gt;Defining Layouts for Posts and Templates Parsing.&lt;/h4&gt;
+&lt;h4&gt;Defining Layouts for Posts and Templates Parsing.&lt;/h4&gt;
 
 &lt;p&gt;The &lt;code&gt;layout&lt;/code&gt; parameter in the YAML Front Matter defines the template file for which the given post or template should be injected into.
 If a template file specifies its own layout, it is effectively being used as a &lt;code&gt;sub-template.&lt;/code&gt;
-That is to say loading a post file into a template file that refers to another template file with work in the way you’d expect; as a nested sub-template.&lt;/p&gt;
+That is to say loading a post file into a template file that refers to another template file with work in the way you&amp;#39;d expect; as a nested sub-template.&lt;/p&gt;
 
-&lt;h2 id=&quot;how-jekyll-generates-the-final-static-files&quot;&gt;How Jekyll Generates the Final Static Files.&lt;/h2&gt;
+&lt;h2&gt;How Jekyll Generates the Final Static Files.&lt;/h2&gt;
 
-&lt;p&gt;Ultimately, Jekyll’s job is to generate a static representation of your website.
-The following is an outline of how that’s done:&lt;/p&gt;
+&lt;p&gt;Ultimately, Jekyll&amp;#39;s job is to generate a static representation of your website.
+The following is an outline of how that&amp;#39;s done:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Jekyll collects data.&lt;/strong&gt;
-  Jekyll scans the posts directory and collects all posts files as post objects. It then scans the layout assets and collects those and finally scans other directories in search of pages.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Jekyll computes data.&lt;/strong&gt;
-  Jekyll takes these objects, computes metadata (permalinks, tags, categories, titles, dates) from them and constructs one
-  big &lt;code&gt;site&lt;/code&gt; object that holds all the posts, pages, layouts, and respective metadata.
-  At this stage your site is one big computed ruby object.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Jekyll liquifies posts and templates.&lt;/strong&gt;
-  Next jekyll loops through each post file and converts (through markdown or textile) and &lt;strong&gt;liquifies&lt;/strong&gt; the post inside of its respective layout(s).
-  Once the post is parsed and liquified inside the the proper layout structure, the layout itself is “liquified”.
- &lt;strong&gt;Liquification&lt;/strong&gt; is defined as follows: Jekyll initiates a Liquid template, and passes a simpler hash representation of the ruby site object as well as a simpler
-  hash representation of the ruby post object. These simplified data structures are what you have access to in the templates.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Jekyll generates output.&lt;/strong&gt;
- Finally the liquid templates are “rendered”, thereby processing any liquid syntax provided in the templates
- and saving the final, static representation of the file.&lt;/p&gt;
-  &lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Jekyll collects data.&lt;/strong&gt;
+Jekyll scans the posts directory and collects all posts files as post objects. It then scans the layout assets and collects those and finally scans other directories in search of pages.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Jekyll computes data.&lt;/strong&gt;
+Jekyll takes these objects, computes metadata (permalinks, tags, categories, titles, dates) from them and constructs one
+big &lt;code&gt;site&lt;/code&gt; object that holds all the posts, pages, layouts, and respective metadata.
+At this stage your site is one big computed ruby object.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Jekyll liquifies posts and templates.&lt;/strong&gt;
+Next jekyll loops through each post file and converts (through markdown or textile) and &lt;strong&gt;liquifies&lt;/strong&gt; the post inside of its respective layout(s).
+Once the post is parsed and liquified inside the the proper layout structure, the layout itself is &amp;quot;liquified&amp;quot;.
+&lt;strong&gt;Liquification&lt;/strong&gt; is defined as follows: Jekyll initiates a Liquid template, and passes a simpler hash representation of the ruby site object as well as a simpler
+hash representation of the ruby post object. These simplified data structures are what you have access to in the templates.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Jekyll generates output.&lt;/strong&gt;
+Finally the liquid templates are &amp;quot;rendered&amp;quot;, thereby processing any liquid syntax provided in the templates
+and saving the final, static representation of the file.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;&lt;strong&gt;Notes.&lt;/strong&gt;
 Because Jekyll computes the entire site in one fell swoop, each template is given access to
-a global &lt;code&gt;site&lt;/code&gt; hash that contains useful data. It is this data that you’ll iterate through and format
+a global &lt;code&gt;site&lt;/code&gt; hash that contains useful data. It is this data that you&amp;#39;ll iterate through and format
 using the Liquid tags and filters in order to render it onto a given page.&lt;/p&gt;
 
 &lt;p&gt;Remember, in Jekyll you are an end-user. Your API has only two components:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;The manner in which you setup your directory.&lt;/li&gt;
-  &lt;li&gt;The liquid syntax and variables passed into the liquid templates.&lt;/li&gt;
+&lt;li&gt;The manner in which you setup your directory.&lt;/li&gt;
+&lt;li&gt;The liquid syntax and variables passed into the liquid templates.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;All the data objects available to you in the templates via Liquid are outlined in the &lt;strong&gt;API Section&lt;/strong&gt; of Jekyll-Bootstrap.
 You can also read the original documentation here: &lt;a href=&quot;https://github.com/mojombo/jekyll/wiki/Template-Data&quot;&gt;https://github.com/mojombo/jekyll/wiki/Template-Data&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
 
 &lt;p&gt;I hope this paints a clearer picture of what Jekyll is doing and why it works the way it does.
 As noted, our main programming constraint is the fact that our API is limited to what is accessible via Liquid and Liquid only.&lt;/p&gt;
@@ -799,10 +758,10 @@ As noted, our main programming constraint is the fact that our API is limited to
 
 &lt;p&gt;&lt;strong&gt;Thank you&lt;/strong&gt; for reading this far.&lt;/p&gt;
 
-&lt;h2 id=&quot;next-steps&quot;&gt;Next Steps&lt;/h2&gt;
+&lt;h2&gt;Next Steps&lt;/h2&gt;
 
-&lt;p&gt;Please take a look at []()
-or jump right into &lt;a href=&quot;&quot;&gt;Usage&lt;/a&gt; if you’d like.&lt;/p&gt;
+&lt;p&gt;Please take a look at &lt;a href=&quot;&quot;&gt;&lt;/a&gt;
+or jump right into &lt;a href=&quot;&quot;&gt;Usage&lt;/a&gt; if you&amp;#39;d like.&lt;/p&gt;
 </description>
                 <link>/lessons/2011/12/29/jekyll-introduction.html</link>
                 <guid>/lessons/2011/12/29/jekyll-introduction</guid>

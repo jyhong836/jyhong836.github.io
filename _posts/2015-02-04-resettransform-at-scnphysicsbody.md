@@ -15,11 +15,13 @@ Through experiment, I found this is little special.
 
 If you do this: 
 
-	var node = SCNNode(geomentry: SCNBox())
-	node.position = SCNVector3(0, 1, 0)
-	node.rotation = SCNVector4(1, 0, 0, CGFloat(M_PI)/2)
-	node.physicsBody = SCNPhysicsBody(type: .Dynamic, nil)
-	scene.rootNode.addChildNode(node)
+```swift
+var node = SCNNode(geomentry: SCNBox())
+node.position = SCNVector3(0, 1, 0)
+node.rotation = SCNVector4(1, 0, 0, CGFloat(M_PI)/2)
+node.physicsBody = SCNPhysicsBody(type: .Dynamic, nil)
+scene.rootNode.addChildNode(node)
+```
 
 If you get the `position` and `rotation` of `node.presentationNode()` in the render delegate, where I mean you need to get the latest and real data, you will found the effect of the setup of node's position and rotation is not work at the begining.
 
@@ -35,11 +37,13 @@ The __Animatable__ means it will take several frames to get the effect.
 
 However, it's different when you use resetTransform of SCNPhysicsBody:
 
-	var node = SCNNode(geomentry: SCNBox())
-	node.position = SCNVector3(0, 1, 0)
-	node.rotation = SCNVector4(1, 0, 0, CGFloat(M_PI)/2)
-	node.physicsBody = SCNPhysicsBody(type: .Dynamic, nil)
-	scene.rootNode.addChildNode(node)
-	node.physicsBody.resetTransform()
+```swift
+var node = SCNNode(geomentry: SCNBox())
+node.position = SCNVector3(0, 1, 0)
+node.rotation = SCNVector4(1, 0, 0, CGFloat(M_PI)/2)
+node.physicsBody = SCNPhysicsBody(type: .Dynamic, nil)
+scene.rootNode.addChildNode(node)
+node.physicsBody.resetTransform()
+```
 
 The effect will work at the begining.
