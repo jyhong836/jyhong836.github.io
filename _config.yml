@@ -11,7 +11,7 @@ disqus-shortname: "hongblog"
 markdown: redcarpet
 highlighter: pygments
 redcarpet:
-  extensions: ["tables", "no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript", "highlight", "footnotes"]
+  extensions: ["tables", "no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript", "highlight", "quote", "underline", "space_after_headers", "footnotes"]
 kramdown:
   # input:          GFM
   auto_ids:       true
