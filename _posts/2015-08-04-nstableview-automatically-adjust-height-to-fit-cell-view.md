@@ -5,7 +5,7 @@ description: ""
 category: tech
 tags: [OS X, Xcode, Cocoa]
 ---
-{% include JB/setup %}
+<!-- {% include JB/setup %} -->
 
 Reference: [Using auto-layout to calculate table cell height](http://blog.amyworrall.com/post/66085151655/using-auto-layout-to-calculate-table-cell-height)
 

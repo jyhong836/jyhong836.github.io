@@ -5,7 +5,7 @@ description: ""
 category: tech
 tags: [library, OS X, Xcode]
 ---
-{% include JB/setup %}
+<!-- {% include JB/setup %} -->
 
 Dynamic library (with .dylib suffix at UNIX-like OS) is a kind of library discriminated from static library (with .a suffix). Static library will be linked at linking stage instantly after codes are compiled, before binary product output. And instead library is loaded at runtime, I mean load but not link. Load means the executable file will search for binary library when they need it. That's why some app will announce you that it lack a lib when you double click them for running happily. In contrast, static library will compile these needed part into you app, so the user will not be bothered.
 

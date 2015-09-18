@@ -5,7 +5,7 @@ description: "It's about how to make a iMessage-like chat table view."
 category: tech
 tags: [OS X, Xcode, Cocoa]
 ---
-{% include JB/setup %}
+<!-- {% include JB/setup %} -->
 
 To make a iMessage-like chat table view, there is several steps to follow:
 
