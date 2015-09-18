@@ -13,11 +13,11 @@ Dynamic library (with .dylib suffix at UNIX-like OS) is a kind of library discri
 
 That's file size! A static library is several times bigger than a same function dynamic library. For example the SDL lib at OS X, which is located at /usr/local/Cellar/sdl2/2.0.3/lib/  if you install it through Homebrew.
 
-```bash
+~~~ bash
 $ ls /usr/local/Cellar/sdl2/2.0.3/lib/ -lh
 -r--r--r-- 1 user admin 850K Jul 20 22:18 libSDL2-2.0.0.dylib
 -r--r--r-- 1 user admin 1.5M Oct 22  2014 libSDL2.a
-```
+~~~
 
 There are two method to add 3rd-part dynamic library to a Xcode target:
 
@@ -143,7 +143,7 @@ $ install_name_tool -id new_install_name bin_file
 As a conclusion, the strategy for adding 3rd part dynamic library into Xcode target is:
 
 1. Add library to Build Phase, and add header to search path. This guarantee no compile and link error will occur.
-2. Let Xcode copy .dylib file into product after compiled. Add "New Copy Files Phase", name it "Copy Libraries"![new copy phase](/assets/img/new_copy_phase.jpg)
+2. Let Xcode copy .dylib file into product after compiled. Add "New Copy Files Phase", name it "Copy Libraries" ![new copy phase](/assets/img/new_copy_phase.jpg) 
 3. Set the "Destination" to "Frameworks". Add your dylib here.link_dynamic_lib ![link dynamic lib](/assets/img/link_dynamic_lib.jpg)
 4. Change install_name of library:
 

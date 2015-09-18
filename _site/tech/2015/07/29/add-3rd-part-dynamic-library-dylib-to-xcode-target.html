@@ -18,7 +18,8 @@
     <!-- Custom CSS -->
     <link href="/css/grayscale.css" rel="stylesheet">
     <link href="/css/timeline.css" rel="stylesheet">
-    <link href="/css/pygments/default.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/pygments/xcode.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -242,7 +243,7 @@ ViviSwiften.framework/Versions/A/ViviSwiften:
 
 <ol>
 <li>Add library to Build Phase, and add header to search path. This guarantee no compile and link error will occur.</li>
-<li>Let Xcode copy .dylib file into product after compiled. Add &quot;New Copy Files Phase&quot;, name it &quot;Copy Libraries&quot;<img src="/assets/img/new_copy_phase.jpg" alt="new copy phase"></li>
+<li>Let Xcode copy .dylib file into product after compiled. Add &quot;New Copy Files Phase&quot;, name it &quot;Copy Libraries&quot; <img src="/assets/img/new_copy_phase.jpg" alt="new copy phase"> </li>
 <li>Set the &quot;Destination&quot; to &quot;Frameworks&quot;. Add your dylib here.link_dynamic_lib <img src="/assets/img/link_dynamic_lib.jpg" alt="link dynamic lib"></li>
 <li><p>Change install_name of library:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">$ install_name_tool -id @loader_path/Frameworks/libSwiften.3.0.dylib libSwiften.3.0.dylib

@@ -4,7 +4,7 @@
  <title>{ Junyuan Hong }</title>
  <link href="/" rel="self"/>
  <link href=""/>
- <updated>2015-09-18T19:02:38+08:00</updated>
+ <updated>2015-09-19T01:04:38+08:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -254,7 +254,7 @@ ViviSwiften.framework/Versions/A/ViviSwiften:
 
 &lt;ol&gt;
 &lt;li&gt;Add library to Build Phase, and add header to search path. This guarantee no compile and link error will occur.&lt;/li&gt;
-&lt;li&gt;Let Xcode copy .dylib file into product after compiled. Add &amp;quot;New Copy Files Phase&amp;quot;, name it &amp;quot;Copy Libraries&amp;quot;&lt;img src=&quot;/assets/img/new_copy_phase.jpg&quot; alt=&quot;new copy phase&quot;&gt;&lt;/li&gt;
+&lt;li&gt;Let Xcode copy .dylib file into product after compiled. Add &amp;quot;New Copy Files Phase&amp;quot;, name it &amp;quot;Copy Libraries&amp;quot; &lt;img src=&quot;/assets/img/new_copy_phase.jpg&quot; alt=&quot;new copy phase&quot;&gt; &lt;/li&gt;
 &lt;li&gt;Set the &amp;quot;Destination&amp;quot; to &amp;quot;Frameworks&amp;quot;. Add your dylib here.link_dynamic_lib &lt;img src=&quot;/assets/img/link_dynamic_lib.jpg&quot; alt=&quot;link dynamic lib&quot;&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Change install_name of library:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ install_name_tool -id @loader_path/Frameworks/libSwiften.3.0.dylib libSwiften.3.0.dylib
