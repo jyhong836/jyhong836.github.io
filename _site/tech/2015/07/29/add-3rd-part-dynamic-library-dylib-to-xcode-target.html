@@ -115,7 +115,7 @@
 
 <p>Dynamic library (with .dylib suffix at UNIX-like OS) is a kind of library discriminated from static library (with .a suffix). Static library will be linked at linking stage instantly after codes are compiled, before binary product output. And instead library is loaded at runtime, I mean load but not link. Load means the executable file will search for binary library when they need it. That&#39;s why some app will announce you that it lack a lib when you double click them for running happily. In contrast, static library will compile these needed part into you app, so the user will not be bothered.</p>
 
-<h4>Then why we use dynamic library?</h4>
+<h4 id="then-why-we-use-dynamic-library">Then why we use dynamic library?</h4>
 
 <p>That&#39;s file size! A static library is several times bigger than a same function dynamic library. For example the SDL lib at OS X, which is located at /usr/local/Cellar/sdl2/2.0.3/lib/  if you install it through Homebrew.</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ls /usr/local/Cellar/sdl2/2.0.3/lib/ -lh
@@ -129,13 +129,13 @@
 <li>Copy your library into your product.</li>
 </ul>
 
-<h3>Method 1: Install the library</h3>
+<h3 id="method-1-install-the-library">Method 1: Install the library</h3>
 
 <p>For most library, 3rd part library can be installed into system, at <code>/usr/local/lib or /usr/lib</code>. Then just add header path to <code>Xcode target &gt; Build Setting</code>, if the header file is not be found by Xcode. Finally, link your library at <code>Xcode target &gt; Build Phase &gt; Linked Libraries and Frameworks</code>.</p>
 
 <p>However, this method doesn&#39;t allow your app user to use app freely, since it require the user to install the library too. That&#39;s terrible for an app.</p>
 
-<h3>Method 2: Copy .dylib file into your product</h3>
+<h3 id="method-2-copy-dylib-file-into-your-product">Method 2: Copy .dylib file into your product</h3>
 
 <p>So it&#39;s obvious that a better way to use dynamic library is bundle the .dylib with .app file. Path relative  yourself is better than relative to system.</p>
 
@@ -164,7 +164,7 @@ Vivi.app/Contents/MacOS/Vivi:
 
 <p>Well, there is so many stuffs. Hey, I found there is my frameworks,  ViviSwiften.framework and ViviInterface.framework. Okay, I know <code>ViviInterface.framework/Versions/A/ViviInterface</code> is the path point to the binary file of the framework (Different from .app file, framework&#39;s binary file is located at FrameworkName.framework/Versions/A/FrameworkName commonly), but what the @rpath means.</p>
 
-<h4>What&#39;s @excutable_path, @loader_path and @rpath?<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup> <sup id="fnref2"><a href="#fn2" rel="footnote">2</a></sup> <sup id="fnref3"><a href="#fn3" rel="footnote">3</a></sup></h4>
+<h4 id="what-39-s-excutable_path-loader_path-and-rpath-1-2-3">What&#39;s @excutable_path, @loader_path and @rpath?<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup> <sup id="fnref2"><a href="#fn2" rel="footnote">2</a></sup> <sup id="fnref3"><a href="#fn3" rel="footnote">3</a></sup></h4>
 
 <!-- Reference: [OS X Man Page: dyld(1)](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/dyld.1.html)(this also can be found by running `man dyld` at OS X), [Run-Path Dependent Libraries](https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/RunpathDependentLibraries.html). -->
 
@@ -186,7 +186,7 @@ ViviSwiften.framework/Versions/A/ViviSwiften:
 </code></pre></div>
 <p>You can see that ViviSwiften.framework used a 3rd part dynamic library libSwiften.dylib  with path <code>@loader_path/Frameworks/libSwiften.3.0.dylib</code>.</p>
 
-<h4>How system find these libraries or frameworks? (Vivi example)</h4>
+<h4 id="how-system-find-these-libraries-or-frameworks-vivi-example">How system find these libraries or frameworks? (Vivi example)</h4>
 
 <ol>
 <li>User double clicks to run Vivi.app.</li>
@@ -197,11 +197,11 @@ ViviSwiften.framework/Versions/A/ViviSwiften:
 <li>Found <code>@loader_path/Frameworks/libSwiften.3.0.dylib</code> which has been transferred to <code>ViviSwiften.framework/Version/A/Frameworks/libSwiften.3.0.dylib</code>.</li>
 </ol>
 
-<h4>How these messages are written into binary file?</h4>
+<h4 id="how-these-messages-are-written-into-binary-file">How these messages are written into binary file?</h4>
 
 <p>Well, we know the messages are inside the binary file, but how they get into there? There are two hard woking builder: compiler and linker. Compiler will mark the needed symbols and pass to linker, Linker will find symbols in libraries you told it. Finally linker will write the needed libraries into executable binary file. If you provide a static library, linker will write the whole file into binary file. Or if you provide a dynamic library, only library path will be written into binary file.</p>
 
-<h4>Where does linker get the path from?</h4>
+<h4 id="where-does-linker-get-the-path-from">Where does linker get the path from?</h4>
 
 <p>Unfortunately the path is not provided by developer of the App but the 3rd part library developer. So you can not let Xcode use the path relative your product or use path provided by yourself.</p>
 
@@ -218,7 +218,7 @@ ViviSwiften.framework/Versions/A/ViviSwiften:
 
 <p>The path provided by ViviSwiften.framework is the correct path as described above. But will the 3rd part library always provide correct path as we expected? No!</p>
 
-<h4>What path will compiled 3rd part library provide?</h4>
+<h4 id="what-path-will-compiled-3rd-part-library-provide">What path will compiled 3rd part library provide?</h4>
 
 <p>There is two situations:</p>
 
@@ -229,7 +229,7 @@ ViviSwiften.framework/Versions/A/ViviSwiften:
 
 <p>Both situation is not expected.</p>
 
-<h3>Change the install_name to expected</h3>
+<h3 id="change-the-install_name-to-expected">Change the install_name to expected</h3>
 
 <p>OS X provide another tool named install_name_tool  for change install_name and linked lib install_name.</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># change linked lib path</span>
@@ -237,14 +237,14 @@ ViviSwiften.framework/Versions/A/ViviSwiften:
 <span class="c"># change the library install_name</span>
 <span class="nv">$ </span>install_name_tool -id new_install_name bin_file
 </code></pre></div>
-<h3>The whole strategy</h3>
+<h3 id="the-whole-strategy">The whole strategy</h3>
 
 <p>As a conclusion, the strategy for adding 3rd part dynamic library into Xcode target is:</p>
 
 <ol>
 <li>Add library to Build Phase, and add header to search path. This guarantee no compile and link error will occur.</li>
-<li>Let Xcode copy .dylib file into product after compiled. Add &quot;New Copy Files Phase&quot;, name it &quot;Copy Libraries&quot; <img src="/assets/img/new_copy_phase.jpg" alt="new copy phase"> </li>
-<li>Set the &quot;Destination&quot; to &quot;Frameworks&quot;. Add your dylib here.link_dynamic_lib <img src="/assets/img/link_dynamic_lib.jpg" alt="link dynamic lib"></li>
+<li>Let Xcode copy .dylib file into product after compiled. Add <q>New Copy Files Phase</q>, name it <q>Copy Libraries</q> <img src="/assets/img/new_copy_phase.jpg" alt="new copy phase"> </li>
+<li>Set the <q>Destination</q> to <q>Frameworks</q>. Add your dylib here.link_dynamic_lib <img src="/assets/img/link_dynamic_lib.jpg" alt="link dynamic lib"></li>
 <li>Change install_name of library:
 <code>
 $ install_name_tool -id @loader_path/Frameworks/libSwiften.3.0.dylib libSwiften.3.0.dylib
@@ -253,7 +253,7 @@ $ install_name_tool -id @loader_path/Frameworks/libSwiften.3.0.dylib libSwiften.
 
 <p>That&#39;s all.</p>
 
-<h3>Reference</h3>
+<h3 id="reference">Reference</h3>
 
 <div class="footnotes">
 <hr>
