@@ -4,7 +4,7 @@
  <title>{ Junyuan Hong }</title>
  <link href="/" rel="self"/>
  <link href=""/>
- <updated>2015-09-19T09:07:03+08:00</updated>
+ <updated>2015-09-19T09:16:42+08:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -142,7 +142,7 @@
 
 &lt;h3 id=&quot;method-1-install-the-library&quot;&gt;Method 1: Install the library&lt;/h3&gt;
 
-&lt;p&gt;For most library, 3rd part library can be installed into system, at &lt;code&gt;/usr/local/lib or /usr/lib&lt;/code&gt;. Then just add header path to &lt;code&gt;Xcode target &amp;gt; Build Setting&lt;/code&gt;, if the header file is not be found by Xcode. Finally, link your library at &lt;code&gt;Xcode target &amp;gt; Build Phase &amp;gt; Linked Libraries and Frameworks&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;For most library, 3rd part library can be installed into system, at &lt;code class=&quot;prettyprint&quot;&gt;/usr/local/lib or /usr/lib&lt;/code&gt;. Then just add header path to &lt;code class=&quot;prettyprint&quot;&gt;Xcode target &amp;gt; Build Setting&lt;/code&gt;, if the header file is not be found by Xcode. Finally, link your library at &lt;code class=&quot;prettyprint&quot;&gt;Xcode target &amp;gt; Build Phase &amp;gt; Linked Libraries and Frameworks&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;However, this method doesn&amp;#39;t allow your app user to use app freely, since it require the user to install the library too. That&amp;#39;s terrible for an app.&lt;/p&gt;
 
@@ -173,7 +173,7 @@ Vivi.app/Contents/MacOS/Vivi:
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;It seems that otool  print the list of path of all linked libraries and their version messages.&lt;/p&gt;
 
-&lt;p&gt;Well, there is so many stuffs. Hey, I found there is my frameworks,  ViviSwiften.framework and ViviInterface.framework. Okay, I know &lt;code&gt;ViviInterface.framework/Versions/A/ViviInterface&lt;/code&gt; is the path point to the binary file of the framework (Different from .app file, framework&amp;#39;s binary file is located at FrameworkName.framework/Versions/A/FrameworkName commonly), but what the @rpath means.&lt;/p&gt;
+&lt;p&gt;Well, there is so many stuffs. Hey, I found there is my frameworks,  ViviSwiften.framework and ViviInterface.framework. Okay, I know &lt;code class=&quot;prettyprint&quot;&gt;ViviInterface.framework/Versions/A/ViviInterface&lt;/code&gt; is the path point to the binary file of the framework (Different from .app file, framework&amp;#39;s binary file is located at FrameworkName.framework/Versions/A/FrameworkName commonly), but what the @rpath means.&lt;/p&gt;
 
 &lt;h4 id=&quot;what-39-s-excutable_path-loader_path-and-rpath-1-2-3&quot;&gt;What&amp;#39;s @excutable_path, @loader_path and @rpath?&lt;sup id=&quot;fnref1&quot;&gt;&lt;a href=&quot;#fn1&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;sup id=&quot;fnref2&quot;&gt;&lt;a href=&quot;#fn2&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; &lt;sup id=&quot;fnref3&quot;&gt;&lt;a href=&quot;#fn3&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/h4&gt;
 
@@ -182,9 +182,9 @@ Vivi.app/Contents/MacOS/Vivi:
 &lt;p&gt;The three variable is defined at runtime:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;@executable_path&lt;/strong&gt;, this always point to the product executable binary file path,  &lt;code&gt;AppName.app/Contents/MacOS/AppName&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;@loader_path&lt;/strong&gt;, this is dependent on which is the loader. For example, my Vivi.app load the &lt;code&gt;ViviSwiften.framework&lt;/code&gt;, then a dylib linked by ViviSwiften.framework could get two variable &lt;code&gt;@loader_path=/path/to/ViviSwiften.framework/Versions/A/&lt;/code&gt;, and &lt;code&gt;@executable_path=/path/to/Vivi.app/Contents/MacOS/&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;@rpath&lt;/strong&gt;, this is just a path stored some predefined path. You can set it at &lt;code&gt;Xcode target &amp;gt; Build Setting &amp;gt; Runpath Search Path&lt;/code&gt;. Often there will include &lt;code&gt;@executable_path/../Frameworks&lt;/code&gt; for an App target, &lt;code&gt;@executable_path/../Frameworks and @loader_path/Frameworks&lt;/code&gt; for a Framework target, &lt;code&gt;@executable_path/../Frameworks&lt;/code&gt; and &lt;code&gt;@loader_path/../Frameworks&lt;/code&gt; for a Unit Test target.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;@executable_path&lt;/strong&gt;, this always point to the product executable binary file path,  &lt;code class=&quot;prettyprint&quot;&gt;AppName.app/Contents/MacOS/AppName&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;@loader_path&lt;/strong&gt;, this is dependent on which is the loader. For example, my Vivi.app load the &lt;code class=&quot;prettyprint&quot;&gt;ViviSwiften.framework&lt;/code&gt;, then a dylib linked by ViviSwiften.framework could get two variable &lt;code class=&quot;prettyprint&quot;&gt;@loader_path=/path/to/ViviSwiften.framework/Versions/A/&lt;/code&gt;, and &lt;code class=&quot;prettyprint&quot;&gt;@executable_path=/path/to/Vivi.app/Contents/MacOS/&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;@rpath&lt;/strong&gt;, this is just a path stored some predefined path. You can set it at &lt;code class=&quot;prettyprint&quot;&gt;Xcode target &amp;gt; Build Setting &amp;gt; Runpath Search Path&lt;/code&gt;. Often there will include &lt;code class=&quot;prettyprint&quot;&gt;@executable_path/../Frameworks&lt;/code&gt; for an App target, &lt;code class=&quot;prettyprint&quot;&gt;@executable_path/../Frameworks and @loader_path/Frameworks&lt;/code&gt; for a Framework target, &lt;code class=&quot;prettyprint&quot;&gt;@executable_path/../Frameworks&lt;/code&gt; and &lt;code class=&quot;prettyprint&quot;&gt;@loader_path/../Frameworks&lt;/code&gt; for a Unit Test target.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Now we know Vivi.app used ViviSwiften.framework and ViviInterface.framework created by myself, and other system frameworks or libraries. But there is no 3rd part dynamic libraries added by myself (the dylib linked in Vivi.app is auto added by Xcode). The libraries is libSwiften.3.0.dylib which is linked in ViviSwiften.framework. Let&amp;#39;s ask ViviSwiften if that is true.&lt;/p&gt;
@@ -195,17 +195,17 @@ ViviSwiften.framework/Versions/A/ViviSwiften:
     /System/Library/Frameworks/Security.framework/Versions/A/Security &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;compatibility version 1.0.0, current version 57301.0.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
     ...
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;You can see that ViviSwiften.framework used a 3rd part dynamic library libSwiften.dylib  with path &lt;code&gt;@loader_path/Frameworks/libSwiften.3.0.dylib&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;You can see that ViviSwiften.framework used a 3rd part dynamic library libSwiften.dylib  with path &lt;code class=&quot;prettyprint&quot;&gt;@loader_path/Frameworks/libSwiften.3.0.dylib&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h4 id=&quot;how-system-find-these-libraries-or-frameworks-vivi-example&quot;&gt;How system find these libraries or frameworks? (Vivi example)&lt;/h4&gt;
 
 &lt;ol&gt;
 &lt;li&gt;User double clicks to run Vivi.app.&lt;/li&gt;
-&lt;li&gt;Vivi.app executes &lt;code&gt;Vivi.app/Contents/MacOS/Vivi&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Vivi.app executes &lt;code class=&quot;prettyprint&quot;&gt;Vivi.app/Contents/MacOS/Vivi&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;Search for dynamic libraries and frameworks needed by Vivi.app.&lt;/li&gt;
-&lt;li&gt;Found &lt;code&gt;@rpath/ViviSwiften.framework/Versions/A/ViviSwiften&lt;/code&gt;, which is transferred to  &lt;code&gt;@executable_path/../Frameworks/ViviSwiften/&lt;/code&gt;  then transferred to &lt;code&gt;Vivi.app/Contents/MacOS/Vivi/../Frameworks/ViviSwiften&lt;/code&gt;.framework .&lt;/li&gt;
-&lt;li&gt;Search for dynamic libraries and frameworks needed by &lt;code&gt;ViviSwiften.framework&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Found &lt;code&gt;@loader_path/Frameworks/libSwiften.3.0.dylib&lt;/code&gt; which has been transferred to &lt;code&gt;ViviSwiften.framework/Version/A/Frameworks/libSwiften.3.0.dylib&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Found &lt;code class=&quot;prettyprint&quot;&gt;@rpath/ViviSwiften.framework/Versions/A/ViviSwiften&lt;/code&gt;, which is transferred to  &lt;code class=&quot;prettyprint&quot;&gt;@executable_path/../Frameworks/ViviSwiften/&lt;/code&gt;  then transferred to &lt;code class=&quot;prettyprint&quot;&gt;Vivi.app/Contents/MacOS/Vivi/../Frameworks/ViviSwiften&lt;/code&gt;.framework .&lt;/li&gt;
+&lt;li&gt;Search for dynamic libraries and frameworks needed by &lt;code class=&quot;prettyprint&quot;&gt;ViviSwiften.framework&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Found &lt;code class=&quot;prettyprint&quot;&gt;@loader_path/Frameworks/libSwiften.3.0.dylib&lt;/code&gt; which has been transferred to &lt;code class=&quot;prettyprint&quot;&gt;ViviSwiften.framework/Version/A/Frameworks/libSwiften.3.0.dylib&lt;/code&gt;.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h4 id=&quot;how-these-messages-are-written-into-binary-file&quot;&gt;How these messages are written into binary file?&lt;/h4&gt;
@@ -234,8 +234,8 @@ ViviSwiften.framework/Versions/A/ViviSwiften:
 &lt;p&gt;There is two situations:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;You have installed the library with Homebrew or from source (like make install ). The library will provide path like: &lt;code&gt;/usr/lib/libxxx.dylib&lt;/code&gt;, &lt;code&gt;/usr/local/lib/libxx.dylib&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;You just compiled source with &lt;code&gt;./configure&lt;/code&gt; &amp;amp;&amp;amp; make , then the library may provide path like: &lt;code&gt;libxx.dylib&lt;/code&gt; without prefix.&lt;/li&gt;
+&lt;li&gt;You have installed the library with Homebrew or from source (like make install ). The library will provide path like: &lt;code class=&quot;prettyprint&quot;&gt;/usr/lib/libxxx.dylib&lt;/code&gt;, &lt;code class=&quot;prettyprint&quot;&gt;/usr/local/lib/libxx.dylib&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;You just compiled source with &lt;code class=&quot;prettyprint&quot;&gt;./configure&lt;/code&gt; &amp;amp;&amp;amp; make , then the library may provide path like: &lt;code class=&quot;prettyprint&quot;&gt;libxx.dylib&lt;/code&gt; without prefix.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;Both situation is not expected.&lt;/p&gt;
@@ -257,7 +257,7 @@ ViviSwiften.framework/Versions/A/ViviSwiften:
 &lt;li&gt;Let Xcode copy .dylib file into product after compiled. Add &lt;q&gt;New Copy Files Phase&lt;/q&gt;, name it &lt;q&gt;Copy Libraries&lt;/q&gt; &lt;img src=&quot;/assets/img/new_copy_phase.jpg&quot; alt=&quot;new copy phase&quot;&gt; &lt;/li&gt;
 &lt;li&gt;Set the &lt;q&gt;Destination&lt;/q&gt; to &lt;q&gt;Frameworks&lt;/q&gt;. Add your dylib here.link_dynamic_lib &lt;img src=&quot;/assets/img/link_dynamic_lib.jpg&quot; alt=&quot;link dynamic lib&quot;&gt;&lt;/li&gt;
 &lt;li&gt;Change install_name of library:
-&lt;code&gt;
+&lt;code class=&quot;prettyprint&quot;&gt;
 $ install_name_tool -id @loader_path/Frameworks/libSwiften.3.0.dylib libSwiften.3.0.dylib
 &lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -294,7 +294,7 @@ $ install_name_tool -id @loader_path/Frameworks/libSwiften.3.0.dylib libSwiften.
    <id>/tech/2015/02/04/resettransform-at-scnphysicsbody</id>
    <content type="html">&lt;!--  --&gt;
 
-&lt;p&gt;According to the SceneKit document, the function of &lt;code&gt;resetTransform&lt;/code&gt; is: &lt;/p&gt;
+&lt;p&gt;According to the SceneKit document, the function of &lt;code class=&quot;prettyprint&quot;&gt;resetTransform&lt;/code&gt; is: &lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;Updates the position and orientation of a body in the physics simulation to match that of the node to which the body is attached.&lt;/p&gt;
@@ -309,11 +309,11 @@ $ install_name_tool -id @loader_path/Frameworks/libSwiften.3.0.dylib libSwiften.
 &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;physicsBody&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SCNPhysicsBody&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dynamic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;scene&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rootNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;addChildNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;If you get the &lt;code&gt;position&lt;/code&gt; and &lt;code&gt;rotation&lt;/code&gt; of &lt;code&gt;node.presentationNode()&lt;/code&gt; in the render delegate, where I mean you need to get the latest and real data, you will found the effect of the setup of node&amp;#39;s position and rotation is not work at the begining.&lt;/p&gt;
+&lt;p&gt;If you get the &lt;code class=&quot;prettyprint&quot;&gt;position&lt;/code&gt; and &lt;code class=&quot;prettyprint&quot;&gt;rotation&lt;/code&gt; of &lt;code class=&quot;prettyprint&quot;&gt;node.presentationNode()&lt;/code&gt; in the render delegate, where I mean you need to get the latest and real data, you will found the effect of the setup of node&amp;#39;s position and rotation is not work at the begining.&lt;/p&gt;
 
-&lt;p&gt;At the begining, the &lt;code&gt;position&lt;/code&gt; will be &lt;code&gt;(0, 0, 0)&lt;/code&gt;, but not what you have set, &lt;code&gt;(0, 1, 0)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;At the begining, the &lt;code class=&quot;prettyprint&quot;&gt;position&lt;/code&gt; will be &lt;code class=&quot;prettyprint&quot;&gt;(0, 0, 0)&lt;/code&gt;, but not what you have set, &lt;code class=&quot;prettyprint&quot;&gt;(0, 1, 0)&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;If you have read the document about &lt;code&gt;SCNNode.position&lt;/code&gt; and &lt;code&gt;SCNNode.rotation&lt;/code&gt;, you will found:&lt;/p&gt;
+&lt;p&gt;If you have read the document about &lt;code class=&quot;prettyprint&quot;&gt;SCNNode.position&lt;/code&gt; and &lt;code class=&quot;prettyprint&quot;&gt;SCNNode.rotation&lt;/code&gt;, you will found:&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;position&lt;/p&gt;
@@ -367,7 +367,7 @@ git push origin master
 
 &lt;p&gt;Another web about the Jekyll and GitHub: &lt;a href=&quot;http://www.developmentseed.org/blog/2011/09/09/jekyll-github-pages/&quot;&gt;Using Jekyll and GitHub Pages for Our Site&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;In the &lt;code&gt;_config.yml&lt;/code&gt;, you can add some tools:&lt;/p&gt;
+&lt;p&gt;In the &lt;code class=&quot;prettyprint&quot;&gt;_config.yml&lt;/code&gt;, you can add some tools:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Jekyll is easy to add Disqus for comments. You can visit &lt;a href=&quot;https://disqus.com/websites/?utm_source=hongblog&amp;amp;utm_medium=Disqus-Footer&quot;&gt;DISQUS&lt;/a&gt; for more details.&lt;/p&gt;&lt;/li&gt;
@@ -398,11 +398,11 @@ dynamic components such as templates, partials, liquid code, markdown, etc. Jeky
 &lt;h3 id=&quot;what-does-jekyll-do&quot;&gt;What does Jekyll Do?&lt;/h3&gt;
 
 &lt;p&gt;Jekyll is a ruby gem you install on your local system.
-Once there you can call &lt;code&gt;jekyll --server&lt;/code&gt; on a directory and provided that directory
+Once there you can call &lt;code class=&quot;prettyprint&quot;&gt;jekyll --server&lt;/code&gt; on a directory and provided that directory
 is setup in a way jekyll expects, it will do magic stuff like parse markdown/textile files,
 compute categories, tags, permalinks, and construct your pages from layout templates and partials.&lt;/p&gt;
 
-&lt;p&gt;Once parsed, Jekyll stores the result in a self-contained static &lt;code&gt;_site&lt;/code&gt; folder.
+&lt;p&gt;Once parsed, Jekyll stores the result in a self-contained static &lt;code class=&quot;prettyprint&quot;&gt;_site&lt;/code&gt; folder.
 The intention here is that you can serve all contents in this folder statically from a plain static web-server.&lt;/p&gt;
 
 &lt;p&gt;You can think of Jekyll as a normalish dynamic blog but rather than parsing content, templates, and tags
@@ -482,7 +482,7 @@ This folder is for the main templates your content will be inserted into.
 You can have different layouts for different pages or page sections.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;_posts&lt;/strong&gt;
 This folder contains your dynamic content/posts.
-the naming format is required to be &lt;code&gt;@YEAR-MONTH-DATE-title.MARKUP@&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+the naming format is required to be &lt;code class=&quot;prettyprint&quot;&gt;@YEAR-MONTH-DATE-title.MARKUP@&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;_site&lt;/strong&gt;
 This is where the generated site will be placed once Jekyll is done transforming it.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;assets&lt;/strong&gt;
@@ -511,10 +511,10 @@ Both posts and pages can have meta-data assigned on a per-page basis such as tit
 &lt;h3 id=&quot;working-with-posts&quot;&gt;Working With Posts&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;Creating a Post&lt;/strong&gt;
-Posts are created by properly formatting a file and placing it the &lt;code&gt;_posts&lt;/code&gt; folder.&lt;/p&gt;
+Posts are created by properly formatting a file and placing it the &lt;code class=&quot;prettyprint&quot;&gt;_posts&lt;/code&gt; folder.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Formatting&lt;/strong&gt;
-A post must have a valid filename in the form &lt;code&gt;YEAR-MONTH-DATE-title.MARKUP&lt;/code&gt; and be placed in the &lt;code&gt;_posts&lt;/code&gt; directory.
+A post must have a valid filename in the form &lt;code class=&quot;prettyprint&quot;&gt;YEAR-MONTH-DATE-title.MARKUP&lt;/code&gt; and be placed in the &lt;code class=&quot;prettyprint&quot;&gt;_posts&lt;/code&gt; directory.
 If the data format is invalid Jekyll will not recognize the file as a post. The date and title are automatically parsed from the filename of the post file.
 Additionally, each file must have &lt;a href=&quot;https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter&quot;&gt;YAML Front-Matter&lt;/a&gt; prepended to its content.
 YAML Front-Matter is a valid YAML syntax specifying meta-data for the given file.&lt;/p&gt;
@@ -551,7 +551,7 @@ Pages are created by properly formatting a file and placing it anywhere in the r
 
 &lt;p&gt;&lt;strong&gt;Formatting&lt;/strong&gt;
 In order to register as a Jekyll page the file must contain &lt;a href=&quot;https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter&quot;&gt;YAML Front-Matter&lt;/a&gt;.
-Registering a page means 1) that Jekyll will process the page and 2) that the page object will be available in the &lt;code&gt;site.pages&lt;/code&gt; array for inclusion into your templates.&lt;/p&gt;
+Registering a page means 1) that Jekyll will process the page and 2) that the page object will be available in the &lt;code class=&quot;prettyprint&quot;&gt;site.pages&lt;/code&gt; array for inclusion into your templates.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Categories and Tags&lt;/strong&gt;
 Pages do not compute categories nor tags so defining them will have no effect.&lt;/p&gt;
@@ -564,7 +564,7 @@ Example:&lt;/p&gt;
     |-- bob
         |-- essay.html
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;This page will be available at &lt;code&gt;http://yourdomain.com/people/bob/essay.html&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This page will be available at &lt;code class=&quot;prettyprint&quot;&gt;http://yourdomain.com/people/bob/essay.html&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Recommended Pages&lt;/strong&gt;&lt;/p&gt;
 
@@ -582,20 +582,20 @@ A nice about page is easy to do and gives the human perspective to your website.
 &lt;h2 id=&quot;templates-in-jekyll&quot;&gt;Templates in Jekyll&lt;/h2&gt;
 
 &lt;p&gt;Templates are used to contain a page&amp;#39;s or post&amp;#39;s content.
-All templates have access to a global site object variable: &lt;code&gt;site&lt;/code&gt; as well as a page object variable: &lt;code&gt;page&lt;/code&gt;.
+All templates have access to a global site object variable: &lt;code class=&quot;prettyprint&quot;&gt;site&lt;/code&gt; as well as a page object variable: &lt;code class=&quot;prettyprint&quot;&gt;page&lt;/code&gt;.
 The site variable holds all accessible content and metadata relative to the site.
 The page variable holds accessible data for the given page or post being rendered at that point.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Create a Template&lt;/strong&gt;
-Templates are created by properly formatting a file and placing it in the &lt;code&gt;_layouts&lt;/code&gt; directory.&lt;/p&gt;
+Templates are created by properly formatting a file and placing it in the &lt;code class=&quot;prettyprint&quot;&gt;_layouts&lt;/code&gt; directory.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Formatting&lt;/strong&gt;
 Templates should be coded in HTML and contain YAML Front Matter.
 All templates can contain Liquid code to work with your site&amp;#39;s data.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Rending Page/Post Content in a Template&lt;/strong&gt;
-There is a special variable in all templates named : &lt;code&gt;content&lt;/code&gt;.
-The &lt;code&gt;content&lt;/code&gt; variable holds the page/post content including any sub-template content previously defined.
+There is a special variable in all templates named : &lt;code class=&quot;prettyprint&quot;&gt;content&lt;/code&gt;.
+The &lt;code class=&quot;prettyprint&quot;&gt;content&lt;/code&gt; variable holds the page/post content including any sub-template content previously defined.
 Render the content variable wherever you want your main content to be injected into your template:&lt;/p&gt;
 
 &lt;p&gt;&lt;pre&gt;&lt;code&gt;...
@@ -615,7 +615,7 @@ This essentially means a template will render inside of another template.&lt;/p&
 
 &lt;h3 id=&quot;includes&quot;&gt;Includes&lt;/h3&gt;
 
-&lt;p&gt;In Jekyll you can define include files by placing them in the &lt;code&gt;_includes&lt;/code&gt; folder.
+&lt;p&gt;In Jekyll you can define include files by placing them in the &lt;code class=&quot;prettyprint&quot;&gt;_includes&lt;/code&gt; folder.
 Includes are NOT templates, rather they are just code snippets that get included into templates.
 In this way, you can treat the code inside includes as if it was native to the parent template.&lt;/p&gt;
 
@@ -683,7 +683,7 @@ This is done with the liquid templating language.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Post and Page files.&lt;/strong&gt;
 All content in Jekyll is either a post or a page so valid posts and pages are parsed with markdown or textile.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Template files.&lt;/strong&gt;
-These files go in &lt;code&gt;_layouts&lt;/code&gt; folder and contain your blogs &lt;strong&gt;templates&lt;/strong&gt;. They should be made in HTML with the help of Liquid syntax.
+These files go in &lt;code class=&quot;prettyprint&quot;&gt;_layouts&lt;/code&gt; folder and contain your blogs &lt;strong&gt;templates&lt;/strong&gt;. They should be made in HTML with the help of Liquid syntax.
 Since include files are simply injected into templates they are essentially parsed as if they were native to the template.&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -714,8 +714,8 @@ The data inside the block must be valid YAML.&lt;/p&gt;
 
 &lt;h4 id=&quot;defining-layouts-for-posts-and-templates-parsing&quot;&gt;Defining Layouts for Posts and Templates Parsing.&lt;/h4&gt;
 
-&lt;p&gt;The &lt;code&gt;layout&lt;/code&gt; parameter in the YAML Front Matter defines the template file for which the given post or template should be injected into.
-If a template file specifies its own layout, it is effectively being used as a &lt;code&gt;sub-template.&lt;/code&gt;
+&lt;p&gt;The &lt;code class=&quot;prettyprint&quot;&gt;layout&lt;/code&gt; parameter in the YAML Front Matter defines the template file for which the given post or template should be injected into.
+If a template file specifies its own layout, it is effectively being used as a &lt;code class=&quot;prettyprint&quot;&gt;sub-template.&lt;/code&gt;
 That is to say loading a post file into a template file that refers to another template file with work in the way you&amp;#39;d expect; as a nested sub-template.&lt;/p&gt;
 
 &lt;h2 id=&quot;how-jekyll-generates-the-final-static-files&quot;&gt;How Jekyll Generates the Final Static Files.&lt;/h2&gt;
@@ -728,7 +728,7 @@ The following is an outline of how that&amp;#39;s done:&lt;/p&gt;
 Jekyll scans the posts directory and collects all posts files as post objects. It then scans the layout assets and collects those and finally scans other directories in search of pages.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Jekyll computes data.&lt;/strong&gt;
 Jekyll takes these objects, computes metadata (permalinks, tags, categories, titles, dates) from them and constructs one
-big &lt;code&gt;site&lt;/code&gt; object that holds all the posts, pages, layouts, and respective metadata.
+big &lt;code class=&quot;prettyprint&quot;&gt;site&lt;/code&gt; object that holds all the posts, pages, layouts, and respective metadata.
 At this stage your site is one big computed ruby object.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Jekyll liquifies posts and templates.&lt;/strong&gt;
 Next jekyll loops through each post file and converts (through markdown or textile) and &lt;strong&gt;liquifies&lt;/strong&gt; the post inside of its respective layout(s).
@@ -742,7 +742,7 @@ and saving the final, static representation of the file.&lt;/p&gt;&lt;/li&gt;
 
 &lt;p&gt;&lt;strong&gt;Notes.&lt;/strong&gt;
 Because Jekyll computes the entire site in one fell swoop, each template is given access to
-a global &lt;code&gt;site&lt;/code&gt; hash that contains useful data. It is this data that you&amp;#39;ll iterate through and format
+a global &lt;code class=&quot;prettyprint&quot;&gt;site&lt;/code&gt; hash that contains useful data. It is this data that you&amp;#39;ll iterate through and format
 using the Liquid tags and filters in order to render it onto a given page.&lt;/p&gt;
 
 &lt;p&gt;Remember, in Jekyll you are an end-user. Your API has only two components:&lt;/p&gt;

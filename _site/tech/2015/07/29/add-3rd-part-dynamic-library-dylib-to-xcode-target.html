@@ -131,7 +131,7 @@
 
 <h3 id="method-1-install-the-library">Method 1: Install the library</h3>
 
-<p>For most library, 3rd part library can be installed into system, at <code>/usr/local/lib or /usr/lib</code>. Then just add header path to <code>Xcode target &gt; Build Setting</code>, if the header file is not be found by Xcode. Finally, link your library at <code>Xcode target &gt; Build Phase &gt; Linked Libraries and Frameworks</code>.</p>
+<p>For most library, 3rd part library can be installed into system, at <code class="prettyprint">/usr/local/lib or /usr/lib</code>. Then just add header path to <code class="prettyprint">Xcode target &gt; Build Setting</code>, if the header file is not be found by Xcode. Finally, link your library at <code class="prettyprint">Xcode target &gt; Build Phase &gt; Linked Libraries and Frameworks</code>.</p>
 
 <p>However, this method doesn&#39;t allow your app user to use app freely, since it require the user to install the library too. That&#39;s terrible for an app.</p>
 
@@ -162,7 +162,7 @@ Vivi.app/Contents/MacOS/Vivi:
 </code></pre></div>
 <p>It seems that otool  print the list of path of all linked libraries and their version messages.</p>
 
-<p>Well, there is so many stuffs. Hey, I found there is my frameworks,  ViviSwiften.framework and ViviInterface.framework. Okay, I know <code>ViviInterface.framework/Versions/A/ViviInterface</code> is the path point to the binary file of the framework (Different from .app file, framework&#39;s binary file is located at FrameworkName.framework/Versions/A/FrameworkName commonly), but what the @rpath means.</p>
+<p>Well, there is so many stuffs. Hey, I found there is my frameworks,  ViviSwiften.framework and ViviInterface.framework. Okay, I know <code class="prettyprint">ViviInterface.framework/Versions/A/ViviInterface</code> is the path point to the binary file of the framework (Different from .app file, framework&#39;s binary file is located at FrameworkName.framework/Versions/A/FrameworkName commonly), but what the @rpath means.</p>
 
 <h4 id="what-39-s-excutable_path-loader_path-and-rpath-1-2-3">What&#39;s @excutable_path, @loader_path and @rpath?<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup> <sup id="fnref2"><a href="#fn2" rel="footnote">2</a></sup> <sup id="fnref3"><a href="#fn3" rel="footnote">3</a></sup></h4>
 
@@ -171,9 +171,9 @@ Vivi.app/Contents/MacOS/Vivi:
 <p>The three variable is defined at runtime:</p>
 
 <ul>
-<li><strong>@executable_path</strong>, this always point to the product executable binary file path,  <code>AppName.app/Contents/MacOS/AppName</code>.</li>
-<li><strong>@loader_path</strong>, this is dependent on which is the loader. For example, my Vivi.app load the <code>ViviSwiften.framework</code>, then a dylib linked by ViviSwiften.framework could get two variable <code>@loader_path=/path/to/ViviSwiften.framework/Versions/A/</code>, and <code>@executable_path=/path/to/Vivi.app/Contents/MacOS/</code>.</li>
-<li><strong>@rpath</strong>, this is just a path stored some predefined path. You can set it at <code>Xcode target &gt; Build Setting &gt; Runpath Search Path</code>. Often there will include <code>@executable_path/../Frameworks</code> for an App target, <code>@executable_path/../Frameworks and @loader_path/Frameworks</code> for a Framework target, <code>@executable_path/../Frameworks</code> and <code>@loader_path/../Frameworks</code> for a Unit Test target.</li>
+<li><strong>@executable_path</strong>, this always point to the product executable binary file path,  <code class="prettyprint">AppName.app/Contents/MacOS/AppName</code>.</li>
+<li><strong>@loader_path</strong>, this is dependent on which is the loader. For example, my Vivi.app load the <code class="prettyprint">ViviSwiften.framework</code>, then a dylib linked by ViviSwiften.framework could get two variable <code class="prettyprint">@loader_path=/path/to/ViviSwiften.framework/Versions/A/</code>, and <code class="prettyprint">@executable_path=/path/to/Vivi.app/Contents/MacOS/</code>.</li>
+<li><strong>@rpath</strong>, this is just a path stored some predefined path. You can set it at <code class="prettyprint">Xcode target &gt; Build Setting &gt; Runpath Search Path</code>. Often there will include <code class="prettyprint">@executable_path/../Frameworks</code> for an App target, <code class="prettyprint">@executable_path/../Frameworks and @loader_path/Frameworks</code> for a Framework target, <code class="prettyprint">@executable_path/../Frameworks</code> and <code class="prettyprint">@loader_path/../Frameworks</code> for a Unit Test target.</li>
 </ul>
 
 <p>Now we know Vivi.app used ViviSwiften.framework and ViviInterface.framework created by myself, and other system frameworks or libraries. But there is no 3rd part dynamic libraries added by myself (the dylib linked in Vivi.app is auto added by Xcode). The libraries is libSwiften.3.0.dylib which is linked in ViviSwiften.framework. Let&#39;s ask ViviSwiften if that is true.</p>
@@ -184,17 +184,17 @@ ViviSwiften.framework/Versions/A/ViviSwiften:
     /System/Library/Frameworks/Security.framework/Versions/A/Security <span class="o">(</span>compatibility version 1.0.0, current version 57301.0.0<span class="o">)</span>
     ...
 </code></pre></div>
-<p>You can see that ViviSwiften.framework used a 3rd part dynamic library libSwiften.dylib  with path <code>@loader_path/Frameworks/libSwiften.3.0.dylib</code>.</p>
+<p>You can see that ViviSwiften.framework used a 3rd part dynamic library libSwiften.dylib  with path <code class="prettyprint">@loader_path/Frameworks/libSwiften.3.0.dylib</code>.</p>
 
 <h4 id="how-system-find-these-libraries-or-frameworks-vivi-example">How system find these libraries or frameworks? (Vivi example)</h4>
 
 <ol>
 <li>User double clicks to run Vivi.app.</li>
-<li>Vivi.app executes <code>Vivi.app/Contents/MacOS/Vivi</code>.</li>
+<li>Vivi.app executes <code class="prettyprint">Vivi.app/Contents/MacOS/Vivi</code>.</li>
 <li>Search for dynamic libraries and frameworks needed by Vivi.app.</li>
-<li>Found <code>@rpath/ViviSwiften.framework/Versions/A/ViviSwiften</code>, which is transferred to  <code>@executable_path/../Frameworks/ViviSwiften/</code>  then transferred to <code>Vivi.app/Contents/MacOS/Vivi/../Frameworks/ViviSwiften</code>.framework .</li>
-<li>Search for dynamic libraries and frameworks needed by <code>ViviSwiften.framework</code>.</li>
-<li>Found <code>@loader_path/Frameworks/libSwiften.3.0.dylib</code> which has been transferred to <code>ViviSwiften.framework/Version/A/Frameworks/libSwiften.3.0.dylib</code>.</li>
+<li>Found <code class="prettyprint">@rpath/ViviSwiften.framework/Versions/A/ViviSwiften</code>, which is transferred to  <code class="prettyprint">@executable_path/../Frameworks/ViviSwiften/</code>  then transferred to <code class="prettyprint">Vivi.app/Contents/MacOS/Vivi/../Frameworks/ViviSwiften</code>.framework .</li>
+<li>Search for dynamic libraries and frameworks needed by <code class="prettyprint">ViviSwiften.framework</code>.</li>
+<li>Found <code class="prettyprint">@loader_path/Frameworks/libSwiften.3.0.dylib</code> which has been transferred to <code class="prettyprint">ViviSwiften.framework/Version/A/Frameworks/libSwiften.3.0.dylib</code>.</li>
 </ol>
 
 <h4 id="how-these-messages-are-written-into-binary-file">How these messages are written into binary file?</h4>
@@ -223,8 +223,8 @@ ViviSwiften.framework/Versions/A/ViviSwiften:
 <p>There is two situations:</p>
 
 <ol>
-<li>You have installed the library with Homebrew or from source (like make install ). The library will provide path like: <code>/usr/lib/libxxx.dylib</code>, <code>/usr/local/lib/libxx.dylib</code>.</li>
-<li>You just compiled source with <code>./configure</code> &amp;&amp; make , then the library may provide path like: <code>libxx.dylib</code> without prefix.</li>
+<li>You have installed the library with Homebrew or from source (like make install ). The library will provide path like: <code class="prettyprint">/usr/lib/libxxx.dylib</code>, <code class="prettyprint">/usr/local/lib/libxx.dylib</code>.</li>
+<li>You just compiled source with <code class="prettyprint">./configure</code> &amp;&amp; make , then the library may provide path like: <code class="prettyprint">libxx.dylib</code> without prefix.</li>
 </ol>
 
 <p>Both situation is not expected.</p>
@@ -246,7 +246,7 @@ ViviSwiften.framework/Versions/A/ViviSwiften:
 <li>Let Xcode copy .dylib file into product after compiled. Add <q>New Copy Files Phase</q>, name it <q>Copy Libraries</q> <img src="/assets/img/new_copy_phase.jpg" alt="new copy phase"> </li>
 <li>Set the <q>Destination</q> to <q>Frameworks</q>. Add your dylib here.link_dynamic_lib <img src="/assets/img/link_dynamic_lib.jpg" alt="link dynamic lib"></li>
 <li>Change install_name of library:
-<code>
+<code class="prettyprint">
 $ install_name_tool -id @loader_path/Frameworks/libSwiften.3.0.dylib libSwiften.3.0.dylib
 </code></li>
 </ol>

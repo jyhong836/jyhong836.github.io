@@ -109,7 +109,7 @@
 
       	<!-- {% include JB/setup %} -->
 
-<p>According to the SceneKit document, the function of <code>resetTransform</code> is: </p>
+<p>According to the SceneKit document, the function of <code class="prettyprint">resetTransform</code> is: </p>
 
 <blockquote>
 <p>Updates the position and orientation of a body in the physics simulation to match that of the node to which the body is attached.</p>
@@ -124,11 +124,11 @@
 <span class="n">node</span><span class="p">.</span><span class="n">physicsBody</span> <span class="o">=</span> <span class="n">SCNPhysicsBody</span><span class="p">(</span><span class="nl">type</span><span class="p">:</span> <span class="p">.</span><span class="n">Dynamic</span><span class="p">,</span> <span class="nb">nil</span><span class="p">)</span>
 <span class="n">scene</span><span class="p">.</span><span class="n">rootNode</span><span class="p">.</span><span class="n">addChildNode</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
 </code></pre></div>
-<p>If you get the <code>position</code> and <code>rotation</code> of <code>node.presentationNode()</code> in the render delegate, where I mean you need to get the latest and real data, you will found the effect of the setup of node&#39;s position and rotation is not work at the begining.</p>
+<p>If you get the <code class="prettyprint">position</code> and <code class="prettyprint">rotation</code> of <code class="prettyprint">node.presentationNode()</code> in the render delegate, where I mean you need to get the latest and real data, you will found the effect of the setup of node&#39;s position and rotation is not work at the begining.</p>
 
-<p>At the begining, the <code>position</code> will be <code>(0, 0, 0)</code>, but not what you have set, <code>(0, 1, 0)</code>.</p>
+<p>At the begining, the <code class="prettyprint">position</code> will be <code class="prettyprint">(0, 0, 0)</code>, but not what you have set, <code class="prettyprint">(0, 1, 0)</code>.</p>
 
-<p>If you have read the document about <code>SCNNode.position</code> and <code>SCNNode.rotation</code>, you will found:</p>
+<p>If you have read the document about <code class="prettyprint">SCNNode.position</code> and <code class="prettyprint">SCNNode.rotation</code>, you will found:</p>
 
 <blockquote>
 <p>position</p>
