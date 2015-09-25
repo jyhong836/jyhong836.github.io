@@ -5,8 +5,8 @@
         <description>{ Junyuan Hong } - </description>
         <link></link>
         <link></link>
-        <lastBuildDate>2015-09-19T09:16:42+08:00</lastBuildDate>
-        <pubDate>2015-09-19T09:16:42+08:00</pubDate>
+        <lastBuildDate>2015-09-25T10:16:48+08:00</lastBuildDate>
+        <pubDate>2015-09-25T10:16:48+08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -48,7 +48,7 @@
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;defaultRowHeight&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Refer one centence from Apple&amp;#39;s documentation:&lt;/p&gt;
+&lt;p&gt;Refer from Apple&amp;#39;s documentation:&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;Although table views may cache the returned values, you should ensure that this method is efficient.&lt;/p&gt;

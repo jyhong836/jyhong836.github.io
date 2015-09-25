@@ -47,8 +47,7 @@ func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
 }
 ```
 
-Refer one centence from Apple's documentation:
-
+Refer from Apple's documentation:
 > Although table views may cache the returned values, you should ensure that this method is efficient.
 
 So be careful about performance, read more about it to visit reference[^1] .
