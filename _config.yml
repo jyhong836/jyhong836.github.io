@@ -30,8 +30,8 @@ kramdown:
 
 # favicon
 
-favicon: "/img/icon/icon_32x32.png"
-black-favicon: "/img/icon/icon_32x32.png"
+favicon: "/img/icon/icon_64x64.png"
+black-favicon: "/img/icon/icon_64x64.png"
 
 favicon-16x16: "/img/icon/icon_16x16.png"
 favicon-32x32: "/img/icon/icon_32x32.png"
