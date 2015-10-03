@@ -4,7 +4,7 @@
  <title>{ Junyuan Hong }</title>
  <link href="/" rel="self"/>
  <link href=""/>
- <updated>2015-10-01T22:45:19+08:00</updated>
+ <updated>2015-10-03T10:15:42+08:00</updated>
  <id></id>
  <author>
    <name></name>
@@ -381,7 +381,9 @@ git push origin master
    <link href="/lessons/2011/12/29/jekyll-introduction.html"/>
    <updated>2011-12-29T00:00:00+08:00</updated>
    <id>/lessons/2011/12/29/jekyll-introduction</id>
-   <content type="html">&lt;p&gt;This Jekyll introduction will outline specifically  what Jekyll is and why you would want to use it.
+   <content type="html">&lt;!--  --&gt;
+
+&lt;p&gt;This Jekyll introduction will outline specifically  what Jekyll is and why you would want to use it.
 Directly following the intro we&amp;#39;ll learn exactly &lt;u&gt;how&lt;/u&gt; Jekyll does what it does.&lt;/p&gt;
 
 &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;

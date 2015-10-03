@@ -1,5 +1,6 @@
 ---
 layout: post
+section-type: post
 title: "Add 3rd part dynamic library (.dylib) to Xcode target"
 description: ""
 category: tech

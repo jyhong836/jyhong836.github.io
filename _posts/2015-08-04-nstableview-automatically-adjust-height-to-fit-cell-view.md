@@ -1,5 +1,6 @@
 ---
 layout: post
+section-type: post
 title: "NSTableView automatically adjust height to fit cell view"
 description: ""
 category: tech

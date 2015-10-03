@@ -1,5 +1,6 @@
 ---
 layout: post
+section-type: post
 title: "The method resetTransform of SCNPhysicsBody"
 description: "some feature of resetTransform"
 category: tech
