@@ -1,16 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <style>
-  hr { 
-      display: inherit;
-      margin-top: 5em;
-      margin-bottom: 10em;
-      margin-left: 5em;
-      margin-right: 5em;
-      border-style: inherit;
-      border-width: 2px;
-  } 
-  </style>
 
   {% include head.html %}
 
@@ -33,8 +22,6 @@
         <div align="left">
         {{ post.content | truncatewords: site.post-preview-words | strip_html | markdownify }}
         </div>
-
-        <hr>
 
       {% endfor %}
 
