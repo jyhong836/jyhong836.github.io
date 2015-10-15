@@ -79,11 +79,21 @@ reddit-share: False
 # Work variables
 
 works:
+  - url: "/MarkdownAttribute"
+    title: "MarkdownAttribute"
+    # image: "img/work/jacie.jpg"
+    date: "October 2015"
+    description: "A Markdown parser for converting Markdown string to NSAttributedString"
+  - url: "/Vivi"
+    title: "Vivi"
+    # image: "img/work/jacie.jpg"
+    date: "July 2015"
+    description: "A XMPP chatting client on OS X"
   - url: "/jacie"
     title: "Jacie"
     image: "img/work/jacie.jpg"
     date: "January 2014"
-    description: "A chat robot based on AIML technolodge. "
+    description: "A chat robot based on AIML technolodge"
   - url: "/draw3d"
     title: "Draw3D"
     image: "img/work/draw3d.jpg"
