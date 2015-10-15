@@ -1,5 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <style>
+  hr { 
+      display: inherit;
+      margin-top: 5em;
+      margin-bottom: 10em;
+      margin-left: 5em;
+      margin-right: 5em;
+      border-style: inherit;
+      border-width: 2px;
+  } 
+  </style>
 
   <head>
     <meta charset="utf-8" />
@@ -117,17 +128,83 @@
 
 
       
-        <h4 align="left"><strong>04 Aug 2015</strong> <small>. tech .</small> <a href="/tech/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view.html"> <strong>NSTableView automatically adjust height to fit cell view </strong> </a> <small><a href="/tech/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view.html#disqus_thread">Comments</a></small></h4>
+        <h2><a href="/tech/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view.html"> <strong>NSTableView automatically adjust height to fit cell view </strong> </a></h2>
+        <h4 align="center">
+          <strong>04 Aug 2015</strong> <small>. tech .</small> <small><a href="/tech/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view.html#disqus_thread">Comments</a></small>
+        </h4>
+
+        <div align="left">
+        <p>Reference: Using auto-layout to calculate table cell height In &#39;Using auto-layout to calculate table cell height&#39;, it&#39;s introduced how to use auto-layout to update table view&#39;s (UITableView) cell height with Objective-C language. However there is different at NSTableView. Here I will introduce to do similar thing at NSTableView with Swift language. Remember one thing post &#39;Using auto-layout to calculate table cell height&#39; has warned that this method is not that efficient, figure out the way make it more efficient yourself. Assuming you have been familiar with the mechanism of NSTableView, including NSTableViewDelegate and NSTableViewDataSource, I will not introduce these knowledge in detail below. When configure table cell view, it&#39;s helpful later if you seperate some configure functions. func tableView&lt;span...</p>
+
+        </div>
+
+        <hr>
+
       
-        <h4 align="left"><strong>04 Aug 2015</strong> <small>. tech .</small> <a href="/tech/2015/08/04/make-text-table-viewnstableview-auto-resize.html"> <strong>Make text table view(NSTableView) auto resize </strong> </a> <small><a href="/tech/2015/08/04/make-text-table-viewnstableview-auto-resize.html#disqus_thread">Comments</a></small></h4>
+        <h2><a href="/tech/2015/08/04/make-text-table-viewnstableview-auto-resize.html"> <strong>Make text table view(NSTableView) auto resize </strong> </a></h2>
+        <h4 align="center">
+          <strong>04 Aug 2015</strong> <small>. tech .</small> <small><a href="/tech/2015/08/04/make-text-table-viewnstableview-auto-resize.html#disqus_thread">Comments</a></small>
+        </h4>
+
+        <div align="left">
+        <p>To make a iMessage-like chat table view, there is several steps to follow:  Text field should be able to adjust its size automatically. Image view of bubble should adjust automatically relative to text field. Table view&#39;s row should be fitted into the row cell&#39;s subview, which include text field and image view. Let scroller auto scroll to bottum.  Here I use View-based NSTableView to make these:  There is some import constraints to make the three components, NSImageView, NSTextField, NSTableViewCell, keep corresponded size, which is showed below:  You should set NSTextField like below, which will make it auto adjust size to text:  Then use NSTableViewDelegate to adjust height. Read this...</p>
+
+        </div>
+
+        <hr>
+
       
-        <h4 align="left"><strong>29 Jul 2015</strong> <small>. tech .</small> <a href="/tech/2015/07/29/add-3rd-part-dynamic-library-dylib-to-xcode-target.html"> <strong>Add 3rd part dynamic library (.dylib) to Xcode target </strong> </a> <small><a href="/tech/2015/07/29/add-3rd-part-dynamic-library-dylib-to-xcode-target.html#disqus_thread">Comments</a></small></h4>
+        <h2><a href="/tech/2015/07/29/add-3rd-part-dynamic-library-dylib-to-xcode-target.html"> <strong>Add 3rd part dynamic library (.dylib) to Xcode target </strong> </a></h2>
+        <h4 align="center">
+          <strong>29 Jul 2015</strong> <small>. tech .</small> <small><a href="/tech/2015/07/29/add-3rd-part-dynamic-library-dylib-to-xcode-target.html#disqus_thread">Comments</a></small>
+        </h4>
+
+        <div align="left">
+        <p>Dynamic library (with .dylib suffix at UNIX-like OS) is a kind of library discriminated from static library (with .a suffix). Static library will be linked at linking stage instantly after codes are compiled, before binary product output. And instead library is loaded at runtime, I mean load but not link. Load means the executable file will search for binary library when they need it. That&#39;s why some app will announce you that it lack a lib when you double click them for running happily. In contrast, static library will compile these needed part into you app, so the user will not be bothered. Then why we use dynamic library? That&#39;s file size! A static library is several times bigger than a same function dynamic library....</p>
+
+        </div>
+
+        <hr>
+
       
-        <h4 align="left"><strong>04 Feb 2015</strong> <small>. tech .</small> <a href="/tech/2015/02/04/resettransform-at-scnphysicsbody.html"> <strong>The method resetTransform of SCNPhysicsBody </strong> </a> <small><a href="/tech/2015/02/04/resettransform-at-scnphysicsbody.html#disqus_thread">Comments</a></small></h4>
+        <h2><a href="/tech/2015/02/04/resettransform-at-scnphysicsbody.html"> <strong>The method resetTransform of SCNPhysicsBody </strong> </a></h2>
+        <h4 align="center">
+          <strong>04 Feb 2015</strong> <small>. tech .</small> <small><a href="/tech/2015/02/04/resettransform-at-scnphysicsbody.html#disqus_thread">Comments</a></small>
+        </h4>
+
+        <div align="left">
+        <p>According to the SceneKit document, the function of resetTransform is:   Updates the position and orientation of a body in the physics simulation to match that of the node to which the body is attached.  Through experiment, I found this is little special. If you do this:  var node = SCNNode(geomentry: SCNBox()) node.position = SCNVector3(0, 1, 0) node.rotation = SCNVector4(1, 0, 0, CGFloat(M_PI)/2) node.physicsBody = SCNPhysicsBody(type: .Dynamic, &lt;span...</p>
+
+        </div>
+
+        <hr>
+
       
-        <h4 align="left"><strong>03 Feb 2015</strong> <small>. website .</small> <a href="/website/2015/02/03/start-my-blog-with-jekyll-and-disqus.html"> <strong>Start my blog with Jekyll and disqus </strong> </a> <small><a href="/website/2015/02/03/start-my-blog-with-jekyll-and-disqus.html#disqus_thread">Comments</a></small></h4>
+        <h2><a href="/website/2015/02/03/start-my-blog-with-jekyll-and-disqus.html"> <strong>Start my blog with Jekyll and disqus </strong> </a></h2>
+        <h4 align="center">
+          <strong>03 Feb 2015</strong> <small>. website .</small> <small><a href="/website/2015/02/03/start-my-blog-with-jekyll-and-disqus.html#disqus_thread">Comments</a></small>
+        </h4>
+
+        <div align="left">
+        <p>Jekyll is a powerful static website framework, which indead works for GitHub Pages. At the time I found it, I decided to apply it for my github.io as you can see. Some useful webpages for install Jekyll at github.io: Host on GitHub in 3 Minutes Actually you need only to clone the Jekyll in your gihub.io, or just copy all file from Jekyll. Jekyll advise you to clone the jekyll to local with your name and push it to your github. git clone <a href="https://github.com/plusjade/jekyll-bootstrap.git">https://github.com/plusjade/jekyll-bootstrap.git</a> USERNAME.github.io cd USERNAME.github.com git remote set-url origin <a href="mailto:git@github.com">git@github.com</a>:USERNAME/USERNAME.github.io git push origin master  But if you have already create a repository at GitHub, you can also copy the files from jekyll to your repository. &lt;code...</p>
+
+        </div>
+
+        <hr>
+
       
-        <h4 align="left"><strong>29 Dec 2011</strong> <small>. lessons .</small> <a href="/lessons/2011/12/29/jekyll-introduction.html"> <strong>Jekyll Introduction </strong> </a> <small><a href="/lessons/2011/12/29/jekyll-introduction.html#disqus_thread">Comments</a></small></h4>
+        <h2><a href="/lessons/2011/12/29/jekyll-introduction.html"> <strong>Jekyll Introduction </strong> </a></h2>
+        <h4 align="center">
+          <strong>29 Dec 2011</strong> <small>. lessons .</small> <small><a href="/lessons/2011/12/29/jekyll-introduction.html#disqus_thread">Comments</a></small>
+        </h4>
+
+        <div align="left">
+        <p>This Jekyll introduction will outline specifically what Jekyll is and why you would want to use it. Directly following the intro we&#39;ll learn exactly how Jekyll does what it does. Overview What is Jekyll? Jekyll is a parsing engine bundled as a ruby gem used to build static websites from dynamic components such as templates, partials, liquid code, markdown, etc. Jekyll is known as a simple, blog aware, static site generator. Examples This website is created with Jekyll. Other Jekyll websites. What does Jekyll Do? Jekyll is a ruby gem you install on your local system. Once there you can call jekyll --server on a directory and provided that directory is setup in a way jekyll expects, it will do...</p>
+
+        </div>
+
+        <hr>
+
       
 
       <!-- Pagination links -->

@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2">
 
-        {{ page.content | markdownify }}
+<!--         {{ page.content | markdownify }}
 
         {% assign post = site.posts.first %}
         <h4> <strong> {{ post.date | date_to_string }} </strong>
@@ -12,9 +12,23 @@
           <small> <a href="{{ post.url }}#disqus_thread">Comments</a></small>
         </h4>
 
-        {{ post.content | truncatewords: site.post-preview-words | strip_html | markdownify }}
+        {{ post.content | truncatewords: site.post-preview-words | strip_html | markdownify }} -->
+
+
+
+      {{ page.content | markdownify }}
+
+        {% for post in site.posts limit:5 %}
+          <h4 align="center">
+          <div><a href="{{ post.url }}"> <strong>{{ post.title }} </strong> </a> </div>
+          <strong>{{ post.date | date_to_string }}</strong> <small>. {{ post.category }} .</small> 
+          <small><a href="{{ post.url }}#disqus_thread">Comments</a></small>
+          </h4>
+        {% endfor %}
 
         <a href="/blog/index.html"><h4><strong>View more posts</strong></h4></a>
+
+
 
       </div>
     </div>
