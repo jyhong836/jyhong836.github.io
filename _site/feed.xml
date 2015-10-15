@@ -3,8 +3,8 @@
 	<channel>
 		<title>Junyuan Hong</title>
 		<description>Blog and website of Junyuan Hong, blogging mainly for tech. Opinions expressed are mine.</description>		
-		<link>http://jyhong836.github.io</link>
-		<atom:link href="http://jyhong836.github.io/feed.xml" rel="self" type="application/rss+xml" />
+		<link>http://jyhong.com</link>
+		<atom:link href="http://jyhong.com/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
 				<title>NSTableView automatically adjust height to fit cell view</title>
@@ -14,8 +14,8 @@
 </description>
 				
 				<pubDate>Tue, 04 Aug 2015 00:00:00 +0800</pubDate>
-				<link>http://jyhong836.github.io/tech/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view.html</link>
-				<guid isPermaLink="true">http://jyhong836.github.io/tech/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view.html</guid>
+				<link>http://jyhong.com/tech/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view.html</link>
+				<guid isPermaLink="true">http://jyhong.com/tech/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view.html</guid>
 			</item>
 		
 			<item>
@@ -26,8 +26,8 @@
 </description>
 				
 				<pubDate>Tue, 04 Aug 2015 00:00:00 +0800</pubDate>
-				<link>http://jyhong836.github.io/tech/2015/08/04/make-text-table-viewnstableview-auto-resize.html</link>
-				<guid isPermaLink="true">http://jyhong836.github.io/tech/2015/08/04/make-text-table-viewnstableview-auto-resize.html</guid>
+				<link>http://jyhong.com/tech/2015/08/04/make-text-table-viewnstableview-auto-resize.html</link>
+				<guid isPermaLink="true">http://jyhong.com/tech/2015/08/04/make-text-table-viewnstableview-auto-resize.html</guid>
 			</item>
 		
 			<item>
@@ -38,8 +38,8 @@
 </description>
 				
 				<pubDate>Wed, 29 Jul 2015 00:00:00 +0800</pubDate>
-				<link>http://jyhong836.github.io/tech/2015/07/29/add-3rd-part-dynamic-library-dylib-to-xcode-target.html</link>
-				<guid isPermaLink="true">http://jyhong836.github.io/tech/2015/07/29/add-3rd-part-dynamic-library-dylib-to-xcode-target.html</guid>
+				<link>http://jyhong.com/tech/2015/07/29/add-3rd-part-dynamic-library-dylib-to-xcode-target.html</link>
+				<guid isPermaLink="true">http://jyhong.com/tech/2015/07/29/add-3rd-part-dynamic-library-dylib-to-xcode-target.html</guid>
 			</item>
 		
 			<item>
@@ -50,8 +50,8 @@
 </description>
 				
 				<pubDate>Wed, 04 Feb 2015 00:00:00 +0800</pubDate>
-				<link>http://jyhong836.github.io/tech/2015/02/04/resettransform-at-scnphysicsbody.html</link>
-				<guid isPermaLink="true">http://jyhong836.github.io/tech/2015/02/04/resettransform-at-scnphysicsbody.html</guid>
+				<link>http://jyhong.com/tech/2015/02/04/resettransform-at-scnphysicsbody.html</link>
+				<guid isPermaLink="true">http://jyhong.com/tech/2015/02/04/resettransform-at-scnphysicsbody.html</guid>
 			</item>
 		
 			<item>
@@ -62,8 +62,8 @@
 </description>
 				
 				<pubDate>Tue, 03 Feb 2015 00:00:00 +0800</pubDate>
-				<link>http://jyhong836.github.io/website/2015/02/03/start-my-blog-with-jekyll-and-disqus.html</link>
-				<guid isPermaLink="true">http://jyhong836.github.io/website/2015/02/03/start-my-blog-with-jekyll-and-disqus.html</guid>
+				<link>http://jyhong.com/website/2015/02/03/start-my-blog-with-jekyll-and-disqus.html</link>
+				<guid isPermaLink="true">http://jyhong.com/website/2015/02/03/start-my-blog-with-jekyll-and-disqus.html</guid>
 			</item>
 		
 			<item>
@@ -74,8 +74,8 @@
 </description>
 				
 				<pubDate>Thu, 29 Dec 2011 00:00:00 +0800</pubDate>
-				<link>http://jyhong836.github.io/lessons/2011/12/29/jekyll-introduction.html</link>
-				<guid isPermaLink="true">http://jyhong836.github.io/lessons/2011/12/29/jekyll-introduction.html</guid>
+				<link>http://jyhong.com/lessons/2011/12/29/jekyll-introduction.html</link>
+				<guid isPermaLink="true">http://jyhong.com/lessons/2011/12/29/jekyll-introduction.html</guid>
 			</item>
 		
 	</channel>
