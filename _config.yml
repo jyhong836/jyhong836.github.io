@@ -55,8 +55,8 @@ favicon-152x152: "/img/icon/icon_152x152.png"
 pages_list:
   About: 'about'
   Blog: 'blog'
-  Work: 'work'
   Career: 'career'
+  Work: 'work'
   Contact: 'contact'
 
 background-img: "/img/intro-bg.jpg"
@@ -75,6 +75,23 @@ post-preview-words: 128
 fb-share: True
 twitter-share: True
 reddit-share: False
+
+# Work variables
+
+works:
+  - url: "/jacie"
+    title: "Jacie"
+    image: "img/work/jacie.jpg"
+    date: "January 2014"
+    description: "A chat robot based on AIML technolodge. "
+  - url: "/draw3d"
+    title: "Draw3D"
+    image: "img/work/draw3d.jpg"
+    date: "March 2014"
+    description: "3d model based on simple Java Applet pixel api"
+
+# First image of the Work timeline
+work-img: "/img/work/default.png"
 
 # Career variables
 

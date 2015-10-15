@@ -5,6 +5,39 @@
 
           {{ page.content | markdownify }}
 
+	<ul class="timeline">
+
+	    {% for work in site.works %}
+			{% assign loopindex = forloop.index | modulo: 2 %}
+			{% capture class %}
+			{% if loopindex == 0 %}
+				timeline-inverted
+			{% endif %}
+			{% endcapture %}
+
+			<li class="{{ class }}">
+			  	<div class="timeline-image">
+			    	<img class="img-circle img-responsive" src="{{ work.image }}" alt="">
+			  	</div>
+			  	<div class="timeline-panel">
+			      	<div class="timeline-heading">
+			         	<h4><a href="{{ work.url }}"> {{ work.title }} </a></h4>
+			      	</div>
+			    <div class="timeline-body">
+			        <p class="text-muted">{{ work.description | markdownify }}</p>
+			    </div>
+			  </div>
+			</li>
+        {% endfor %}
+
+        <li class="timeline-inverted">
+          <div class="timeline-image">
+            <img class="img-circle img-responsive" src="{{ site.work-img }}" alt="">
+          </div>
+        </li>
+	    
+	</ul>
+
         </div>
     </div>
 </section>

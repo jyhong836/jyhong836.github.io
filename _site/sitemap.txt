@@ -1,6 +1,5 @@
 
 /404.html
-/a-work.html
 /about.html
 /archive.html
 /atom.xml
@@ -11,14 +10,15 @@
 /feed.xml
 /css/grayscale.css
 /tags/hardware.html
-/blog/index.html
 /index.html
+/blog/index.html
 /tags/jekyll.html
 /pages.html
 /rss.xml
 /sitemap.txt
 /tags/software.html
 /tags.html
+/work.html
 
 /tech/2015/08/04/nstableview-automatically-adjust-height-to-fit-cell-view.html
 /tech/2015/08/04/make-text-table-viewnstableview-auto-resize.html
