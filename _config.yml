@@ -91,7 +91,9 @@ works:
     description: "3d model based on simple Java Applet pixel api"
 
 # First image of the Work timeline
-work-img: "/img/work/default.png"
+work-line:
+  first-img: "/img/work/default.png"
+  limit-num: 5
 
 # Career variables
 

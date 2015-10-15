@@ -7,7 +7,7 @@
 
 	<ul class="timeline">
 
-	    {% for work in site.works %}
+	    {% for work in site.works limit: site.work-line.limit-num %}
 			{% assign loopindex = forloop.index | modulo: 2 %}
 			{% capture class %}
 			{% if loopindex == 0 %}
@@ -17,7 +17,11 @@
 
 			<li class="{{ class }}">
 			  	<div class="timeline-image">
-			    	<img class="img-circle img-responsive" src="{{ work.image }}" alt="">
+			  		{% if work.image %}
+			  			<img class="img-circle img-responsive" src="{{ work.image }}" alt="">
+			  		{% else %}
+			  			<img class="img-circle img-responsive" src="img/work/fa-flask.jpg" alt="">
+			  		{% endif %}
 			  	</div>
 			  	<div class="timeline-panel">
 			      	<div class="timeline-heading">
@@ -32,7 +36,7 @@
 
         <li class="timeline-inverted">
           <div class="timeline-image">
-            <img class="img-circle img-responsive" src="{{ site.work-img }}" alt="">
+            <img class="img-circle img-responsive" src="{{ site.work-line.first-img }}" alt="">
           </div>
         </li>
 	    
