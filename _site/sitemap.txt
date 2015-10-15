@@ -1,5 +1,6 @@
 
 /404.html
+/a-work.html
 /about.html
 /archive.html
 /atom.xml
@@ -10,8 +11,8 @@
 /feed.xml
 /css/grayscale.css
 /tags/hardware.html
-/index.html
 /blog/index.html
+/index.html
 /tags/jekyll.html
 /pages.html
 /rss.xml

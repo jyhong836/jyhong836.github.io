@@ -55,6 +55,7 @@ favicon-152x152: "/img/icon/icon_152x152.png"
 pages_list:
   About: 'about'
   Blog: 'blog'
+  Work: 'work'
   Career: 'career'
   Contact: 'contact'
 
