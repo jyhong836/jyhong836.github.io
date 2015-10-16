@@ -80,7 +80,7 @@ reddit-share: False
 
 works:
   - url: "/MarkdownAttribute"
-    title: "MarkdownAttribute"
+    title: "Markdown Attribute"
     # image: "img/work/jacie.jpg"
     date: "October 2015"
     description: "Parser for converting Markdown to pretty NSAttributedString"
