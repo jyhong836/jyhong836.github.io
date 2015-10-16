@@ -106,7 +106,7 @@ works:
 
 # First image of the Work timeline
 work-line:
-  first-img: "/img/work/default.png"
+  first-img: "/img/work/default.jpg"
   limit-num: 5
 
 # Career variables
