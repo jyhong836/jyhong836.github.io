@@ -2,7 +2,13 @@
     <footer>
         <div class="container text-center">
             <p><em>Copyright &copy; {{ site.author }} {{ site.time | date: "%Y" }}</em></p>
-            <p><img src="{{site.favicon-144x144}}" width="72" height="72"></p>
+            <p><a class="page-scroll" href= 
+            {% if page.section-type == "index" %} 
+            "#page-top"
+            {% else %}
+            "/index.html#page-top"
+            {% endif %}
+            ><img src="{{site.favicon-144x144}}" width="72" height="72"></a></p>
         </div>
     </footer>
 
