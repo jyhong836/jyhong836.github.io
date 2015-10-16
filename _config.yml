@@ -83,22 +83,26 @@ works:
     title: "MarkdownAttribute"
     # image: "img/work/jacie.jpg"
     date: "October 2015"
-    description: "A Markdown parser for converting Markdown string to NSAttributedString"
+    description: "Parser for converting Markdown to pretty NSAttributedString"
+    labels: ["Swift", "Cocoa", "Markdown"]
   - url: "/Vivi"
     title: "Vivi"
     # image: "img/work/jacie.jpg"
     date: "July 2015"
-    description: "A XMPP chatting client on OS X"
+    description: "XMPP chat client on OS X"
+    labels: ["Swift", "Cocoa", "XMPP"]
   - url: "/jacie"
     title: "Jacie"
     image: "img/work/jacie.jpg"
     date: "January 2014"
-    description: "A chat robot based on AIML technolodge"
+    description: "A chat robot based on AIML"
+    labels: ["Python", "AIML"]
   - url: "/draw3d"
     title: "Draw3D"
     image: "img/work/draw3d.jpg"
     date: "March 2014"
-    description: "3d model based on simple Java Applet pixel api"
+    description: "3d model program using basic Java graphic APIs"
+    labels: ["Java", "3D"]
 
 # First image of the Work timeline
 work-line:

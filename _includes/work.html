@@ -29,6 +29,12 @@
 			      	</div>
 			    <div class="timeline-body">
 			        <p class="text-muted">{{ work.description | markdownify }}</p>
+			        <p class="text-muted"> 
+			        <small><label> <a href="https://github.com/search?utf8=✓&q=user%3Ajyhong836+language%3A{{work.labels[0]}}"> #{{ work.labels[0] }} </a> </label></small>
+				        {% for label in work.labels offset: 1 %}
+				        	<small><label> #{{ label }} </label></small>
+				        {% endfor %}
+			        </p>
 			    </div>
 			  </div>
 			</li>
