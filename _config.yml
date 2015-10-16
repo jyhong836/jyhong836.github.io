@@ -129,7 +129,7 @@ events:
   #   description: "Released <a href=\"https://www.google.com/search?q=pwn+mail\" target=\"_blank\">Pwn Mail</a>, an iPhone app for spoofing emails. It served &gt; 260,000 emails but it was discontinued after a legal threat by <strike>Steve Jobs</strike> a secretary of Steve Jobs"
   - image: "/img/career/ustc.jpg"
     date: "September 2015 - Today"
-    description: "Master studies @ <a href=\"http://en.cs.ustc.edu.cn\" target=\"_blank\">School of Computer Science and Technology</a> on Intelligent Computing and Application"
+    description: "Master studies @ <a href=\"http://ubri.ustc.edu.cn\" target=\"_blank\">USTC-Birmingham Joint Research Institute</a> on Intelligent Computing and Application"
   - image: "/img/career/ustc.jpg"
     date: "September 2011 - June 2015"
     description: "Bachelor studies @ <a href=\"http://en.physics.ustc.edu.cn/departments/Dept_of_Optics/\" target=\"_blank\">Department of Optics and Optical Engineering</a> on Optics"
