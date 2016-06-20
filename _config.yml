@@ -8,12 +8,13 @@ keywords: "jyhong, junyuan, hong, junyuan hong, technology, computer science"
 
 google-tracking-id: "UA-59631745-2"
 disqus-shortname: "hongblog"
-markdown: redcarpet
+markdown: redcarpet # no longer supported by Gihub Pages any more.
+# markdown: kramdown
 highlighter: pygments
 redcarpet:
   extensions: ["with_toc_data", "tables", "no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript", "highlight", "quote", "underline", "footnotes", "prettify"]
 kramdown:
-  # input:          GFM
+  input:          GFM
   auto_ids:       true
   footnote_nr:    1
   entity_output:  as_char
@@ -158,3 +159,5 @@ social:
 
 # Exclusion list from the generated _site
 exclude: ["Rakefile", "LICENSE", "readme.markdown", "vendor"]
+
+gems: [jekyll-paginate]

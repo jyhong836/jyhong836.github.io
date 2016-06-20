@@ -47,6 +47,28 @@
     <link rel="apple-touch-icon" sizes="152x152" href="/img/icon/icon_152x152.png">
     <!-- <meta name="msapplication-TileColor" content="#2b5797">
     <meta name="msapplication-TileImage" content="/mstile-144x144.png"> -->
+
+    <!-- Piwik at tracker.any-good -->
+    <script type="text/javascript">
+      var _paq = _paq || [];
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="//tracker.any-good.net/piwik/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 1]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <noscript><p><img src="//tracker.any-good.net/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
+
+    <!-- clickheat at tracker.any-good -->
+    <script type="text/javascript" src="http://tracker.any-good.net/piwik/plugins/ClickHeat/libs/js/clickheat.js"></script><noscript><p><a href="http://www.dugwood.com/index.html">Heatmap plugin</a></p></noscript><script type="text/javascript"><!--
+    clickHeatSite = 1;clickHeatGroup = encodeURIComponent(window.location.pathname+window.location.search);clickHeatServer = 'http://tracker.any-good.net/piwik/plugins/ClickHeat/libs/click.php';initClickHeat(); //-->
+    </script>
+    <!-- End clickheat at tracker.any-good -->
 </head>
 
 
@@ -127,7 +149,7 @@
           </small>
         </h4>
 
-      	<!-- {% include JB/setup %} -->
+      	<!--  -->
 
 <p>Jekyll is a powerful static website framework, which indead works for GitHub Pages. At the time I found it, I decided to apply it for my github.io as you can see.</p>
 
@@ -138,18 +160,22 @@
 <p>Actually you need only to clone the Jekyll in your gihub.io, or just copy all file from Jekyll.</p>
 
 <p>Jekyll advise you to clone the jekyll to local with your name and push it to your github.</p>
+
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">git clone https://github.com/plusjade/jekyll-bootstrap.git USERNAME.github.io
 <span class="nb">cd </span>USERNAME.github.com 
 git remote <span class="nb">set</span>-url origin git@github.com:USERNAME/USERNAME.github.io
 git push origin master
 </code></pre></div>
+
 <p>But if you have already create a repository at GitHub, you can also copy the files from jekyll to your repository.</p>
+
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">git clone https://github.com/plusjade/jekyll-bootstrap.git jekyll-bootstrap
 <span class="nb">cd </span>jekyll-bootstrap
 cp -r ./* router/to/USERNAME.github.io
 <span class="nb">cd </span>router/to/USERNAME.github.io
 git push origin master
 </code></pre></div>
+
 <p>It also works honestly.</p>
 
 <p>Another web about the Jekyll and GitHub: <a href="http://www.developmentseed.org/blog/2011/09/09/jekyll-github-pages/">Using Jekyll and GitHub Pages for Our Site</a></p>
@@ -209,7 +235,7 @@ git push origin master
      <!-- Footer -->
     <footer>
         <div class="container text-center">
-            <p><em>Copyright &copy; Junyuan Hong 2015</em></p>
+            <p><em>Copyright &copy; Junyuan Hong 2016</em></p>
             <p><a class="page-scroll" href= 
             
             "/index.html#page-top"

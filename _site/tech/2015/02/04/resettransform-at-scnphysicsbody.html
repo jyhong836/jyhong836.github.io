@@ -47,6 +47,28 @@
     <link rel="apple-touch-icon" sizes="152x152" href="/img/icon/icon_152x152.png">
     <!-- <meta name="msapplication-TileColor" content="#2b5797">
     <meta name="msapplication-TileImage" content="/mstile-144x144.png"> -->
+
+    <!-- Piwik at tracker.any-good -->
+    <script type="text/javascript">
+      var _paq = _paq || [];
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="//tracker.any-good.net/piwik/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 1]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <noscript><p><img src="//tracker.any-good.net/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
+
+    <!-- clickheat at tracker.any-good -->
+    <script type="text/javascript" src="http://tracker.any-good.net/piwik/plugins/ClickHeat/libs/js/clickheat.js"></script><noscript><p><a href="http://www.dugwood.com/index.html">Heatmap plugin</a></p></noscript><script type="text/javascript"><!--
+    clickHeatSite = 1;clickHeatGroup = encodeURIComponent(window.location.pathname+window.location.search);clickHeatServer = 'http://tracker.any-good.net/piwik/plugins/ClickHeat/libs/click.php';initClickHeat(); //-->
+    </script>
+    <!-- End clickheat at tracker.any-good -->
 </head>
 
 
@@ -127,7 +149,7 @@
           </small>
         </h4>
 
-      	<!-- {% include JB/setup %} -->
+      	<!--  -->
 
 <p>According to the SceneKit document, the function of <code class="prettyprint">resetTransform</code> is: </p>
 
@@ -138,12 +160,14 @@
 <p>Through experiment, I found this is little special.</p>
 
 <p>If you do this: </p>
+
 <div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">var</span> <span class="n">node</span> <span class="o">=</span> <span class="n">SCNNode</span><span class="p">(</span><span class="nl">geomentry</span><span class="p">:</span> <span class="n">SCNBox</span><span class="p">())</span>
 <span class="n">node</span><span class="p">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">SCNVector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">node</span><span class="p">.</span><span class="n">rotation</span> <span class="o">=</span> <span class="n">SCNVector4</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">CGFloat</span><span class="p">(</span><span class="n">M_PI</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">node</span><span class="p">.</span><span class="n">physicsBody</span> <span class="o">=</span> <span class="n">SCNPhysicsBody</span><span class="p">(</span><span class="nl">type</span><span class="p">:</span> <span class="p">.</span><span class="n">Dynamic</span><span class="p">,</span> <span class="nb">nil</span><span class="p">)</span>
 <span class="n">scene</span><span class="p">.</span><span class="n">rootNode</span><span class="p">.</span><span class="n">addChildNode</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
 </code></pre></div>
+
 <p>If you get the <code class="prettyprint">position</code> and <code class="prettyprint">rotation</code> of <code class="prettyprint">node.presentationNode()</code> in the render delegate, where I mean you need to get the latest and real data, you will found the effect of the setup of node&#39;s position and rotation is not work at the begining.</p>
 
 <p>At the begining, the <code class="prettyprint">position</code> will be <code class="prettyprint">(0, 0, 0)</code>, but not what you have set, <code class="prettyprint">(0, 1, 0)</code>.</p>
@@ -159,6 +183,7 @@
 <p>The <strong>Animatable</strong> means it will take several frames to get the effect.</p>
 
 <p>However, it&#39;s different when you use resetTransform of SCNPhysicsBody:</p>
+
 <div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">var</span> <span class="n">node</span> <span class="o">=</span> <span class="n">SCNNode</span><span class="p">(</span><span class="nl">geomentry</span><span class="p">:</span> <span class="n">SCNBox</span><span class="p">())</span>
 <span class="n">node</span><span class="p">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">SCNVector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">node</span><span class="p">.</span><span class="n">rotation</span> <span class="o">=</span> <span class="n">SCNVector4</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">CGFloat</span><span class="p">(</span><span class="n">M_PI</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
@@ -166,6 +191,7 @@
 <span class="n">scene</span><span class="p">.</span><span class="n">rootNode</span><span class="p">.</span><span class="n">addChildNode</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
 <span class="n">node</span><span class="p">.</span><span class="n">physicsBody</span><span class="p">.</span><span class="n">resetTransform</span><span class="p">()</span>
 </code></pre></div>
+
 <p>The effect will work at the begining.</p>
 
 
@@ -216,7 +242,7 @@
      <!-- Footer -->
     <footer>
         <div class="container text-center">
-            <p><em>Copyright &copy; Junyuan Hong 2015</em></p>
+            <p><em>Copyright &copy; Junyuan Hong 2016</em></p>
             <p><a class="page-scroll" href= 
             
             "/index.html#page-top"

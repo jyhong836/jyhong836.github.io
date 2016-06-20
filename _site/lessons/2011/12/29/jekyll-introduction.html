@@ -47,6 +47,28 @@
     <link rel="apple-touch-icon" sizes="152x152" href="/img/icon/icon_152x152.png">
     <!-- <meta name="msapplication-TileColor" content="#2b5797">
     <meta name="msapplication-TileImage" content="/mstile-144x144.png"> -->
+
+    <!-- Piwik at tracker.any-good -->
+    <script type="text/javascript">
+      var _paq = _paq || [];
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="//tracker.any-good.net/piwik/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 1]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <noscript><p><img src="//tracker.any-good.net/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
+
+    <!-- clickheat at tracker.any-good -->
+    <script type="text/javascript" src="http://tracker.any-good.net/piwik/plugins/ClickHeat/libs/js/clickheat.js"></script><noscript><p><a href="http://www.dugwood.com/index.html">Heatmap plugin</a></p></noscript><script type="text/javascript"><!--
+    clickHeatSite = 1;clickHeatGroup = encodeURIComponent(window.location.pathname+window.location.search);clickHeatServer = 'http://tracker.any-good.net/piwik/plugins/ClickHeat/libs/click.php';initClickHeat(); //-->
+    </script>
+    <!-- End clickheat at tracker.any-good -->
 </head>
 
 
@@ -133,7 +155,7 @@
           </small>
         </h4>
 
-      	<!-- {% include JB/setup %} -->
+      	<!--  -->
 
 <p>This Jekyll introduction will outline specifically  what Jekyll is and why you would want to use it.
 Directly following the intro we&#39;ll learn exactly <u>how</u> Jekyll does what it does.</p>
@@ -210,6 +232,7 @@ Jekyll-bootstrap conveniently provides the base directory format.</p>
 <h3 id="the-jekyll-application-base-format">The Jekyll Application Base Format</h3>
 
 <p>Jekyll expects your website directory to be laid out like so:</p>
+
 <div class="highlight"><pre><code class="language-text" data-lang="text">.
 |-- _config.yml
 |-- _includes
@@ -226,6 +249,7 @@ Jekyll-bootstrap conveniently provides the base directory format.</p>
         |-- style.css
     |-- javascripts
 </code></pre></div>
+
 <ul>
 <li><p><strong>_config.yml</strong>
 Stores configuration data.</p></li>
@@ -290,11 +314,13 @@ Categories offer more significance over tags in that they can be reflected in th
 Note categories in Jekyll work in a specific way.
 If you define more than one category you are defining a category hierarchy <q>set</q>.
 Example:</p>
+
 <div class="highlight"><pre><code class="language-text" data-lang="text">---
 title :  Hello World
 categories : [lessons, beginner]
 ---
 </code></pre></div>
+
 <p>This defines the category hierarchy <q>lessons/beginner</q>. Note this is <u>one category</u> node in Jekyll.
 You won&#39;t find <q>lessons</q> and <q>beginner</q> as two separate categories unless you define them elsewhere as singular categories.</p>
 
@@ -313,11 +339,13 @@ Pages do not compute categories nor tags so defining them will have no effect.</
 <p><strong>Sub-Directories</strong>
 If pages are defined in sub-directories, the path to the page will be reflected in the url.
 Example:</p>
+
 <div class="highlight"><pre><code class="language-text" data-lang="text">.
 |-- people
     |-- bob
         |-- essay.html
 </code></pre></div>
+
 <p>This page will be available at <code class="prettyprint">http://yourdomain.com/people/bob/essay.html</code></p>
 
 <p><strong>Recommended Pages</strong></p>
@@ -352,15 +380,14 @@ There is a special variable in all templates named : <code class="prettyprint">c
 The <code class="prettyprint">content</code> variable holds the page/post content including any sub-template content previously defined.
 Render the content variable wherever you want your main content to be injected into your template:</p>
 
-<p>{% capture text %}...
-<body>
-  <div id="sidebar"> ... </div>
-  <div id="main">
-    |.{content}.|
-  </div>
-</body>
-...{% endcapture %}
-{% include JB/liquid_raw %}</p>
+<p><pre><code>...
+&lt;body&gt;
+  &lt;div id=<q>sidebar</q>&gt; ... &lt;/div&gt;
+  &lt;div id=<q>main</q>&gt;
+    &#123;{content}&#125;
+  &lt;/div&gt;
+&lt;/body&gt;
+...</code></pre></p>
 
 <h3 id="sub-templates">Sub-Templates</h3>
 
@@ -453,6 +480,7 @@ Templates, posts, and pages all need to provide valid YAML Front Matter even if 
 This is the only way Jekyll knows you want the file processed.</p>
 
 <p>YAML Front Matter must be prepended to the top of template/post/page files:</p>
+
 <div class="highlight"><pre><code class="language-text" data-lang="text">---
 layout: post
 category : pages
@@ -461,6 +489,7 @@ tags : [how-to, jekyll]
 
 ... contents ...
 </code></pre></div>
+
 <p>Three hyphens on a new line start the Front-Matter block and three hyphens on a new line end the block.
 The data inside the block must be valid YAML.</p>
 
@@ -521,8 +550,8 @@ As noted, our main programming constraint is the fact that our API is limited to
 
 <h2 id="next-steps">Next Steps</h2>
 
-<p>Please take a look at <a href="%7B%7B%20BASE_PATH%20%7D%7D%7B%7B%20site.categories.api.first.url%20%7D%7D">{{ site.categories.api.first.title }}</a>
-or jump right into <a href="%7B%7B%20BASE_PATH%20%7D%7D%7B%7B%20site.categories.usage.first.url%20%7D%7D">Usage</a> if you&#39;d like.</p>
+<p>Please take a look at <a href=""></a>
+or jump right into <a href="">Usage</a> if you&#39;d like.</p>
 
 
       	<div>
@@ -572,7 +601,7 @@ or jump right into <a href="%7B%7B%20BASE_PATH%20%7D%7D%7B%7B%20site.categories.
      <!-- Footer -->
     <footer>
         <div class="container text-center">
-            <p><em>Copyright &copy; Junyuan Hong 2015</em></p>
+            <p><em>Copyright &copy; Junyuan Hong 2016</em></p>
             <p><a class="page-scroll" href= 
             
             "/index.html#page-top"

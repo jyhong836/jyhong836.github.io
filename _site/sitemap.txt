@@ -10,8 +10,8 @@
 /feed.xml
 /css/grayscale.css
 /tags/hardware.html
-/index.html
-/blog/index.html
+/blog/
+/
 /tags/jekyll.html
 /pages.html
 /rss.xml

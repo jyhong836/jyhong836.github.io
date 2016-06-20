@@ -47,6 +47,28 @@
     <link rel="apple-touch-icon" sizes="152x152" href="/img/icon/icon_152x152.png">
     <!-- <meta name="msapplication-TileColor" content="#2b5797">
     <meta name="msapplication-TileImage" content="/mstile-144x144.png"> -->
+
+    <!-- Piwik at tracker.any-good -->
+    <script type="text/javascript">
+      var _paq = _paq || [];
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="//tracker.any-good.net/piwik/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 1]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <noscript><p><img src="//tracker.any-good.net/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
+
+    <!-- clickheat at tracker.any-good -->
+    <script type="text/javascript" src="http://tracker.any-good.net/piwik/plugins/ClickHeat/libs/js/clickheat.js"></script><noscript><p><a href="http://www.dugwood.com/index.html">Heatmap plugin</a></p></noscript><script type="text/javascript"><!--
+    clickHeatSite = 1;clickHeatGroup = encodeURIComponent(window.location.pathname+window.location.search);clickHeatServer = 'http://tracker.any-good.net/piwik/plugins/ClickHeat/libs/click.php';initClickHeat(); //-->
+    </script>
+    <!-- End clickheat at tracker.any-good -->
 </head>
 
 
@@ -131,13 +153,14 @@
           </small>
         </h4>
 
-      	<!-- {% include JB/setup %} -->
+      	<!--  -->
 
 <p>Dynamic library (with .dylib suffix at UNIX-like OS) is a kind of library discriminated from static library (with .a suffix). Static library will be linked at linking stage instantly after codes are compiled, before binary product output. And instead library is loaded at runtime, I mean load but not link. Load means the executable file will search for binary library when they need it. That&#39;s why some app will announce you that it lack a lib when you double click them for running happily. In contrast, static library will compile these needed part into you app, so the user will not be bothered.</p>
 
 <h4 id="then-why-we-use-dynamic-library">Then why we use dynamic library?</h4>
 
 <p>That&#39;s file size! A static library is several times bigger than a same function dynamic library. For example the SDL lib at OS X, which is located at /usr/local/Cellar/sdl2/2.0.3/lib/  if you install it through Homebrew.</p>
+
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ls /usr/local/Cellar/sdl2/2.0.3/lib/ -lh
 -r--r--r-- <span class="m">1</span> user admin 850K Jul <span class="m">20</span> 22:18 libSDL2-2.0.0.dylib
 -r--r--r-- <span class="m">1</span> user admin 1.5M Oct <span class="m">22</span>  <span class="m">2014</span> libSDL2.a
@@ -342,7 +365,7 @@ $ install_name_tool -id @loader_path/Frameworks/libSwiften.3.0.dylib libSwiften.
      <!-- Footer -->
     <footer>
         <div class="container text-center">
-            <p><em>Copyright &copy; Junyuan Hong 2015</em></p>
+            <p><em>Copyright &copy; Junyuan Hong 2016</em></p>
             <p><a class="page-scroll" href= 
             
             "/index.html#page-top"
