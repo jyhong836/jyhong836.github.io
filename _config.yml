@@ -80,8 +80,14 @@ reddit-share: False
 # Work variables
 
 works:
+  - url: "/"
+    title: "VGM"
+    # image: "img/work/jacie.jpg"
+    date: "Sep 2017"
+    description: "Variant Grassmann manifolds for data augmentation in subspace-based learning."
+    labels: ["Matlab", "Machine Learning", "Action Recognition"]
   - url: "github.com/jyhong836/LSMModelSpace"
-    title: "LSM-based Model Classifcation"
+    title: "LSM-based Model Classifier"
     # image: "img/work/jacie.jpg"
     date: "June 2016"
     description: "Apply Liquid State Machine (LSM) for modeling and classifying time series."
