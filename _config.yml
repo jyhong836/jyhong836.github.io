@@ -86,13 +86,13 @@ works:
     date: "Sep 2017"
     description: "Variant Grassmann manifolds for data augmentation in subspace-based learning."
     labels: ["Matlab", "Machine Learning", "Action Recognition"]
-  - url: "github.com/jyhong836/LSMModelSpace"
+  - url: "https://github.com/jyhong836/LSMModelSpace"
     title: "LSM-based Model Classifier"
     # image: "img/work/jacie.jpg"
     date: "June 2016"
     description: "Apply Liquid State Machine (LSM) for modeling and classifying time series."
     labels: ["Matlab", "Machine Learning", "Time Series Classification"]
-  - url: "github.com/jyhong836/Defence"
+  - url: "https://github.com/jyhong836/Defence"
     title: "Tower Defense Game"
     # image: "img/work/jacie.jpg"
     date: "July 2015"
