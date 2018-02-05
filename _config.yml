@@ -80,6 +80,11 @@ reddit-share: False
 # Work variables
 
 works:
+  - url: "/files/sigkdd_supp.pdf"
+    title: "Disturbance Grassmann Kernels"
+    date: "Feb 2018"
+    description: ""
+    labels: ["Paper"]
   - url: "/"
     title: "VGM"
     # image: "img/work/jacie.jpg"
