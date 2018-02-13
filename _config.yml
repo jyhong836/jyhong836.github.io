@@ -80,7 +80,8 @@ reddit-share: False
 # Work variables
 
 works:
-  - url: "/files/sigkdd_supp.pdf"
+  # - url: "/files/sigkdd_supp.pdf"
+  - url: "https://arxiv.org/abs/1802.03517"
     title: "Disturbance Grassmann Kernels"
     date: "Feb 2018"
     description: ""
